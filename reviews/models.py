@@ -21,8 +21,8 @@ class Book(models.Model):
         verbose_name='Date when the book was published')
     isbn = models.CharField(
         max_length=20, verbose_name='ISBN number of the book')
-    publisher_name = models.ForeignKey(Publisher, on_delete=models.CASCADE)
-    contributors_name = models.ManyToManyField(
+    publisher = models.ForeignKey(Publisher, on_delete=models.CASCADE)
+    contributors = models.ManyToManyField(
         'Contributor', through='BookContributor')
     '''this BookContributor field results an aditional table named BookContributor combined wth book and Contributor tables as foreign key'''
 
@@ -33,9 +33,9 @@ class Book(models.Model):
 class Contributor(models.Model):
     '''Contains information about the book contributor's e.g. author, co-author, editor, etc'''
 
-    first_name = models.CharField(
+    first_names = models.CharField(
         max_length=50, help_text="First name of the contributor")
-    last_name = models.CharField(
+    last_names = models.CharField(
         max_length=50, help_text="Last name of the contributor")
     email = models.EmailField(help_text="Email address of the contributor")
 
@@ -63,6 +63,6 @@ class Review(models.Model):
         auto_now_add=True, help_text='date and time when the review was created')
     date_edited = models.DateTimeField(
         null=True, help_text='date and time when the review was edited')
-    created_by = models.ForeignKey(
+    creator = models.ForeignKey(
         auth.get_user_model(), on_delete=models.CASCADE)
-    book_name = models.ForeignKey(Book, on_delete=models.CASCADE)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
