@@ -1,0 +1,54 @@
+{% extends 'reviews/base.html' %}
+{% block content %}
+
+
+
+<span class="text-info">Title: </span> <span>{{ book.title }}</span>
+<br>
+<span class="text-info">Publisher: </span><span>{{ book.publisher }}</span>
+<br>
+<span class="text-info">Publication Date: </span><span>{{ book.publication_date }}</span>
+<br>
+<span class="text-info">Rating: </span><span class="badge badge-primary badge-pill">{{ rating }}</span>
+<br>
+<span class="text-info">Read Other's reviews: </span><span
+    class="badge badge-primary badge-pill ">{{ numberOfReviews }}</span>
+<br>
+{% if not numberOfReviews %}
+<span class="text-secondary">Provide a rating and write the first review for this book.</span>
+<br>
+{% endif %}
+
+<a class="btn btn-primary btn-sm active" role="button" aria-pressed="true"
+    href="/books/{{ book.id }}/add-review/">Add-Reviews</a>
+
+
+<hr>
+<h1>Review Comment's</h1>
+
+{% for review in reviews  %}
+
+<hr>
+<p>
+    <span class="text-info">Comment: </span> <span>{{review.content}}</span>
+    <br>
+    <span class="text-info">Date-Created: </span> <span>{{review.date_created}}</span>
+    <br>
+    <span class="text-info"><Date-Edite></Date-Edite>: </span> <span>{{review.date_edited}}</span>
+    <br>
+    <span class="text-info">Rating: </span> <span>{{review.rating}}</span>
+    <br>
+</p>
+
+
+
+
+{% endfor %}
+
+
+
+
+
+
+
+{% endblock content %}
