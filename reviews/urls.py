@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import path
 from .views import  welcome_view, booklist_view, bookdetails_view
 
+app_name = 'review'
 urlpatterns = [
 
     path('', welcome_view, name='welcome_view',),

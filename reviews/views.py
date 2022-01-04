@@ -1,15 +1,16 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
-from .models import Book, Review
+from .models import Book, Review, BookContributor
 from .utils import average_rating
 
 
 def welcome_view(request):
-    return render(request, 'reviews/base.html')
+    return render(request, 'reviews/test.html')
 
 
 def booklist_view(request):
     books = Book.objects.all()
+    contributors = BookContributor.objects.all()
     book_list = []
 
     for book in books:
@@ -21,10 +22,15 @@ def booklist_view(request):
             rating = None
             num_of_reviews = 0
 
+        # book_author = 
+        release_date = book.publication_date
+
         book_list.append({
             "book": book,
             "book_rating": rating,
             "number_of_reviews": num_of_reviews,
+            # "author":book_author,
+            "release_date":release_date,
         })
 
         context = {
@@ -40,7 +46,7 @@ def bookdetails_view(request, id):
     num_of_reviews = len(reviews)
     rating = average_rating([review.rating for review in reviews])
 
-    print (book)
+    
 
     context = {
         "book":book,
