@@ -1,17 +1,22 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
+
+from reviews.forms import AddReviewForm
 from .models import Book, Review, BookContributor
 from .utils import average_rating
 
 
-def welcome_view(request):
-    return render(request, 'reviews/test.html')
+def home_page_view(request):
+    return render(request, 'reviews/home.html')
 
 
 def booklist_view(request):
     books = Book.objects.all()
     contributors = BookContributor.objects.all()
     book_list = []
+    
+    
+        
 
     for book in books:
         reviews = book.review_set.all()
@@ -35,6 +40,7 @@ def booklist_view(request):
 
         context = {
             "book_list": book_list,
+            
         }
        
 
@@ -56,3 +62,21 @@ def bookdetails_view(request, id):
     }
 
     return render(request, "reviews/book_details.html", context)
+
+def add_review_view(request, id):
+    form = AddReviewForm()
+    context ={
+        "form": form,
+    }
+    if request.method == "POST":
+        form = AddReviewForm(request.POST)
+        if form.is_valid():
+            
+            content = form.cleaned_data["review_content"]
+            rating = form.cleaned_data["rating"]
+
+            print("\n",content,rating)
+    
+
+    return render(request, "reviews/add_review.html", context)
+

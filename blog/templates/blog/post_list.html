@@ -1,0 +1,66 @@
+{% extends 'reviews/home.html' %}
+
+
+
+
+{% block content %}
+{% comment %} <div class="flex flex-row">
+
+  <div class="basis-1/5  bg-gray-300 space-y-2">
+    <a class="block px-4 py-2 rounded bg-blue-400 hover:bg-blue-600 " href="">category name</a>
+    <a class="block px-4 py-2 rounded bg-blue-400 hover:bg-blue-600 " href="">category name</a>
+    <a class="block px-4 py-2 rounded bg-blue-400 hover:bg-blue-600 " href="">category name</a>
+    <a class="block px-4 py-2 rounded bg-blue-400 hover:bg-blue-600 " href="">category name</a>
+  </div> 
+
+  {% for post in posts %}
+
+    <div class="basis-4/5 text-sm font-light bg-gray-200 m-4 p-4 mx-32 border solid-gray-400 rounded">
+
+      <h1 class="font-base font-bold">{{ post.title }}</h1>
+      <h2 class="pt-1 pb-4 text-sm font-md font-normal">By: {{ post.author }}</h2>
+      <h2>Published On: {{ post.publish}}</h2>
+
+      <p class="pb-4 font-light text-sm text-justify leading-6">{{post.body|truncatewords:30|linebreaks}}</p>
+      <a class=" text-blue-400 hover:text-blue-500"
+        href="http://127.0.0.1:8000/blog/{{post.publish.year}}/{{post.publish.month}}/{{post.publish.day}}/{{post.slug}}/">Read
+        more</a>
+
+    </div>
+
+
+  {% endfor %} {% endcomment %}
+  {% for post in posts %}
+  <div class=" p-4 mx-32 w-4/5 min-h-screen flex flex-row">
+    {% comment %} <div class=" p-6 m-4 bg-green-300 text-justify text-sm">
+      <h1 class=" pb-4 text-2xl">Categories </h1>
+      <a class="block px-4 py-2 bg-green-400 my-4" href="">python</a>
+      <a class="block px-4 py-2 bg-green-400 my-4" href="">python</a>
+      <a class="block px-4 py-2 bg-green-400 my-4" href="">python</a>
+      <a class="block px-4 py-2 bg-green-400 my-4" href="">python</a>
+      <a class="block px-4 py-2 bg-green-400 my-4" href="">python</a>
+      <a class="block px-4 py-2 bg-green-400 my-4" href="">python</a>
+      
+    </div> {% endcomment %}
+    
+    
+    
+    <div class="rounded-lg shadow-lg bg-gray-100 basis-4/5  m-4 p-12 text-justify text-md text-gray-700">
+        <h1 class="pb-4 text-2xl font-bold">{{post.title}} </h1>
+        <img class = "my-4 object-cover w-full h-56"src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8Ym9va3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="blog-img" srcset="">
+        <h2>By: {{post.author}}</h2> 
+        <span class="text-blue-400 text-md">{{post.publish}}</span>
+        <span class="text-blue-400 text-md">| 5 min Read</span>
+        <p class="py-8">{{post.body|truncatewords:25}}</p>
+        <a class= "text-blue-100 bg-blue-400 rounded-lg px-4 py-2 hover:bg-blue-600"  href="http://127.0.0.1:8000/blog/{{post.slug}}/">read more...</a>
+
+      </div>
+      
+    </div>
+    {% endfor %}
+
+
+
+  {% include 'blog/pagination.html' with page=posts %}
+  {% endblock content %}
+</div>

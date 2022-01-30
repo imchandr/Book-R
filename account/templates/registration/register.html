@@ -1,0 +1,30 @@
+{% comment %} {% extends 'reviews/templates/review/home.html' %} {% endcomment %}
+<!DOCTYPE html>
+{% load crispy_forms_tags %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
+    <title>Registration-page</title>
+    
+</head>
+<body>
+
+
+<div class="container w-2/3 m-20 w-80 py-2 mx-auto border-2 border-gray-500 bg-gray-300 rounded-lg shadow-lg">
+        
+    <form class=" px-12 py-4" action="" method="POST">
+        {% csrf_token %}
+        <h2 class="text-xs bg-green-200 text-green-600 p-4 mb-4 border-2 rounded-lg">Registration-Page</h2>
+        {{form|crispy}}
+        <button class="bg-blue-400 rounded hover:bg-blue-500 px-4 py-2" type="submit">Register</button>
+        <button class="bg-red-400 rounded hover:bg-red-500 px-4 py-2" type="cancel">Cancel</button>
+        <span class="block">forget password? <a class="text-blue-800" href="">reset here</a></span>
+    </form>
+    
+</div>
+</body>
+</html>

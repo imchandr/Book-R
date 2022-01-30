@@ -6,9 +6,92 @@ book-list-page
 
 {% block content %}
 
-{% for item in book_list %}
 
-<div class="my-10 flex max-w-xl mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
+
+
+
+<section
+  class="container mx-8 p-10 md:p-20 grid lg:grid-cols-3 2xl:grid-cols-3 grid-cols-1 gap-y-16 gap-x-24 transform duration-500">
+  {% for item in book_list %}
+  <article
+    class="shadow-md mx-auto max-w-sm transform hover:-translate-y-1 duration-300 hover:shadow-xl ">
+    <a href="/book/{{ item.book.id }}">
+    <div class="max-h-120 overflow-hidden px-4">
+      <img class=" w-72 h-72 rounded-lg"
+        src="https://images.squarespace-cdn.com/content/v1/58dd442dbebafb88160c6929/1524859470168-GEDZWSZVFS2VN76NFZY0/ke17ZwdGBToddI8pDm48kPvdHwxe8vxmYnjZvCzAU61Zw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpwxsJYjeBOStWfhZBaQGTlDOVYbSZjX976lCUHHLPdHUlrmON35exl807wLzw9VMGw/visit06.jpg?format=800w"
+        alt="" />
+    </div>
+    {% comment %} <div class="p-7 my-auto pb-12 ">
+      <h1 class="text-2xl font-semibold text-gray-700">{{ item.book.title }}</h1>
+      <p class="text-xl font-light leading-relaxed text-gray-400 mt-5">
+        Super creative and colorful illustrations by Matheus Lopes. Check out more of his amazing artworks in his
+        portfolio.
+      </p>
+    </div> {% endcomment %}
+
+    <div class=" mx-2  p-4 md:p-4">
+      
+        <h1 class=" m-1 text-2xl font-bold text-gray-800 dark:text-white">{{ item.book.title }}</h1>
+      
+      
+      <h2 class=" m-1">Author:<span class="pl-4">{{ item.book.publisher }}</h2>
+      
+
+      <p class="m-1 pt-8 text-sm text-gray-600 dark:text-gray-400">Lorem ipsum dolor sit amet consectetur adipisicing elit Inl Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, aliquid?
+        odit</p>
+
+      <div class="flex items-center">
+        <div class="flex inline-flex -mx-px">
+          <svg class="w-4 h-4 mx-px fill-current text-green-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
+            <path
+              d="M6.43 12l-2.36 1.64a1 1 0 0 1-1.53-1.11l.83-2.75a1 1 0 0 0-.35-1.09L.73 6.96a1 1 0 0 1 .59-1.8l2.87-.06a1 1 0 0 0 .92-.67l.95-2.71a1 1 0 0 1 1.88 0l.95 2.71c.13.4.5.66.92.67l2.87.06a1 1 0 0 1 .59 1.8l-2.3 1.73a1 1 0 0 0-.34 1.09l.83 2.75a1 1 0 0 1-1.53 1.1L7.57 12a1 1 0 0 0-1.14 0z" />
+          </svg>
+          <svg class="w-4 h-4 mx-px fill-current text-green-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
+            <path
+              d="M6.43 12l-2.36 1.64a1 1 0 0 1-1.53-1.11l.83-2.75a1 1 0 0 0-.35-1.09L.73 6.96a1 1 0 0 1 .59-1.8l2.87-.06a1 1 0 0 0 .92-.67l.95-2.71a1 1 0 0 1 1.88 0l.95 2.71c.13.4.5.66.92.67l2.87.06a1 1 0 0 1 .59 1.8l-2.3 1.73a1 1 0 0 0-.34 1.09l.83 2.75a1 1 0 0 1-1.53 1.1L7.57 12a1 1 0 0 0-1.14 0z" />
+          </svg>
+          <svg class="w-4 h-4 mx-px fill-current text-green-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
+            <path
+              d="M6.43 12l-2.36 1.64a1 1 0 0 1-1.53-1.11l.83-2.75a1 1 0 0 0-.35-1.09L.73 6.96a1 1 0 0 1 .59-1.8l2.87-.06a1 1 0 0 0 .92-.67l.95-2.71a1 1 0 0 1 1.88 0l.95 2.71c.13.4.5.66.92.67l2.87.06a1 1 0 0 1 .59 1.8l-2.3 1.73a1 1 0 0 0-.34 1.09l.83 2.75a1 1 0 0 1-1.53 1.1L7.57 12a1 1 0 0 0-1.14 0z" />
+          </svg>
+          <svg class="w-4 h-4 mx-px fill-current text-green-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
+            <path
+              d="M6.43 12l-2.36 1.64a1 1 0 0 1-1.53-1.11l.83-2.75a1 1 0 0 0-.35-1.09L.73 6.96a1 1 0 0 1 .59-1.8l2.87-.06a1 1 0 0 0 .92-.67l.95-2.71a1 1 0 0 1 1.88 0l.95 2.71c.13.4.5.66.92.67l2.87.06a1 1 0 0 1 .59 1.8l-2.3 1.73a1 1 0 0 0-.34 1.09l.83 2.75a1 1 0 0 1-1.53 1.1L7.57 12a1 1 0 0 0-1.14 0z" />
+          </svg>
+          <svg class="w-4 h-4 mx-px fill-current text-green-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
+            <path
+              d="M6.43 12l-2.36 1.64a1 1 0 0 1-1.53-1.11l.83-2.75a1 1 0 0 0-.35-1.09L.73 6.96a1 1 0 0 1 .59-1.8l2.87-.06a1 1 0 0 0 .92-.67l.95-2.71a1 1 0 0 1 1.88 0l.95 2.71c.13.4.5.66.92.67l2.87.06a1 1 0 0 1 .59 1.8l-2.3 1.73a1 1 0 0 0-.34 1.09l.83 2.75a1 1 0 0 1-1.53 1.1L7.57 12a1 1 0 0 0-1.14 0z" />
+          </svg>
+        </div>
+        <h1 class=" m-1 py-4 text-2xl font-bold text-gray-800 dark:text-white"><span class="pl-32">₹264</h1>
+        {% comment %} <button type='submit'
+          class="ml-24 px-8 py-1 text-xs font-bold text-white uppercase transition-colors duration-200 transform bg-purple-600 rounded dark:bg-gray-700 hover:bg-purple-700 dark:hover:bg-purple-600 focus:outline-none focus:bg-purple-700 dark:focus:bg-purple-600 "
+          onclick="location.href='/book/{{ item.book.id }}'">Read More</button> {% endcomment %}
+      </div>
+
+    </a>
+  </article>
+
+  {% endfor %}
+
+  
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %} <div class="my-10 flex max-w-xl mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
   <div class="w-2/5 bg-cover"
     style="background-image: url('https://images.unsplash.com/photo-1494726161322-5360d4d0eeae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80')">
 
@@ -35,16 +118,8 @@ book-list-page
     <button
       class="px-2 py-1 text-xs  text-white  transition-colors duration-200 transform bg-green-400 rounded dark:bg-gray-700 hover:bg-green-500 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600 "
       onclick="location.href='/books/{{ item.book.id }}'">keras</button>
-    
-      <button
-      class="px-2 py-1 text-xs  text-white  transition-colors duration-200 transform bg-green-400 rounded dark:bg-gray-700 hover:bg-green-500 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600 "
-      onclick="location.href='/books/{{ item.book.id }}'">Data visualisation</button>
 
     <button
-      class="px-2 py-1 text-xs  text-white  transition-colors duration-200 transform bg-green-400 rounded dark:bg-gray-700 hover:bg-green-500 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600 "
-      onclick="location.href='/books/{{ item.book.id }}'">keras</button>
-    
-      <button
       class="px-2 py-1 text-xs  text-white  transition-colors duration-200 transform bg-green-400 rounded dark:bg-gray-700 hover:bg-green-500 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600 "
       onclick="location.href='/books/{{ item.book.id }}'">Data visualisation</button>
 
@@ -52,15 +127,23 @@ book-list-page
       class="px-2 py-1 text-xs  text-white  transition-colors duration-200 transform bg-green-400 rounded dark:bg-gray-700 hover:bg-green-500 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600 "
       onclick="location.href='/books/{{ item.book.id }}'">keras</button>
 
-      <button
+    <button
       class="px-2 py-1 text-xs  text-white  transition-colors duration-200 transform bg-green-400 rounded dark:bg-gray-700 hover:bg-green-500 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600 "
       onclick="location.href='/books/{{ item.book.id }}'">Data visualisation</button>
 
     <button
       class="px-2 py-1 text-xs  text-white  transition-colors duration-200 transform bg-green-400 rounded dark:bg-gray-700 hover:bg-green-500 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600 "
       onclick="location.href='/books/{{ item.book.id }}'">keras</button>
-    
-      <button
+
+    <button
+      class="px-2 py-1 text-xs  text-white  transition-colors duration-200 transform bg-green-400 rounded dark:bg-gray-700 hover:bg-green-500 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600 "
+      onclick="location.href='/books/{{ item.book.id }}'">Data visualisation</button>
+
+    <button
+      class="px-2 py-1 text-xs  text-white  transition-colors duration-200 transform bg-green-400 rounded dark:bg-gray-700 hover:bg-green-500 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600 "
+      onclick="location.href='/books/{{ item.book.id }}'">keras</button>
+
+    <button
       class="px-2 py-1 text-xs  text-white  transition-colors duration-200 transform bg-green-400 rounded dark:bg-gray-700 hover:bg-green-500 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600 "
       onclick="location.href='/books/{{ item.book.id }}'">Data visualisation</button>
 
@@ -99,11 +182,11 @@ book-list-page
 
       <button type='submit'
         class="px-2 py-1 text-xs font-bold text-white uppercase transition-colors duration-200 transform bg-gray-800 rounded dark:bg-gray-700 hover:bg-purple-700 dark:hover:bg-purple-600 focus:outline-none focus:bg-purple-700 dark:focus:bg-purple-600 "
-        onclick="location.href='/books/{{ item.book.id }}'">Read More</button>
+        onclick="location.href='/book/{{ item.book.id }}'">Read More</button>
 
     </div>
   </div>
-</div>
-{% endfor %}
+</div> {% endcomment %}
+
 
 {% endblock content %}

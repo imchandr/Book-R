@@ -1,0 +1,31 @@
+{% extends 'blog/blog_base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}share-post-form{% endblock title %}
+
+{% block content %}
+
+ {% if send %}
+    <div role="alert container w-48  mx-auto ">
+        <div class=" bg-green-500 text-white font-bold rounded-t px-4 py-2">
+        Sucess!
+        </div>
+        <div class="border border-t-0 border-green-400 rounded-b bg-green-100 px-4 py-3 text-white-700">
+        <p>"{{ title }}"" shared successfully to {{recipients}}</p>
+        </div>
+    </div>
+
+{% else %} 
+
+    <div class="container m-20 w-80 py-2 mx-auto border-2 border-gray-500 bg-gray-300 rounded-lg shadow-lg">
+        
+        <form class=" px-12 py-4" action="" method="POST">
+            {% csrf_token %}
+            <h2 class="text-xs bg-green-200 text-green-600 p-4 mb-4 border-2 rounded-lg">Sharing post - "{{title}}"</h2>
+            {{form|crispy}}
+            <button class="bg-blue-400 rounded hover:bg-blue-500 px-4 py-2" type="submit">send-mail</button>
+        </form>
+        
+    </div>
+
+ {% endif %} 
+{% endblock content %}

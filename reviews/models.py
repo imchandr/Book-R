@@ -66,3 +66,6 @@ class Review(models.Model):
     creator = models.ForeignKey(
         auth.get_user_model(), on_delete=models.CASCADE)
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.content

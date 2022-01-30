@@ -1,78 +1,156 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
-    <title>book-details=age</title>         
-</head>
+{% extends 'reviews/home.html' %}
+
 <body>
- <span class="text-info">Title: </span> <span>{{ book.title }}</span>
-<br>
-<span class="text-info">Publisher: </span><span>{{ book.publisher }}</span>
-<br>
-<span class="text-info">Publication Date: </span><span>{{ book.publication_date }}</span>
-<br>
-<span class="text-info">Rating: </span><span class="badge badge-primary badge-pill">{{ rating }}</span>
-<br>
-<span class="text-info">Read Other's reviews: </span><span
-    class="badge badge-primary badge-pill ">{{ numberOfReviews }}</span>
-<br>
-{% if not numberOfReviews %}
-<span class="text-secondary">Provide a rating and write the first review for this book.</span>
-<br>
-{% endif %}
-
-<a class="btn btn-primary btn-sm active" role="button" aria-pressed="true"
-    href="/books/{{ book.id }}/add-review/">Add-Reviews</a>
-
-
-<hr>
-<h1>Review Comment's</h1>
-
-{% for review in reviews  %}
-
-<hr>
-<p>
-    <span class="text-info">Comment: </span> <span>{{review.content}}</span>
+    {% comment %}
+    <span class="text-info">Title: </span> <span>{{ book.title }}</span>
     <br>
-    <span class="text-info">Date-Created: </span> <span>{{review.date_created}}</span>
+    <span class="text-info">Publisher: </span><span>{{ book.publisher }}</span>
     <br>
-    <span class="text-info"><Date-Edite>Date-Edite: </span> <span>{{review.date_edited}}</span>
+    <span class="text-info">Publication Date: </span><span>{{ book.publication_date }}</span>
     <br>
-    <span class="text-info">Rating: </span> <span>{{review.rating}}</span>
+    <span class="text-info">Rating: </span><span class="badge badge-primary badge-pill">{{ rating }}</span>
     <br>
-</p>
+    <span class="text-info">Read Other's reviews: </span><span
+        class="badge badge-primary badge-pill ">{{ numberOfReviews }}</span>
+    <br>
+    
 
 
 
 
-{% endfor %} 
+     {% endcomment %}
 
-{% comment %} <hr>
+    <hr>
+    {% block content %}
 
-<div class="max-w-2xl mx-auto overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
-    <img class="object-cover w-full h-64" src="https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Article">
-</div>
-    <div class="p-6">
-        <div>
-            <a href="#" class="block mt-2 text-2xl font-semibold text-gray-800 transition-colors duration-200 transform dark:text-white hover:text-gray-600 hover:underline">Book title</a>
-            <span class="text-xs font-medium text-blue-600 uppercase dark:text-blue-400">Author:</span>
-            <span class="text-xs font-medium text-blue-600 uppercase dark:text-blue-400">Contributors:</span>
-            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie parturient et sem ipsum volutpat vel. Natoque sem et aliquam mauris egestas quam volutpat viverra. In pretium nec senectus erat. Et malesuada lobortis.</p>
-        </div>
+    <div class="flex items-center justify-center min-h-screen ">
+        <div class="">
+            <div class="bg-white shadow-xl rounded-lg overflow-hidden md:flex">
+                <img src="https://simg.pothi.com/hpJdS5VcpwsmwGgxEnrH8STpM0wx8gVhxqoFz9wTvuk/rs:fit/w:371/h:477/el:1/g:sm/cb:rev-3/bG9jYWw6Ly8vaW1h/Z2VzL3Byb2R1Y3Rz/LzIwMjIvMDEvU0tV/MTc2NzQvSW1hZ2Vf/MC5qcGc.jpg"
+                    class="max-w-full h-auto px-8 py-4" alt="..." />
+                <div>
+                    <div class="p-4 md:p-5">
+                        <h1 class="text-4xl font-bold  md:text-2xl">{{ book.title }}</h1>
+                        <h3 class="font-semi-bold text-blue-600 text-md md:text-md">By: Book Author</h3>
 
-        <div class="mt-4">
-            <div class="flex items-center">
-                <div class="flex items-center">
-                    <img class="object-cover h-10 rounded-full" src="https://images.unsplash.com/photo-1586287011575-a23134f797f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=48&q=60" alt="Avatar">
-                    <a href="#" class="mx-2 font-semibold text-gray-700 dark:text-gray-200">Jone Doe</a>
+
+                        <p class="font-medium text-gray-600 text-xl md:text-md pt-16">Type : <span class="pl-4">Print
+                                book</span></p>
+                        <p class="font-medium text-gray-600 text-xl md:text-md ">Genre : <span class="pl-4">Education &
+                                Language, Computers & Internet</span></p>
+                        <p class="font-medium text-gray-600 text-xl md:text-md ">Language : <span
+                                class="pl-4">English</span></p>
+                        <p class="font-medium text-gray-600 text-xl md:text-md pb-12">Price : <span class="pl-4">₹264 +
+                                shipping</span></p>
+
+
+                    </div>
+                    <div class="p-4 md:p-5 bg-gray-100">
+                        <div class="sm:flex sm:justify-between sm:items-center">
+                            <div>
+
+                                <div class="flex items-center">
+                                    <div class="flex inline-flex -mx-px">
+                                        <svg class="w-4 h-4 mx-px fill-current text-green-600"
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
+                                            <path
+                                                d="M6.43 12l-2.36 1.64a1 1 0 0 1-1.53-1.11l.83-2.75a1 1 0 0 0-.35-1.09L.73 6.96a1 1 0 0 1 .59-1.8l2.87-.06a1 1 0 0 0 .92-.67l.95-2.71a1 1 0 0 1 1.88 0l.95 2.71c.13.4.5.66.92.67l2.87.06a1 1 0 0 1 .59 1.8l-2.3 1.73a1 1 0 0 0-.34 1.09l.83 2.75a1 1 0 0 1-1.53 1.1L7.57 12a1 1 0 0 0-1.14 0z" />
+                                            </svg>
+                                        <svg class="w-4 h-4 mx-px fill-current text-green-600"
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
+                                            <path
+                                                d="M6.43 12l-2.36 1.64a1 1 0 0 1-1.53-1.11l.83-2.75a1 1 0 0 0-.35-1.09L.73 6.96a1 1 0 0 1 .59-1.8l2.87-.06a1 1 0 0 0 .92-.67l.95-2.71a1 1 0 0 1 1.88 0l.95 2.71c.13.4.5.66.92.67l2.87.06a1 1 0 0 1 .59 1.8l-2.3 1.73a1 1 0 0 0-.34 1.09l.83 2.75a1 1 0 0 1-1.53 1.1L7.57 12a1 1 0 0 0-1.14 0z" />
+                                            </svg>
+                                        <svg class="w-4 h-4 mx-px fill-current text-green-600"
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
+                                            <path
+                                                d="M6.43 12l-2.36 1.64a1 1 0 0 1-1.53-1.11l.83-2.75a1 1 0 0 0-.35-1.09L.73 6.96a1 1 0 0 1 .59-1.8l2.87-.06a1 1 0 0 0 .92-.67l.95-2.71a1 1 0 0 1 1.88 0l.95 2.71c.13.4.5.66.92.67l2.87.06a1 1 0 0 1 .59 1.8l-2.3 1.73a1 1 0 0 0-.34 1.09l.83 2.75a1 1 0 0 1-1.53 1.1L7.57 12a1 1 0 0 0-1.14 0z" />
+                                            </svg>
+                                        <svg class="w-4 h-4 mx-px fill-current text-green-600"
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
+                                            <path
+                                                d="M6.43 12l-2.36 1.64a1 1 0 0 1-1.53-1.11l.83-2.75a1 1 0 0 0-.35-1.09L.73 6.96a1 1 0 0 1 .59-1.8l2.87-.06a1 1 0 0 0 .92-.67l.95-2.71a1 1 0 0 1 1.88 0l.95 2.71c.13.4.5.66.92.67l2.87.06a1 1 0 0 1 .59 1.8l-2.3 1.73a1 1 0 0 0-.34 1.09l.83 2.75a1 1 0 0 1-1.53 1.1L7.57 12a1 1 0 0 0-1.14 0z" />
+                                            </svg>
+                                        <svg class="w-4 h-4 mx-px fill-current text-green-600"
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
+                                            <path
+                                                d="M6.43 12l-2.36 1.64a1 1 0 0 1-1.53-1.11l.83-2.75a1 1 0 0 0-.35-1.09L.73 6.96a1 1 0 0 1 .59-1.8l2.87-.06a1 1 0 0 0 .92-.67l.95-2.71a1 1 0 0 1 1.88 0l.95 2.71c.13.4.5.66.92.67l2.87.06a1 1 0 0 1 .59 1.8l-2.3 1.73a1 1 0 0 0-.34 1.09l.83 2.75a1 1 0 0 1-1.53 1.1L7.57 12a1 1 0 0 0-1.14 0z" />
+                                            </svg>
+                                    </div>
+                                    <div class="text-gray-600 ml-2 text-sm md:text-base mt-1">28 reviews</div>
+                                </div>
+                            </div>
+                            <button
+                                class="mt-3 sm:mt-0 py-2 px-5 md:py-3 md:px-6 bg-indigo-700 hover:bg-indigo-600 font-bold text-white md:text-lg rounded-lg shadow-md">Book
+                                now</button>
+                        </div>
+
+                    </div>
                 </div>
-                <span class="mx-1 text-xs text-gray-600 dark:text-gray-300">21 SEP 2015</span>
             </div>
         </div>
-    </div> {% endcomment %}
+    </div>
 
+    <div class="flex justify-center">
+        <div class="block p-6 rounded-lg shadow-lg bg-white max-w-4xl">
+
+            <h5 class="text-gray-900 text-2xl leading-tight font-medium mb-2 text-center">Book Description</h5>
+            <p class="text-gray-700 text-base mb-4">
+                Some quick example text to build on the card title and make up the bulk of the card's
+                content.
+
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis adipisci consectetur odit a modi
+                nisi odio totam ipsam, aspernatur perspiciatis laborum in voluptates!
+            </p>
+
+            <h5 class="text-gray-900 text-2xl leading-tight font-medium mb-2 text-center">About The Author</h5>
+            <p class="text-gray-700 text-base mb-4">
+                Some quick example text to build on the card title and make up the bulk of the card's
+                content.
+
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis adipisci consectetur odit a modi
+                nisi odio totam ipsam, aspernatur perspiciatis laborum in voluptates!
+            </p>
+
+            <h5 class="text-gray-900 text-2xl leading-tight font-medium mb-2 text-center">Book Details</h5>
+            <p class="text-gray-700 text-base mb-4">
+                Some quick example text to build on the card title and make up the bulk of the card's
+                content.
+
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis adipisci consectetur odit a modi
+                nisi odio totam ipsam, aspernatur perspiciatis laborum in voluptates!
+            </p>
+
+            <h5 class="text-gray-900 text-2xl leading-tight font-medium mb-2 text-center">Reviews and Ratings</h5>
+            {% if not numberOfReviews %}
+                <div class="bg-yellow-100 rounded-lg py-5 px-6 mb-4 text-base text-yellow-700 mb-3" role="alert">
+                    <h2>No Reviews/ Rating yet</h2>
+                </div>
+                <button type="button"
+                class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Add-Review/Rating</button>
+    
+            {% endif %}
+
+            
+
+    {% for review in reviews  %}
+
+    <div class="bg-green-100 rounded-lg py-5 px-6 mb-4 text-base text-green-700 mb-3" role="alert">
+        <p>{{review.content}}</p>
+        <p>last-edited:{{review.date_created}}</p>
+        <p>rating:{{review.rating}}</p>
+      </div>
+
+    
+            <button type="button"
+                class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Button</button>
+                {% endfor %}
+        </div>
+    </div>
+
+
+
+    {% endblock content %}
 </body>
+
 </html>
