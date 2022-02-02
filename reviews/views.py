@@ -7,7 +7,7 @@ from .utils import average_rating
 
 
 def home_page_view(request):
-    return render(request, 'reviews/home.html')
+    return render(request, 'reviews/test.html')
 
 
 def booklist_view(request):

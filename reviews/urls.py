@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path
 from .views import booklist_view, bookdetails_view, add_review_view
 
-app_name = 'review'
+app_name = 'book'
 urlpatterns = [
 
     

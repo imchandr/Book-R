@@ -24,8 +24,8 @@
                         </a>
                         <div class="hidden md:block">
                             <div class="ml-10 flex items-baseline space-x-4">
-                                <a class="text-gray-700  hover:text-gray-900 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium"
-                                    href="/#">
+                                <a class="text-gray-700  hover:text-gray-900 dark:hover:text-white px-3 py-2  text-md font-medium"
+                                    href="{% url 'home_page'%}">
                                     Home
                                 </a>
                                 <a class="text-gray-300 dark:text-white  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium"
@@ -41,9 +41,10 @@
 
                                 <h1
                                     class="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium">
-                                    Hi,{{request.user.username}}</h1>
-
-                                <a class="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium"
+                                    <a href="{% url 'user_account:user_profile'%}">
+                                    <span class="pr-2">Hi,</span>{{request.user.username}}</h1>
+                                    </a>
+                                <a class="text-gray-300  hover:text-gray-800 dark:hover:text-white px-2 py-2 rounded-md text-md font-medium"
                                     href="{% url 'logout' %}">
                                     Logout
                                 </a>
@@ -86,9 +87,58 @@
         </nav>
     </div>
 
+
+  
+
     {% block content %}
     {% endblock content %}
 
+    <footer class="mt-12 bg-gray-300 text-center">
+        <div class="px-6 pt-6">
+          <form action="">
+            <div class="grid md:grid-cols-3 gird-cols-1 gap-4 flex justify-center items-center">
+              <div class="md:ml-auto md:mb-6">
+                <p class="text-gray-800">
+                  <strong>Sign up for our newsletter</strong>
+                </p>
+              </div>
+      
+              <div class="md:mb-6">
+                <input
+                  type="text"
+                  class="
+                    form-control
+                    block
+                    w-full
+                    px-3
+                    py-1.5
+                    text-base
+                    font-normal
+                    text-gray-700
+                    bg-white bg-clip-padding
+                    border border-solid border-gray-300
+                    rounded
+                    transition
+                    ease-in-out
+                    m-0
+                    focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+                  "
+                  id="exampleFormControlInput1"
+                  placeholder="Email address"/>
+              </div>
+      
+              <div class="md:mr-auto mb-6">
+                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Subscribe</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      
+        <div class="text-center text-gray-700 p-4">
+          © 2022 Copyright:
+          <a class="text-gray-800" href="{% url 'home_page'%}">Book-R The Book Universe!</a>
+        </div>
+      </footer>
     
 
 </body>

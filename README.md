@@ -23,3 +23,14 @@ Book: This should store information about books.
 Contributor: This should store information about the person(s) who contributed to writing the book, such as author, co-author, or editor.
 Publisher: As the name implies, this refers to the book publisher.
 Review: This should store all the books' reviews written by the users of the application.
+
+
+
+----------------------------------------------------------------------------------------------------
+Accounts App is for user Authentication nad authrisation
+1)Login/Logout using django building Authentication
+2)Registration
+    user registeration form
+    send email after completing registration
+    account activation after user confirms email link
+

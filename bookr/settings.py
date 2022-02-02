@@ -1,5 +1,5 @@
 
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -21,6 +21,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'account',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -30,7 +31,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'reviews',
     'blog',
-    'account',
+    
     
 ]
 
@@ -49,7 +50,7 @@ ROOT_URLCONF = 'bookr.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -123,3 +124,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # login logout redirecr urls
 LOGIN_REDIRECT_URL =  'home_page'
 LOGOUT_REDIRECT_URL = 'home_page'
+
+# login/logout url
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
