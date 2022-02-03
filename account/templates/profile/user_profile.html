@@ -1,53 +1,151 @@
-
 {% extends 'reviews/home.html' %}
 {% load crispy_forms_tags %}
 
 {% block title %}User-profile{% endblock title %}
 {% block content %}
 
-{% if  request.user.is_authenticated %}
 
-<!-- Section 1 -->
-<section class="relative py-20 overflow-hidden bg-white">
-    <span class="absolute top-0 right-0 flex flex-col items-end mt-0 -mr-16 opacity-60">
-        <span class="container hidden w-screen h-32 max-w-xs mt-20 transform rounded-full rounded-r-none md:block md:max-w-xs lg:max-w-lg 2xl:max-w-3xl bg-blue-50"></span>
-    </span>
+<!-- profile-tab component -->
 
-    <span class="absolute bottom-0 left-0"> </span>
+<!-- component -->
+<link rel="stylesheet" href="https://unpkg.com/@themesberg/flowbite@1.2.0/dist/flowbite.min.css" />
 
-    <div class="relative px-16 mx-auto max-w-7xl">
-        <p class="font-medium tracking-wide text-blue-500 uppercase">Hi, {{request.user.username}}</p>
-        <h2 class="relative max-w-lg mt-5 mb-10 text-4xl font-semibold leading-tight lg:text-5xl">An incredible team of <br>amazing individuals</h2>
-        <div class="grid w-full grid-cols-2 gap-10 sm:grid-cols-3 lg:grid-cols-4">
-            <div class="flex flex-col items-center justify-center col-span-1">
-                <div class="relative p-5">
-                    <div class="absolute z-10 w-full h-full -mt-5 -ml-5 rounded-full rounded-tr-none bg-blue-50"></div>
-                    <img class="relative z-20 w-full rounded-full" src="https://cdn.devdojo.com/images/june2021/avt-03.jpg">
-                </div>
-                <div class="mt-3 space-y-2 text-center">
-                    <div class="space-y-1 text-lg font-medium leading-6">
-                        <h3>Freddy Smith</h3>
-                        <p class="text-blue-600">CEO and Founder</p>
-                    </div>
-                    <div class="relative flex items-center justify-center space-x-3">
-                        <a href="#_" class="text-gray-300 hover:text-gray-400">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path></svg>
-                        </a>
-                        <a href="#_" class="text-gray-300 hover:text-gray-400">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg>
-                        </a>
-                    </div>
-                </div>
+
+<!-- profile-tab component -->
+<div class="max-w-2xl mx-auto">
+    
+    <div class="border-b border-gray-200 dark:border-gray-700 mb-4">
+        <ul class="flex flex-wrap -mb-px" id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
+            <li class="mr-2" role="presentation">
+                <button class="inline-block text-gray-500 hover:text-gray-600 hover:border-gray-300 rounded-t-lg py-4 px-4 text-sm font-medium text-center border-transparent border-b-2 dark:text-gray-400 dark:hover:text-gray-300" id="profile-tab" data-tabs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Profile</button>
+            </li>
+            <li class="mr-2" role="presentation">
+                <button class="inline-block text-gray-500 hover:text-gray-600 hover:border-gray-300 rounded-t-lg py-4 px-4 text-sm font-medium text-center border-transparent border-b-2 dark:text-gray-400 dark:hover:text-gray-300 active" id="dashboard-tab" data-tabs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="true">Orders</button>
+            </li>
+            <li class="mr-2" role="presentation">
+                <button class="inline-block text-gray-500 hover:text-gray-600 hover:border-gray-300 rounded-t-lg py-4 px-4 text-sm font-medium text-center border-transparent border-b-2 dark:text-gray-400 dark:hover:text-gray-300" id="settings-tab" data-tabs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">Contact's</button>
+            </li>
+            <li role="presentation">
+                <button class="inline-block text-gray-500 hover:text-gray-600 hover:border-gray-300 rounded-t-lg py-4 px-4 text-sm font-medium text-center border-transparent border-b-2 dark:text-gray-400 dark:hover:text-gray-300" id="contacts-tab" data-tabs-target="#contacts" type="button" role="tab" aria-controls="contacts" aria-selected="false">Settings</button>
+            </li>
+        </ul>
+    </div>
+    <div id="myTabContent">
+        
+        <div class="bg-gray-50 p-4 rounded-lg dark:bg-gray-800 hidden" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="flex flex-col justify-center items-center relative h-full  bg-opacity-50 text-gray-600">
+                <img src="https://image.freepik.com/free-vector/female-user-profile-avatar-offended-woman-character-screen-saver-with-emotions_505620-638.jpg?w=740" class="h-32 w-32 object-cover rounded-full">
+                <h1 class="py-2 text-2xl font-semibold">{{user.first_name}}<span class='pl-2'>{{user.last_name}}</span></h1>
+                <h4 class="text-sm font-semibold py-4">User Since {{user.date_joined}}</h4>
+            </div>
+            <p class="text-gray-500 dark:text-gray-400 text-sm">This is some placeholder content the <strong class="font-medium text-gray-800 dark:text-white">Profile tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
+            <div class="mt-12 mb-36 mx-16 flex flex-wrap">
+                <button class="mx-8 bg-gray-200 bg-transparent hover:bg-grey-300 text-gray-500 font-semibold hover:text-gray-600 py-2 px-4 border border-grey hover:border-transparent rounded">
+                    Edit profile
+                  </button>
+                <button class="mx-8 bg-gray-200 bg-transparent hover:bg-grey-300 text-gray-500 font-semibold hover:text-gray-600 py-2 px-4 border border-grey hover:border-transparent rounded">
+                    Change password
+                  </button>
+            </div>
+        </div>
+        <div class="bg-gray-50 p-4 rounded-lg dark:bg-gray-800" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+            <!-- component -->
+            <h1 class='text-xl text-gray-600 py-2 '>Order History</h1>
+            <hr>
+            <table class="border-collapse table-auto w-full">
+                <thead class="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
+                    <tr>
+                        <th class="p-2 whitespace-nowrap">
+                            <div class="font-semibold text-left">Order</div>
+                        </th>
+                        <th class="p-2 whitespace-nowrap">
+                            <div class="font-semibold text-left">Order-Date</div>
+                        </th>
+                        <th class="p-2 whitespace-nowrap">
+                            <div class="font-semibold text-left">Price</div>
+                        </th>
+                        <th class="p-2 whitespace-nowrap">
+                            <div class="font-semibold text-center">Invoice</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="text-sm divide-y divide-gray-100">
+                    <tr>
+                        <td class="p-2 whitespace-nowrap">
+                            <div class="flex items-center py-8">
+                                <div class="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3"><img class="" src="https://simg.pothi.com/hpJdS5VcpwsmwGgxEnrH8STpM0wx8gVhxqoFz9wTvuk/rs:fit/w:371/h:477/el:1/g:sm/cb:rev-3/bG9jYWw6Ly8vaW1h/Z2VzL3Byb2R1Y3Rz/LzIwMjIvMDEvU0tV/MTc2NzQvSW1hZ2Vf/MC5qcGc.jpg" width="60" height="60" alt="Alex Shatov"></div>
+                                <div class="font-medium text-gray-800">Computer networks </div>
+                            </div>
+                        </td>
+                        <td class="p-2 whitespace-nowrap">
+                            <div class="text-left">12-01-2022</div>
+                        </td>
+                        <td class="p-2 whitespace-nowrap">
+                            <div class="text-left font-medium text-green-500">₹264 </div>
+                        </td>
+                        <td class="p-2 whitespace-nowrap">
+                            <div class="text-lg text-center"><a href="" class=' text-sm text-gray-800'>BKR-112324-cd342-d</a></div>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="p-2 whitespace-nowrap">
+                            <div class="flex items-center py-8">
+                                <div class="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3"><img class="" src="https://simg.pothi.com/hpJdS5VcpwsmwGgxEnrH8STpM0wx8gVhxqoFz9wTvuk/rs:fit/w:371/h:477/el:1/g:sm/cb:rev-3/bG9jYWw6Ly8vaW1h/Z2VzL3Byb2R1Y3Rz/LzIwMjIvMDEvU0tV/MTc2NzQvSW1hZ2Vf/MC5qcGc.jpg" width="60" height="60" alt="Alex Shatov"></div>
+                                <div class="font-medium text-gray-800">Computer networks </div>
+                            </div>
+                        </td>
+                        <td class="p-2 whitespace-nowrap">
+                            <div class="text-left">12-01-2022</div>
+                        </td>
+                        <td class="p-2 whitespace-nowrap">
+                            <div class="text-left font-medium text-green-500">₹264 </div>
+                        </td>
+                        <td class="p-2 whitespace-nowrap">
+                            <div class="text-lg text-center"><a href="" class=' text-sm text-gray-800'>BKR-112324-cd342-d</a></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm">This is some placeholder content the <strong class="font-medium text-gray-800 dark:text-white">Orders tab's associated Profile</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
+        </div>
+        <div class="bg-gray-50 p-4 rounded-lg dark:bg-gray-800 hidden" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+            <h1 class='text-gray-600 text-bold text-xl my-4'>Contact Detail's</h1>
+            <hr>
+            <h1 class='text-gray-500 text-medium text-medium my-4'>Email-address <span class="pl-2">{{user.email}}</span> </h1>
+            <h1 class='text-gray-500 text-medium text-medium my-4'>Contact-number <span class="pl-2">15245788</span> </h1>
+
+            <hr>
+            <h1 class='text-gray-600 text-bold text-xl my-4'>Primary address</h1>
+                <hr>
+                <h1 class='text-gray-500 text-medium text-medium my-4'>Address-1 <span class="pl-2">Connaught Place
+                    कनॉट प्लेस
+                    New Delhi, Delhi 110001</span> </h1>
+                <h1 class='text-gray-500 text-medium text-medium my-4'>Address-2 <span class="pl-2">HSR Layout
+                    ಎಚ್.ಎಸ್.ಅರ್. ಲೇಯೌಟ್
+                    Bengaluru, Karnataka</span> </h1>
+
+            
+           
+        </div>
+        
+
+        
+        <div class="bg-gray-50 p-4 rounded-lg dark:bg-gray-800 hidden" id="contacts" role="tabpanel" aria-labelledby="contacts-tab">
+            <p class="text-gray-500 dark:text-gray-400 text-sm">This is some placeholder content the <strong class="font-medium text-gray-800 dark:text-white">Settings tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
+
+            
+                <button class=" mt-4 bg-red-500 bg-transparent hover:bg-grey text-red-200 font-semibold hover:text-white py-2 px-4 border border-grey hover:border-transparent rounded mr-2">
+                    Delete profile
+                  </button>
             </div>
 
             
         </div>
     </div>
-</section>
 
-{% endif %}
-
+    
+<script src="https://unpkg.com/@themesberg/flowbite@1.2.0/dist/flowbite.bundle.js"></script>
+<!-- end profile-tab component -->
 
 {% endblock content %}
-
-   

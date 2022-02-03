@@ -8,6 +8,10 @@ from django.contrib.auth.forms import AuthenticationForm, PasswordResetForm, Pas
 
 class RegistrationForm(forms.ModelForm):
 
+    first_name = forms.CharField(
+        min_length=4, max_length=25, help_text='Required', label='First-Name')
+    last_name = forms.CharField(
+        min_length=4, max_length=25, help_text='Required', label='Last-Name')
     username = forms.CharField(
         min_length=4, max_length=25, help_text='Required', label='User-Name')
     email = forms.EmailField(
@@ -20,7 +24,14 @@ class RegistrationForm(forms.ModelForm):
         '''another way to style form elements'''
 
         super().__init__(*args, **kwargs)
-
+        self.fields['first_name'].widget.attrs.update({
+            'placeHolder': 'First name',
+            'class': 'block w-3/5 px-4 py-2 mt-2 text-md placeholder-gray-400 focus:outline-none border border-blue-500 focus:ring-1 focus:ring-blue-700 focus:ring-opacity-50 rounded-md'
+        })
+        self.fields['last_name'].widget.attrs.update({
+            'placeHolder': 'Last name',
+            'class': 'block w-3/5 px-4 py-2 mt-2 text-md placeholder-gray-400 focus:outline-none border border-blue-500 focus:ring-1 focus:ring-blue-700 focus:ring-opacity-50 rounded-md'
+        })
         self.fields['username'].widget.attrs.update({
             'placeHolder': 'User name',
             'class': 'block w-3/5 px-4 py-2 mt-2 text-md placeholder-gray-400 focus:outline-none border border-blue-500 focus:ring-1 focus:ring-blue-700 focus:ring-opacity-50 rounded-md'
@@ -80,16 +91,9 @@ class LoginForm(AuthenticationForm):
 
 class ResetPasswordForm(PasswordResetForm):
     email = forms.CharField(widget=forms.EmailInput(attrs={
-        'placeholder': 'Email',
+        'placeholder': 'Registered email-id',
         'class': 'block w-4/5 px-4 py-2 mt-2 text-md placeholder-gray-400 focus:outline-none border border-red-500 focus:ring-1 focus:ring-red-600 focus:ring-opacity-50 rounded-md'
     }))
-
-    # def clean_email(self):
-    #     email = self.cleaned_data['email']
-    #     user = User.objects.get(email=email)
-    #     if not user:
-    #         raise forms.ValidationError('invalid email-address')
-    #     return email
 
 
 class ResetPasswordConfirmForm(SetPasswordForm):
