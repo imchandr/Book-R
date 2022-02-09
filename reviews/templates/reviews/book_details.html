@@ -148,6 +148,98 @@
         </div>
     </div>
 
+    <!--book comment section -->
+    <div class="block p-6 rounded-lg shadow-lg bg-white max-w-4xl">
+        <!--comment count -->
+    {% with comments.count as total_comments %}
+    <h2 class="my-8 text-xl flex items-center space-x-2">
+      {{ total_comments }} comment{{ total_comments|pluralize }}
+
+    </h2>
+    {% endwith %}
+
+    <!--comment loop-->
+    {% for comment in comments %}
+
+    <div class="flex items-center space-x-2">
+      <div class="flex flex-shrink-0 self-start cursor-pointer">
+        <img
+          src="https://images.unsplash.com/photo-1551122089-4e3e72477432?ixid=MXwxMjA3fDB8MHxzZWFyY2h8M3x8cnVieXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+          alt="" class="h-10 w-10 object-fill rounded-full">
+      </div>
+
+      <div class="flex items-center justify-center space-x-2">
+        <div class="block">
+          <div class="bg-gray-100 w-full rounded-xl  px-4 py-2 pb-2">
+            <div class="font-medium ">
+              <a href="#" class="hover:underline text-md">
+                <small>{{comment.name}}</small>
+              </a>
+            </div>
+            <div class="text-md ">
+              {{comment.body|linebreaks}}
+            </div>
+          </div>
+          <div class="mb-4 flex justify-start items-center text-sm w-full">
+            <div class="font-semibold text-gray-700 px-2 flex items-center justify-center space-x-1">
+              <a href="#" class="hover:underline">
+                <small>Like</small>
+              </a>
+              <small class="self-center">.</small>
+              <a href="#" class="hover:underline">
+                <small>Reply</small>
+              </a>
+              <small class="self-center">.</small>
+              <a href="#" class="hover:underline">
+                <small>{{comment.updated|timesince}} ago</small>
+              </a>
+
+              {% if request.user == comment.name %}
+              <small class="self-center">.</small>
+              <a href="#" class="hover:underline text-red-500">
+                <small>Delete-comment</small>
+              </a>
+              {% endif %}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    {% endfor %}
+
+
+    {% if request.user.is_authenticated %}
+
+    <!-- comment form -->
+    <div class="flex items-center justify-center shadow-lg my-12 w-full">
+      <form method='post' class="w-full max-w-xxl bg-gray-200 rounded-lg px-4 pt-2">
+        {% csrf_token %}
+        <div class="flex flex-wrap -mx-3 mb-6">
+          <h2 class="px-4 pt-3 pb-2 text-gray-800 text-lg">Add a new comment</h2>
+          <div class="w-full md:w-full px-3 mb-2 mt-2">
+            <textarea
+              class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white"
+              name="body" placeholder='Type Your Comment' required></textarea>
+          </div>
+
+          <div class="-mr-1">
+            <input type='submit'
+              class="ml-3 bg-white text-gray-700 font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide mr-1 hover:bg-gray-100"
+              value='Post Comment'>
+          </div>
+        </div>
+      </form>
+    </div>
+    </div>
+
+    {% else%}
+    <h2 class="my-4 flex items-center space-x-2 text-red-600">Please sign-in to add comment</h2>
+    {% endif %}
+
+    </div>
 
 
     {% endblock content %}

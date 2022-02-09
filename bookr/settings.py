@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'reviews',
     'blog',
+    'ckeditor',
     
     
 ]
@@ -128,3 +129,7 @@ LOGOUT_REDIRECT_URL = 'home_page'
 # login/logout url
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
+
+# media files storage
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

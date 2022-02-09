@@ -3,49 +3,126 @@
 
 {% block content %}
 
-<div class="mx-32 my-2 p-4 ">
+<!-- component -->
+{% comment %} <div class="mt-16 relative px-auto w-full h-60 overflow-hidden">
   <a class="  text-red-400 hover:text-red-500" href="{% url 'blog:post_list'%}">Back</a>
   <a class=" px-8 text-red-400 hover:text-red-500" href="share">Share post</a>
-</div>
- 
+</div> {% endcomment %}
 
-
-<div class="  text-sm font-light bg-gray-200 m-4 p-4 mx-32 border solid-gray-400 rounded">
-  <h1 class="font-base font-bold">{{ post.title }}</h1>
-  <h2 class="pt-1 pb-4 text-sm font-md font-normal">By: {{ post.author }}</h2>
-  <hr>
-  <p class="pb-4 font-light text-sm text-justify leading-6">{{post.body}}</p>
-  <li class='text-xs pt-8'>Create on - {{post.created}}</li>
-  <li class='text-xs'>Last Updated - {{post.updated}}</li>
-  <div class="pt-4 ">
-    <a class=" px-8 text-blue-400 hover:text-blue-500" href="">Edit post</a>
-    <a class=" px-8 text-red-400 hover:text-red-500" href="">Delete post</a>
-    
+<main class="relative container mt-24 mx-auto bg-white px-4">
+  <div class="mt-16 relative px-auto w-full h-full overflow-hidden">
+    <img class="w-4/5 mx-auto py-8 text-justify"
+      src="{{post.image.url}}"
+      alt="post-img" />
   </div>
 
-  
-  {% for comment in comments %}
-  <div class="bg-green-100 rounded-lg py-5 px-6 mb-4 text-base text-green-700 mb-3" role="alert">
-        <p>{{comment.body}}</p>
-        <span>{{comment.name}}</span>
-        <span>{{comment.Updated}}</span>
+  <article class="w-4/5 mx-auto py-8 text-justify">
+    <h1 class="text-2xl font-bold">{{ post.title }}</h1>
+    <h2 class="mt-2 text-sm text-gray-500">{{ post.author }}, <span class="px-2">{{ post.created|date }}</span></h2>
+
+    <p class="mt-4">{{post.body|safe}}</p>
+    <span class='block my-4 text-sm text-gray-500'>Last Updated - {{post.updated|timesince}} ago</span>
+    {% if request.user == post.author %}
+    
+      <div class="">
+        <a class=" mr-8 text-blue-400 hover:text-blue-500 hover:underline" href="http://127.0.0.1:8000/blog/{{post.pk}}/update/">Edit post</a>
+        <a class="text-red-400 hover:text-red-500 hover:underline " href="http://127.0.0.1:8000/blog/{{post.pk}}/delete/">Delete post</a>
       </div>
-      {% endfor %}
 
-      <form action="" method="post">
+    {% endif %}
+
+    <!--comment count -->
+    {% with comments.count as total_comments %}
+    <h2 class="my-8 text-xl flex items-center space-x-2">
+      {{ total_comments }} comment{{ total_comments|pluralize }}
+
+    </h2>
+    {% endwith %}
+
+    <!--comment loop-->
+    {% for comment in comments %}
+
+    <div class="flex items-center space-x-2">
+      <div class="flex flex-shrink-0 self-start cursor-pointer">
+        <img
+          src="https://images.unsplash.com/photo-1551122089-4e3e72477432?ixid=MXwxMjA3fDB8MHxzZWFyY2h8M3x8cnVieXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+          alt="" class="h-10 w-10 object-fill rounded-full">
+      </div>
+
+      <div class="flex items-center justify-center space-x-2">
+        <div class="block">
+          <div class="bg-gray-100 w-full rounded-xl  px-4 py-2 pb-2">
+            <div class="font-medium ">
+              <a href="#" class="hover:underline text-md">
+                <small>{{comment.name}}</small>
+              </a>
+            </div>
+            <div class="text-md ">
+              {{comment.body|linebreaks}}
+            </div>
+          </div>
+          <div class="mb-4 flex justify-start items-center text-sm w-full">
+            <div class="font-semibold text-gray-700 px-2 flex items-center justify-center space-x-1">
+              <a href="#" class="hover:underline">
+                <small>Like</small>
+              </a>
+              <small class="self-center">.</small>
+              <a href="#" class="hover:underline">
+                <small>Reply</small>
+              </a>
+              <small class="self-center">.</small>
+              <a href="#" class="hover:underline">
+                <small>{{comment.updated|timesince}} ago</small>
+              </a>
+
+              {% if request.user == comment.name %}
+              <small class="self-center">.</small>
+              <a href="http://127.0.0.1:8000/blog/{{post.slug}}/delete-comment/{{comment.pk}}/" class="hover:underline text-red-500">
+                <small>Delete-comment</small>
+              </a>
+              {% endif %}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    {% endfor %}
+
+
+    {% if request.user.is_authenticated %}
+
+    <!-- comment form -->
+    <div class="flex items-center justify-center shadow-lg my-12 w-full">
+      <form method='post' class="w-full max-w-xxl bg-gray-200 rounded-lg px-4 pt-2">
         {% csrf_token %}
-        {{comment_form|crispy}}
-        
+        <div class="flex flex-wrap -mx-3 mb-6">
+          <h2 class="px-4 pt-3 pb-2 text-gray-800 text-lg">Add a new comment</h2>
+          <div class="w-full md:w-full px-3 mb-2 mt-2">
+            <textarea
+              class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white"
+              name="body" placeholder='Type Your Comment' required></textarea>
+          </div>
+
+          <div class="-mr-1">
+            <input type='submit'
+              class="ml-3 bg-white text-gray-700 font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide mr-1 hover:bg-gray-100"
+              value='Post Comment'>
+          </div>
+        </div>
       </form>
-</div>
+    </div>
+    </div>
+
+    {% else%}
+    <h2 class="my-4 flex items-center space-x-2 text-red-600">Please sign-in to add comment</h2>
+    {% endif %}
 
 
-
-
-  
-
-
-{% endblock content %}
-
-
-
+    {% endblock content %}
+    </div>
+    </div>
+  </article>
+</main>

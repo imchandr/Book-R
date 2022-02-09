@@ -17,7 +17,7 @@
 <body>
 
     <div>
-        <nav class="bg-white-300 dark:bg-gray-800  shadow py-4 ">
+        <nav class="bg-gray-100 shadow-sm py-4 ">
             <div class="max-w-7xl mx-auto px-8">
                 <div class="flex items-center justify-between h-16">
                     <div class=" flex items-center">
@@ -26,50 +26,34 @@
                         </a>
                         <div class="hidden md:block">
                             <div class="ml-10 flex items-baseline space-x-4">
-                                <a class="text-gray-700  hover:text-gray-900 dark:hover:text-white px-3 py-2  text-md font-medium"
-                                    href="{% url 'home_page'%}">
+                                <a class="text-base font-semibold text-gray-400 hover:text-gray-600 px-4"
+                                    href="/">
                                     Home
                                 </a>
-                                <a class="text-gray-300 dark:text-white  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium"
+                                <a class="text-base font-semibold text-gray-400 hover:text-gray-600 px-4"
                                     href="{% url 'review:booklist_view'%}">
                                     Book's
                                 </a>
-                                <a class="text-gray-300 dark:text-white  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium"
+                                <a class="text-base font-semibold text-gray-400 hover:text-gray-600 px-4"
                                     href="{% url 'blog:post_list' %}">
                                     Blog's
                                 </a>
 
-                                <div class="block">
-                                    <div class="md:block mr-60 flex">
-                                        <form
-                                            class="flex flex-col md:flex-row w-3/4 md:w-full max-w-sm md:space-x-3 space-y-3 md:space-y-0 justify-center">
-                                            <div class=" relative ">
-                                                <input type="text" id="&quot;form-subscribe-Search"
-                                                    class=" rounded-lg border-transparent flex-1 appearance-none border border-green-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                                                    placeholder="What are you looking for?" />
-                                            </div>
-                                            <button
-                                                class="flex-shrink-0 px-4 py-2 text-base font-semibold text-gray-400 bg-gray-100 rounded-lg shadow-md hover:bg-green-300 hover:text-green-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-green-200"
-                                                type="submit">
-                                                Search
-                                            </button>
-                                        </form>
-
-                                    </div>
-                                    <div class="ml-4 flex items-center md:ml-6">
-                                    </div>
-                                </div>
+                                
 
                                 {% if request.user.is_authenticated %}
 
+                                <span class="px-80" >
+                                </span>
                                 <div x-data="{ open: false }" @click="open = !open" class=" 
-                                 relative border-b-4 border-transparent py-3"
+                                  relative border-b-4 border-transparent py-3 z-50"
                                     :class="{'border-blue-700 transform transition duration-300 ': open}"
                                     x-transition:enter-end="transform opacity-100 scale-100"
                                     x-transition:leave="transition ease-in duration-75"
                                     x-transition:leave-start="transform opacity-100 scale-100">
+                                    <div class=""></div>
                                     <div
-                                        class="border-2 border-gray-300 w-full rounded-md px-4 py-2 flex justify-center items-center space-x-3 cursor-pointer">
+                                        class=" border-2 border-gray-300 w-full rounded-md px-4 py-2 flex justify-center items-center space-x-3 cursor-pointer">
                                         <div class="pr-1 font-medium text-gray-600 text-lg">
                                             <div class="cursor-pointer w-full">Hi, {{user.username}}</div>
                                         </div>
@@ -86,6 +70,17 @@
                                         x-transition:leave-end="transform opacity-0 scale-95"
                                         class="absolute w-60 px-5 py-3  bg-white rounded-lg shadow border border-transparent -ml-4 mt-5">
                                         <ul class="space-y-3 text-gray-700">
+                                            <li class="font-medium">
+                                                <a href="#"
+                                                    class="flex items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-blue-700">
+                                                    <div class="mr-3">
+                                                        <svg "w-6 h-6" fill="none" stroke="currentColor"
+                                                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"  d="M6 2L3 6v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V6l-3-4H6zM3.8 6h16.4M16 10a4 4 0 1 1-8 0"/></svg>
+                                                    </div>
+                                                    Cart
+                                                </a>
+                                            </li>
                                             <li class="font-medium">
                                                 <a href="{% url 'user_account:user_profile' %}"
                                                     class="flex items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-blue-700">
@@ -139,7 +134,9 @@
                                     </div>
                                 </div>
                             </div>
-
+                            
+                            
+                            
                             {% comment %} <h1
                                 class="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium">
                                 <a href="{% url 'user_account:user_profile'%}">
@@ -149,24 +146,22 @@
                                 href="{% url 'logout' %}">
                                 Logout
                             </a> {% endcomment %}
-
                             {% else %}
 
-                            <button
-                                class=" flex-shrink-0 px-4 py-2 text-base font-semibold text-gray-400 bg-gray-100 rounded-lg shadow-md hover:bg-yellow-300 hover:text-yellow-500 "
-                                type="submit">
-                                <a href="{% url 'user_account:register'%}">
-                                    Register
+                            <span class="px-64" >
+                            </span>
+                            </a>
+                                <a class="px-4 py-2 text-base font-semibold text-gray-400 hover:text-gray-600" href="{% url 'user_account:register'%}">
+                                    Register 
                                 </a>
-                            </button>
-                            <button
-                                class="flex-shrink-0 px-4 py-2 text-base font-semibold text-gray-400 bg-gray-100 rounded-lg shadow-md hover:bg-green-300 hover:text-green-500 f"
-                                type="submit">
-                                <a href="{% url 'user_account:login'%}">
+                                
+                                <a class="px-4 py-2 text-base font-semibold text-gray-400 bg-gray-100 rounded-lg shadow-md hover:bg-gray-300 hover:text-gray-600" href="{% url 'user_account:login'%}">
                                     Log-in
                                 </a>
 
-                            </button>
+                                
+
+                           
 
 
                             {% comment %} <a
