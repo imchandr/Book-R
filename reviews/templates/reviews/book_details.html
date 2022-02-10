@@ -1,248 +1,213 @@
 {% extends 'reviews/home.html' %}
+{% load humanize %}
 
-<body>
-    {% comment %}
-    <span class="text-info">Title: </span> <span>{{ book.title }}</span>
-    <br>
-    <span class="text-info">Publisher: </span><span>{{ book.publisher }}</span>
-    <br>
-    <span class="text-info">Publication Date: </span><span>{{ book.publication_date }}</span>
-    <br>
-    <span class="text-info">Rating: </span><span class="badge badge-primary badge-pill">{{ rating }}</span>
-    <br>
-    <span class="text-info">Read Other's reviews: </span><span
-        class="badge badge-primary badge-pill ">{{ numberOfReviews }}</span>
-    <br>
-    
+{% block content %}
+
+<div class="flex items-center justify-center min-h-screen ">
+  <div class="w-3/4 h-auto">
+    <div class="bg-white shadow-xl rounded-lg overflow-hidden md:flex border-2">
+      <div class="">
+          <img
+            src="https://simg.pothi.com/hpJdS5VcpwsmwGgxEnrH8STpM0wx8gVhxqoFz9wTvuk/rs:fit/w:371/h:477/el:1/g:sm/cb:rev-3/bG9jYWw6Ly8vaW1h/Z2VzL3Byb2R1Y3Rz/LzIwMjIvMDEvU0tV/MTc2NzQvSW1hZ2Vf/MC5qcGc.jpg"
+            class="max-w-full h-90 px-8 py-4" alt="..." />
+          <svg class="mb-4 ml-24 w-4 h-4 mx-px fill-current text-green-600" xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 14 14">
+                    <path
+                      d="M6.43 12l-2.36 1.64a1 1 0 0 1-1.53-1.11l.83-2.75a1 1 0 0 0-.35-1.09L.73 6.96a1 1 0 0 1 .59-1.8l2.87-.06a1 1 0 0 0 .92-.67l.95-2.71a1 1 0 0 1 1.88 0l.95 2.71c.13.4.5.66.92.67l2.87.06a1 1 0 0 1 .59 1.8l-2.3 1.73a1 1 0 0 0-.34 1.09l.83 2.75a1 1 0 0 1-1.53 1.1L7.57 12a1 1 0 0 0-1.14 0z" />
+                  </svg>
+                  
+        </div>
+      <div>
+        <div class="p-4 md:p-5">
+          <h1 class="text-4xl font-bold  md:text-2xl">{{ book.title }}</h1>
+          <h3 class="font-semi-bold text-blue-600 text-md md:text-md">By: {{author.first_names}}</h3>
+
+          <table class="w-full flex flex-row flex-no-wrap  overflow-hidden  my-5">
+			
+            <tbody class="flex-1 sm:flex-none">
+                      <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
+                        <td class="border-grey-200 hover:bg-gray-100 p-3">Genre</td>
+                        <td class="border-grey-200 hover:bg-gray-100 p-3">Martin Madrazo lorem lorem</td>
+                      </tr>
+                      <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
+                        <td class="border-grey-200 hover:bg-gray-100 p-3">Language</td>
+                        <td class="border-grey-200 hover:bg-gray-100 p-3">Martin Madrazo lorem lorem</td>
+                      </tr>
+                      <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
+                        <td class="border-grey-200 hover:bg-gray-100 p-3">Price</td>
+                        <td class="border-grey-200 hover:bg-gray-100 p-3">Martin Madrazo lorem lorem</td>
+                      </tr>
+                      <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
+                        <td class="border-grey-200 hover:bg-gray-100 p-3">Other</td>
+                        <td class="border-grey-200 hover:bg-gray-100 p-3">Martin Madrazo lorem lorem</td>
+                      </tr>
+            </tbody>
+          </table>
+          {% comment %} <p class="font-medium text-gray-600 text-xl md:text-md pt-16">Type : <span class="pl-4">Print
+              book</span></p>
+          <p class="font-medium text-gray-600 text-xl md:text-md ">Genre : <span class="pl-4">Education &
+              Language, Computers & Internet</span></p>
+          <p class="font-medium text-gray-600 text-xl md:text-md ">Language : <span class="pl-4">English</span></p>
+          <p class="font-medium text-gray-600 text-xl md:text-md pb-12">Price : <span class="pl-4">₹264 +
+              shipping</span></p> {% endcomment %}
 
 
+        </div>
+        <div class="p-4 md:p-5 bg-gray-100">
+          <div class="sm:flex sm:justify-between sm:items-center">
+            <div>
 
-
-     {% endcomment %}
-
-    <hr>
-    {% block content %}
-
-    <div class="flex items-center justify-center min-h-screen ">
-        <div class="">
-            <div class="bg-white shadow-xl rounded-lg overflow-hidden md:flex">
-                <img src="https://simg.pothi.com/hpJdS5VcpwsmwGgxEnrH8STpM0wx8gVhxqoFz9wTvuk/rs:fit/w:371/h:477/el:1/g:sm/cb:rev-3/bG9jYWw6Ly8vaW1h/Z2VzL3Byb2R1Y3Rz/LzIwMjIvMDEvU0tV/MTc2NzQvSW1hZ2Vf/MC5qcGc.jpg"
-                    class="max-w-full h-auto px-8 py-4" alt="..." />
-                <div>
-                    <div class="p-4 md:p-5">
-                        <h1 class="text-4xl font-bold  md:text-2xl">{{ book.title }}</h1>
-                        <h3 class="font-semi-bold text-blue-600 text-md md:text-md">By: Book Author</h3>
-
-
-                        <p class="font-medium text-gray-600 text-xl md:text-md pt-16">Type : <span class="pl-4">Print
-                                book</span></p>
-                        <p class="font-medium text-gray-600 text-xl md:text-md ">Genre : <span class="pl-4">Education &
-                                Language, Computers & Internet</span></p>
-                        <p class="font-medium text-gray-600 text-xl md:text-md ">Language : <span
-                                class="pl-4">English</span></p>
-                        <p class="font-medium text-gray-600 text-xl md:text-md pb-12">Price : <span class="pl-4">₹264 +
-                                shipping</span></p>
-
-
-                    </div>
-                    <div class="p-4 md:p-5 bg-gray-100">
-                        <div class="sm:flex sm:justify-between sm:items-center">
-                            <div>
-
-                                <div class="flex items-center">
-                                    <div class="flex inline-flex -mx-px">
-                                        <svg class="w-4 h-4 mx-px fill-current text-green-600"
-                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
-                                            <path
-                                                d="M6.43 12l-2.36 1.64a1 1 0 0 1-1.53-1.11l.83-2.75a1 1 0 0 0-.35-1.09L.73 6.96a1 1 0 0 1 .59-1.8l2.87-.06a1 1 0 0 0 .92-.67l.95-2.71a1 1 0 0 1 1.88 0l.95 2.71c.13.4.5.66.92.67l2.87.06a1 1 0 0 1 .59 1.8l-2.3 1.73a1 1 0 0 0-.34 1.09l.83 2.75a1 1 0 0 1-1.53 1.1L7.57 12a1 1 0 0 0-1.14 0z" />
-                                            </svg>
-                                        <svg class="w-4 h-4 mx-px fill-current text-green-600"
-                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
-                                            <path
-                                                d="M6.43 12l-2.36 1.64a1 1 0 0 1-1.53-1.11l.83-2.75a1 1 0 0 0-.35-1.09L.73 6.96a1 1 0 0 1 .59-1.8l2.87-.06a1 1 0 0 0 .92-.67l.95-2.71a1 1 0 0 1 1.88 0l.95 2.71c.13.4.5.66.92.67l2.87.06a1 1 0 0 1 .59 1.8l-2.3 1.73a1 1 0 0 0-.34 1.09l.83 2.75a1 1 0 0 1-1.53 1.1L7.57 12a1 1 0 0 0-1.14 0z" />
-                                            </svg>
-                                        <svg class="w-4 h-4 mx-px fill-current text-green-600"
-                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
-                                            <path
-                                                d="M6.43 12l-2.36 1.64a1 1 0 0 1-1.53-1.11l.83-2.75a1 1 0 0 0-.35-1.09L.73 6.96a1 1 0 0 1 .59-1.8l2.87-.06a1 1 0 0 0 .92-.67l.95-2.71a1 1 0 0 1 1.88 0l.95 2.71c.13.4.5.66.92.67l2.87.06a1 1 0 0 1 .59 1.8l-2.3 1.73a1 1 0 0 0-.34 1.09l.83 2.75a1 1 0 0 1-1.53 1.1L7.57 12a1 1 0 0 0-1.14 0z" />
-                                            </svg>
-                                        <svg class="w-4 h-4 mx-px fill-current text-green-600"
-                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
-                                            <path
-                                                d="M6.43 12l-2.36 1.64a1 1 0 0 1-1.53-1.11l.83-2.75a1 1 0 0 0-.35-1.09L.73 6.96a1 1 0 0 1 .59-1.8l2.87-.06a1 1 0 0 0 .92-.67l.95-2.71a1 1 0 0 1 1.88 0l.95 2.71c.13.4.5.66.92.67l2.87.06a1 1 0 0 1 .59 1.8l-2.3 1.73a1 1 0 0 0-.34 1.09l.83 2.75a1 1 0 0 1-1.53 1.1L7.57 12a1 1 0 0 0-1.14 0z" />
-                                            </svg>
-                                        <svg class="w-4 h-4 mx-px fill-current text-green-600"
-                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
-                                            <path
-                                                d="M6.43 12l-2.36 1.64a1 1 0 0 1-1.53-1.11l.83-2.75a1 1 0 0 0-.35-1.09L.73 6.96a1 1 0 0 1 .59-1.8l2.87-.06a1 1 0 0 0 .92-.67l.95-2.71a1 1 0 0 1 1.88 0l.95 2.71c.13.4.5.66.92.67l2.87.06a1 1 0 0 1 .59 1.8l-2.3 1.73a1 1 0 0 0-.34 1.09l.83 2.75a1 1 0 0 1-1.53 1.1L7.57 12a1 1 0 0 0-1.14 0z" />
-                                            </svg>
-                                    </div>
-                                    <div class="text-gray-600 ml-2 text-sm md:text-base mt-1">28 reviews</div>
-                                </div>
-                            </div>
-                            <button
-                                class="mt-3 sm:mt-0 py-2 px-5 md:py-3 md:px-6 bg-indigo-700 hover:bg-indigo-600 font-bold text-white md:text-lg rounded-lg shadow-md">Book
-                                now</button>
-                        </div>
-
-                    </div>
+              <div class="flex items-center">
+                <div class="flex inline-flex -mx-px ">
+                  {% comment %} <svg class="w-4 h-4 mx-px fill-current text-green-600" xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 14 14">
+                    <path
+                      d="M6.43 12l-2.36 1.64a1 1 0 0 1-1.53-1.11l.83-2.75a1 1 0 0 0-.35-1.09L.73 6.96a1 1 0 0 1 .59-1.8l2.87-.06a1 1 0 0 0 .92-.67l.95-2.71a1 1 0 0 1 1.88 0l.95 2.71c.13.4.5.66.92.67l2.87.06a1 1 0 0 1 .59 1.8l-2.3 1.73a1 1 0 0 0-.34 1.09l.83 2.75a1 1 0 0 1-1.53 1.1L7.57 12a1 1 0 0 0-1.14 0z" />
+                  </svg>
+                  <svg class="w-4 h-4 mx-px fill-current text-green-600" xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 14 14">
+                    <path
+                      d="M6.43 12l-2.36 1.64a1 1 0 0 1-1.53-1.11l.83-2.75a1 1 0 0 0-.35-1.09L.73 6.96a1 1 0 0 1 .59-1.8l2.87-.06a1 1 0 0 0 .92-.67l.95-2.71a1 1 0 0 1 1.88 0l.95 2.71c.13.4.5.66.92.67l2.87.06a1 1 0 0 1 .59 1.8l-2.3 1.73a1 1 0 0 0-.34 1.09l.83 2.75a1 1 0 0 1-1.53 1.1L7.57 12a1 1 0 0 0-1.14 0z" />
+                  </svg>
+                  <svg class="w-4 h-4 mx-px fill-current text-green-600" xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 14 14">
+                    <path
+                      d="M6.43 12l-2.36 1.64a1 1 0 0 1-1.53-1.11l.83-2.75a1 1 0 0 0-.35-1.09L.73 6.96a1 1 0 0 1 .59-1.8l2.87-.06a1 1 0 0 0 .92-.67l.95-2.71a1 1 0 0 1 1.88 0l.95 2.71c.13.4.5.66.92.67l2.87.06a1 1 0 0 1 .59 1.8l-2.3 1.73a1 1 0 0 0-.34 1.09l.83 2.75a1 1 0 0 1-1.53 1.1L7.57 12a1 1 0 0 0-1.14 0z" />
+                  </svg>
+                  <svg class="w-4 h-4 mx-px fill-current text-green-600" xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 14 14">
+                    <path
+                      d="M6.43 12l-2.36 1.64a1 1 0 0 1-1.53-1.11l.83-2.75a1 1 0 0 0-.35-1.09L.73 6.96a1 1 0 0 1 .59-1.8l2.87-.06a1 1 0 0 0 .92-.67l.95-2.71a1 1 0 0 1 1.88 0l.95 2.71c.13.4.5.66.92.67l2.87.06a1 1 0 0 1 .59 1.8l-2.3 1.73a1 1 0 0 0-.34 1.09l.83 2.75a1 1 0 0 1-1.53 1.1L7.57 12a1 1 0 0 0-1.14 0z" />
+                  </svg>
+                  <svg class="w-4 h-4 mx-px fill-current text-green-600" xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 14 14">
+                    <path
+                      d="M6.43 12l-2.36 1.64a1 1 0 0 1-1.53-1.11l.83-2.75a1 1 0 0 0-.35-1.09L.73 6.96a1 1 0 0 1 .59-1.8l2.87-.06a1 1 0 0 0 .92-.67l.95-2.71a1 1 0 0 1 1.88 0l.95 2.71c.13.4.5.66.92.67l2.87.06a1 1 0 0 1 .59 1.8l-2.3 1.73a1 1 0 0 0-.34 1.09l.83 2.75a1 1 0 0 1-1.53 1.1L7.57 12a1 1 0 0 0-1.14 0z" />
+                  </svg> {% endcomment %}
                 </div>
+              </div>
             </div>
+            <button
+              class="mt-3 sm:mt-0 py-2 px-5 md:py-3 md:px-6 bg-indigo-700 hover:bg-indigo-600 font-bold text-white md:text-lg rounded-lg shadow-md mx-4">Book
+              now</button>
+              <button
+              class="mt-3 sm:mt-0 py-2 px-5 md:py-3 md:px-6 bg-indigo-700 hover:bg-indigo-600 font-bold text-white md:text-lg rounded-lg shadow-md">Addto-Cart
+              now</button>
+          </div>
+
         </div>
-    </div>
-
-    <div class="flex justify-center">
-        <div class="block p-6 rounded-lg shadow-lg bg-white max-w-4xl">
-
-            <h5 class="text-gray-900 text-2xl leading-tight font-medium mb-2 text-center">Book Description</h5>
-            <p class="text-gray-700 text-base mb-4">
-                Some quick example text to build on the card title and make up the bulk of the card's
-                content.
-
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis adipisci consectetur odit a modi
-                nisi odio totam ipsam, aspernatur perspiciatis laborum in voluptates!
-            </p>
-
-            <h5 class="text-gray-900 text-2xl leading-tight font-medium mb-2 text-center">About The Author</h5>
-            <p class="text-gray-700 text-base mb-4">
-                Some quick example text to build on the card title and make up the bulk of the card's
-                content.
-
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis adipisci consectetur odit a modi
-                nisi odio totam ipsam, aspernatur perspiciatis laborum in voluptates!
-            </p>
-
-            <h5 class="text-gray-900 text-2xl leading-tight font-medium mb-2 text-center">Book Details</h5>
-            <p class="text-gray-700 text-base mb-4">
-                Some quick example text to build on the card title and make up the bulk of the card's
-                content.
-
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis adipisci consectetur odit a modi
-                nisi odio totam ipsam, aspernatur perspiciatis laborum in voluptates!
-            </p>
-
-            <h5 class="text-gray-900 text-2xl leading-tight font-medium mb-2 text-center">Reviews and Ratings</h5>
-            {% if not numberOfReviews %}
-                <div class="bg-yellow-100 rounded-lg py-5 px-6 mb-4 text-base text-yellow-700 mb-3" role="alert">
-                    <h2>No Reviews/ Rating yet</h2>
-                </div>
-                <button type="button"
-                class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Add-Review/Rating</button>
-    
-            {% endif %}
-
-            
-
-    {% for review in reviews  %}
-
-    <div class="bg-green-100 rounded-lg py-5 px-6 mb-4 text-base text-green-700 mb-3" role="alert">
-        <p>{{review.content}}</p>
-        <p>last-edited:{{review.date_created}}</p>
-        <p>rating:{{review.rating}}</p>
       </div>
-
-    
-            <button type="button"
-                class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Button</button>
-                {% endfor %}
-        </div>
     </div>
+  </div>
+</div>
 
+<div class="flex justify-center">
+  <div class="block p-6 rounded-lg shadow-lg bg-white max-w-4xl border-2 mb-4">
+
+    <h5 class="text-gray-900 text-2xl leading-tight font-medium mb-2 text-center">Book Description</h5>
+    <p class="text-gray-700 text-base mb-4 text-justify">
+      Some quick example text to build on the card title and make up the bulk of the card's
+      content.
+
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis adipisci consectetur odit a modi
+      nisi odio totam ipsam, aspernatur perspiciatis laborum in voluptates!
+    </p>
+  </div>
+</div>
+
+<div class="flex justify-center">
+  <div class="block p-6 rounded-lg shadow-lg bg-white max-w-4xl border-2 mb-4">
+
+    <h5 class="text-gray-900 text-2xl leading-tight font-medium mb-2 text-center">Book Details</h5>
+    <p class="text-gray-700 text-base mb-4 text-justify">
+      Some quick example text to build on the card title and make up the bulk of the card's
+      content.
+
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis adipisci consectetur odit a modi
+      nisi odio totam ipsam, aspernatur perspiciatis laborum in voluptates!
+    </p>
+  </div>
+</div>
+
+<div class="flex justify-center">
+  <div class="block p-6 rounded-lg shadow-lg bg-white max-w-4xl border-2">
     <!--book comment section -->
-    <div class="block p-6 rounded-lg shadow-lg bg-white max-w-4xl">
-        <!--comment count -->
-    {% with comments.count as total_comments %}
-    <h2 class="my-8 text-xl flex items-center space-x-2">
-      {{ total_comments }} comment{{ total_comments|pluralize }}
+    <div class="block p-6 rounded-lg  bg-white max-w-4xl">
+      <!--comment count -->
+      {% with comments.count as total_comments %}
+      <h5 class="text-gray-900 text-2xl leading-tight font-medium mb-2 text-center">Book Reviews</h5>
+      <h2 class="my-8 text-xl flex items-center space-x-2 leading-tight font-medium mb-2 text-center">
+        {{ total_comments }} Review{{ total_comments|pluralize }}
 
-    </h2>
-    {% endwith %}
+      </h2>
+      {% endwith %}
 
-    <!--comment loop-->
-    {% for comment in comments %}
+      <!--comment loop-->
+      {% for comment in comments %}
 
-    <div class="flex items-center space-x-2">
-      <div class="flex flex-shrink-0 self-start cursor-pointer">
-        <img
-          src="https://images.unsplash.com/photo-1551122089-4e3e72477432?ixid=MXwxMjA3fDB8MHxzZWFyY2h8M3x8cnVieXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-          alt="" class="h-10 w-10 object-fill rounded-full">
-      </div>
-
-      <div class="flex items-center justify-center space-x-2">
-        <div class="block">
-          <div class="bg-gray-100 w-full rounded-xl  px-4 py-2 pb-2">
-            <div class="font-medium ">
-              <a href="#" class="hover:underline text-md">
-                <small>{{comment.name}}</small>
-              </a>
+      <div class=''>
+        <div class="shadow-lg pt-4 ml-2 mr-2 rounded-lg mb-4 ">
+          <a href="#" class="block bg-white py-3 rounded-lg shadow-lg border-2 pb-4 ">
+            <div class="px-4 py-2 flex  justify-between">
+              <span class="text-sm font-semibold text-gray-900">{{comment.author}}</span>
+              <div class="flex">
+                <span class="px-4 text-sm font-semibold text-gray-600"> {{comment.date_created|naturalday}}</span>
+                <img class="h-6 w-6 rounded-full object-cover"
+                  src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=144&q=80"
+                  alt="">
+              </div>
             </div>
-            <div class="text-md ">
-              {{comment.body|linebreaks}}
-            </div>
+            <p class="px-4 py-2 text-sm font-medium text-gray-600 text-justify">{{comment.content}}</p>
+            <p class="px-4 py-2 text-sm font-medium text-gray-600"><span class='pr-4'>rating</span> {{comment.rating}}</p>
+          </a>
+        </div>
+        <div class="mb-4 flex justify-start items-center text-sm w-full">
+          <div class="font-semibold text-gray-700 px-4 flex items-center justify-center space-x-1">
+            <a href="#" class="hover:underline">
+              <small>Like</small>
+            </a>
+            <small class="self-center">.</small>
+            <a href="#" class="hover:underline">
+              <small>Reply</small>
+            </a>
+
+            {% if request.user == comment.author %}
+            <small class="self-center">.</small>
+            <a href="#" class="hover:underline text-red-500">
+              <small>Delete-comment</small>
+            </a>
+            {% endif %}
           </div>
-          <div class="mb-4 flex justify-start items-center text-sm w-full">
-            <div class="font-semibold text-gray-700 px-2 flex items-center justify-center space-x-1">
-              <a href="#" class="hover:underline">
-                <small>Like</small>
-              </a>
-              <small class="self-center">.</small>
-              <a href="#" class="hover:underline">
-                <small>Reply</small>
-              </a>
-              <small class="self-center">.</small>
-              <a href="#" class="hover:underline">
-                <small>{{comment.updated|timesince}} ago</small>
-              </a>
-
-              {% if request.user == comment.name %}
-              <small class="self-center">.</small>
-              <a href="#" class="hover:underline text-red-500">
-                <small>Delete-comment</small>
-              </a>
-              {% endif %}
-            </div>
-          </div>
-
         </div>
       </div>
-    </div>
+      {% endfor %}
 
 
-    {% endfor %}
+      {% if request.user.is_authenticated %}
 
-
-    {% if request.user.is_authenticated %}
-
-    <!-- comment form -->
-    <div class="flex items-center justify-center shadow-lg my-12 w-full">
-      <form method='post' class="w-full max-w-xxl bg-gray-200 rounded-lg px-4 pt-2">
-        {% csrf_token %}
-        <div class="flex flex-wrap -mx-3 mb-6">
-          <h2 class="px-4 pt-3 pb-2 text-gray-800 text-lg">Add a new comment</h2>
-          <div class="w-full md:w-full px-3 mb-2 mt-2">
-            <textarea
-              class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white"
-              name="body" placeholder='Type Your Comment' required></textarea>
-          </div>
-
-          <div class="-mr-1">
-            <input type='submit'
-              class="ml-3 bg-white text-gray-700 font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide mr-1 hover:bg-gray-100"
-              value='Post Comment'>
-          </div>
-        </div>
-      </form>
-    </div>
+      <!-- comment form -->
+      <div class="flex items-center justify-center shadow-lg my-12 w-full">
+        <form method='post' class="w-full max-w-xxl bg-gray-200 rounded-lg px-4 pt-2">
+          {% csrf_token %}
+          <div class="flex flex-wrap -mx-3 mb-6 ">
+            <h2 class="px-4 pt-3 pb-2 text-gray-800  text-lg">Add Review for {{book.title}} </h2>
+            <div class="w-full md:w-full px-3 mb-2 mt-2">
+              {{comment_form.content}}
+              {{comment_form.rating}}
+              <div class="pt-4 ">
+                <input type='submit'
+                  class=" bg-white text-gray-700 font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide hover:bg-gray-100"
+                  value='Post Review'>
+              </div>
+            </div>
+        </form>
+      </div>
     </div>
 
     {% else%}
     <h2 class="my-4 flex items-center space-x-2 text-red-600">Please sign-in to add comment</h2>
     {% endif %}
 
-    </div>
-
-
-    {% endblock content %}
-</body>
-
-</html>
+  </div>
+  {% endblock content %}
+</div>

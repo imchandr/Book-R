@@ -31,10 +31,11 @@ book-list-page
 
 <section
   class="container mx-auto p-10 md:p-20 grid lg:grid-cols-3 2xl:grid-cols-3 grid-cols-1 gap-y-16 gap-x-24 transform duration-500">
-  {% for item in book_list %}
+  {% for book in book_list %}
+  
   <article
     class="shadow-md mx-auto max-w-sm transform hover:-translate-y-1 duration-300 hover:shadow-xl ">
-    <a href="/book/{{ item.book.id }}">
+    <a href="/book/{{ book.id }}">
     <div class="max-h-120 overflow-hidden px-4">
       <img class=" w-72 h-72 rounded-lg"
         src="https://images.squarespace-cdn.com/content/v1/58dd442dbebafb88160c6929/1524859470168-GEDZWSZVFS2VN76NFZY0/ke17ZwdGBToddI8pDm48kPvdHwxe8vxmYnjZvCzAU61Zw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpwxsJYjeBOStWfhZBaQGTlDOVYbSZjX976lCUHHLPdHUlrmON35exl807wLzw9VMGw/visit06.jpg?format=800w"
@@ -50,10 +51,10 @@ book-list-page
 
     <div class=" mx-2  p-4 md:p-4">
       
-        <h1 class=" m-1 text-2xl font-bold text-gray-800 dark:text-white">{{ item.book.title }}</h1>
+        <h1 class=" m-1 text-2xl font-bold text-gray-800 dark:text-white">{{ book.title }}</h1>
       
       
-      <h2 class=" m-1">Publisher:<span class="pl-4">{{ item.book.publisher }}</h2>
+      <h2 class=" m-1">Publisher:<span class="pl-4">{{ book.publisher }}</h2>
 
       <div class="flex items-center">
         <div class="flex inline-flex -mx-px">
@@ -86,122 +87,10 @@ book-list-page
 
     </a>
   </article>
-
+  
   {% endfor %}
 
   
 </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{% comment %} <div class="my-10 flex max-w-xl mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
-  <div class="w-2/5 bg-cover"
-    style="background-image: url('https://images.unsplash.com/photo-1494726161322-5360d4d0eeae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80')">
-
-  </div>
-
-  <div class=" mx-5 w-3/5 p-4 md:p-4">
-    <h1 class=" m-1 text-2xl font-bold text-gray-800 dark:text-white">{{ item.book.title }}</h1>
-    <h2 class=" m-1">By:{{ item.book.author }}</h2>
-    <hr>
-
-    <p class="m-1 text-sm text-gray-600 dark:text-gray-400">Lorem ipsum dolor sit amet consectetur adipisicing elit In
-      odit</p>
-
-    <hr>
-
-    <button
-      class="px-2 py-1 text-xs  text-white  transition-colors duration-100 transform bg-green-400 rounded dark:bg-gray-700 hover:bg-green-500 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600 "
-      onclick="location.href='/books/{{ item.book.id }}'">machine leraning</button>
-
-    <button
-      class="px-2 py-1 text-xs  text-white  transition-colors duration-200 transform bg-green-400 rounded dark:bg-gray-700 hover:bg-green-500 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600 "
-      onclick="location.href='/books/{{ item.book.id }}'">Data visualisation</button>
-
-    <button
-      class="px-2 py-1 text-xs  text-white  transition-colors duration-200 transform bg-green-400 rounded dark:bg-gray-700 hover:bg-green-500 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600 "
-      onclick="location.href='/books/{{ item.book.id }}'">keras</button>
-
-    <button
-      class="px-2 py-1 text-xs  text-white  transition-colors duration-200 transform bg-green-400 rounded dark:bg-gray-700 hover:bg-green-500 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600 "
-      onclick="location.href='/books/{{ item.book.id }}'">Data visualisation</button>
-
-    <button
-      class="px-2 py-1 text-xs  text-white  transition-colors duration-200 transform bg-green-400 rounded dark:bg-gray-700 hover:bg-green-500 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600 "
-      onclick="location.href='/books/{{ item.book.id }}'">keras</button>
-
-    <button
-      class="px-2 py-1 text-xs  text-white  transition-colors duration-200 transform bg-green-400 rounded dark:bg-gray-700 hover:bg-green-500 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600 "
-      onclick="location.href='/books/{{ item.book.id }}'">Data visualisation</button>
-
-    <button
-      class="px-2 py-1 text-xs  text-white  transition-colors duration-200 transform bg-green-400 rounded dark:bg-gray-700 hover:bg-green-500 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600 "
-      onclick="location.href='/books/{{ item.book.id }}'">keras</button>
-
-    <button
-      class="px-2 py-1 text-xs  text-white  transition-colors duration-200 transform bg-green-400 rounded dark:bg-gray-700 hover:bg-green-500 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600 "
-      onclick="location.href='/books/{{ item.book.id }}'">Data visualisation</button>
-
-    <button
-      class="px-2 py-1 text-xs  text-white  transition-colors duration-200 transform bg-green-400 rounded dark:bg-gray-700 hover:bg-green-500 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600 "
-      onclick="location.href='/books/{{ item.book.id }}'">keras</button>
-
-    <button
-      class="px-2 py-1 text-xs  text-white  transition-colors duration-200 transform bg-green-400 rounded dark:bg-gray-700 hover:bg-green-500 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600 "
-      onclick="location.href='/books/{{ item.book.id }}'">Data visualisation</button>
-
-    <button
-      class="px-2 py-1 text-xs  text-white  transition-colors duration-200 transform bg-green-400 rounded dark:bg-gray-700 hover:bg-green-500 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600 "
-      onclick="location.href='/books/{{ item.book.id }}'">keras</button>
-
-
-
-    <hr>
-    <div class="flex mt-2 item-center">
-      <svg class="w-5 h-5 text-gray-700 fill-current dark:text-gray-300" viewBox="0 0 24 24">
-        <path
-          d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
-      </svg>
-
-      <svg class="w-5 h-5 text-gray-700 fill-current dark:text-gray-300" viewBox="0 0 24 24">
-        <path
-          d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
-      </svg>
-
-      <svg class="w-5 h-5 text-gray-700 fill-current dark:text-gray-300" viewBox="0 0 24 24">
-        <path
-          d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
-      </svg>
-
-      <svg class="w-5 h-5 text-gray-500 fill-current" viewBox="0 0 24 24">
-        <path
-          d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
-      </svg>
-
-      <svg class="mr-16 w-5 h-5 text-gray-500 fill-current" viewBox="0 0 24 24">
-        <path
-          d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
-      </svg>
-
-      <button type='submit'
-        class="px-2 py-1 text-xs font-bold text-white uppercase transition-colors duration-200 transform bg-gray-800 rounded dark:bg-gray-700 hover:bg-purple-700 dark:hover:bg-purple-600 focus:outline-none focus:bg-purple-700 dark:focus:bg-purple-600 "
-        onclick="location.href='/book/{{ item.book.id }}'">Read More</button>
-
-    </div>
-  </div>
-</div> {% endcomment %}
-
 
 {% endblock content %}

@@ -1,5 +1,8 @@
+from distutils.command.upload import upload
+from email.mime import image
+from email.policy import default
 from django.db import models
-from django.contrib import auth
+from django.contrib.auth.models import User
 
 
 class Publisher(models.Model):
@@ -15,6 +18,14 @@ class Publisher(models.Model):
 
 class Book(models.Model):
     '''Contains information about the book'''
+    BOOK_TYPE_CHOICES = (
+        ('printbook', 'PrintBook'),
+        ('ebook', 'Ebook'),
+    )
+    BOOK_LANGUAGE_CHOICES = (
+        ('hindi', 'Hindi'),
+        ('english', 'English'),
+    )
 
     title = models.CharField(max_length=50, verbose_name="title of the book")
     publication_date = models.DateField(
@@ -24,7 +35,16 @@ class Book(models.Model):
     publisher = models.ForeignKey(Publisher, on_delete=models.CASCADE)
     contributors = models.ManyToManyField(
         'Contributor', through='BookContributor')
-    '''this BookContributor field results an aditional table named BookContributor combined wth book and Contributor tables as foreign key'''
+    
+    # image = models.ImageField(
+    #     upload_to='review/images/', default='book_default.jpg', blank=True, null=True)
+    # type = models.CharField(max_length=20, choices=BOOK_TYPE_CHOICES,
+    #                         default='printbook', blank=True, null=True)
+    # language = models.CharField(
+    #     max_length=20, choices=BOOK_LANGUAGE_CHOICES, default='english', blank=True, null=True)
+    # description = models.TextField(blank=True, null=True)
+    # price = models.IntegerField(default=499, blank=True, null=True)
+    # stock = models.IntegerField(default=10)
 
     def __str__(self):
         return self.title
@@ -55,17 +75,24 @@ class BookContributor(models.Model):
     role = models.CharField(verbose_name='The Role of Contributer in the book',
                             choices=ContributionRole.choices, max_length=20)
 
+    def __str__(self):
+        return self.contributor
+
 
 class Review(models.Model):
-    content = models.TextField(help_text='the review text', max_length=255)
-    rating = models.IntegerField(help_text='rating the reviewer has giver')
+    book = models.ForeignKey(
+        Book, related_name='review', on_delete=models.CASCADE)
+    author = models.ForeignKey(
+        User, related_name='review_author', blank=True, null=True, on_delete=models.CASCADE)
+    content = models.TextField()
+    rating = models.IntegerField(default=5)
     date_created = models.DateTimeField(
-        auto_now_add=True, help_text='date and time when the review was created')
-    date_edited = models.DateTimeField(
-        null=True, help_text='date and time when the review was edited')
-    creator = models.ForeignKey(
-        auth.get_user_model(), on_delete=models.CASCADE)
-    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+        auto_now_add=True, blank=True, null=True)
+    date_updated = models.DateTimeField(auto_now=True, blank=True, null=True)
+    active = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ['date_created']
 
     def __str__(self):
         return self.content
