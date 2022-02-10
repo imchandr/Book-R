@@ -1,3 +1,4 @@
+from ast import And, Or
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 
@@ -8,6 +9,9 @@ from .utils import average_rating
 
 def home_page_view(request):
     return render(request, 'reviews/test.html')
+
+def bookorder_view(request, id):
+    return render(request, 'reviews/comingsoon.html')
 
 
 def booklist_view(request):
@@ -25,8 +29,11 @@ def booklist_view(request):
 
 def bookdetails_view(request, id):
     book = get_object_or_404(Book, id=id)
-    contributor = BookContributor.objects.get(role='AUTHOR',book_id=id)
+    contributor = get_object_or_404(BookContributor, role='AUTHOR',book_id=id)  
     author = Contributor.objects.get(id=contributor.id)
+    
+    
+        
     # reviews = book.review_set.all()
     # num_of_reviews = len(reviews)
     # rating = average_rating([review.rating for review in reviews])

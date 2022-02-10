@@ -1,6 +1,4 @@
-from distutils.command.upload import upload
-from email.mime import image
-from email.policy import default
+from ckeditor.fields import RichTextField
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -34,17 +32,18 @@ class Book(models.Model):
         max_length=20, verbose_name='ISBN number of the book')
     publisher = models.ForeignKey(Publisher, on_delete=models.CASCADE)
     contributors = models.ManyToManyField(
-        'Contributor', through='BookContributor')
+        'Contributor', through='BookContributor',)
     
-    # image = models.ImageField(
-    #     upload_to='review/images/', default='book_default.jpg', blank=True, null=True)
-    # type = models.CharField(max_length=20, choices=BOOK_TYPE_CHOICES,
-    #                         default='printbook', blank=True, null=True)
-    # language = models.CharField(
-    #     max_length=20, choices=BOOK_LANGUAGE_CHOICES, default='english', blank=True, null=True)
-    # description = models.TextField(blank=True, null=True)
-    # price = models.IntegerField(default=499, blank=True, null=True)
-    # stock = models.IntegerField(default=10)
+    image = models.ImageField(
+        upload_to='review/images/', default='book_default.jpg', blank=True, null=True)
+    type = models.CharField(max_length=20, choices=BOOK_TYPE_CHOICES,
+                            default='printbook', blank=True, null=True)
+    language = models.CharField(
+        max_length=20, choices=BOOK_LANGUAGE_CHOICES, default='english', blank=True, null=True)
+    genre = models.CharField(max_length=255,blank=True, null=True)
+    description = RichTextField(blank=True, null=True)
+    price = models.IntegerField(default=499, blank=True, null=True)
+    stock = models.IntegerField(default=10)
 
     def __str__(self):
         return self.title
@@ -53,9 +52,9 @@ class Book(models.Model):
 class Contributor(models.Model):
     '''Contains information about the book contributor's e.g. author, co-author, editor, etc'''
 
-    first_names = models.CharField(
+    first_name = models.CharField(
         max_length=50, help_text="First name of the contributor")
-    last_names = models.CharField(
+    last_name = models.CharField(
         max_length=50, help_text="Last name of the contributor")
     email = models.EmailField(help_text="Email address of the contributor")
 
@@ -76,7 +75,7 @@ class BookContributor(models.Model):
                             choices=ContributionRole.choices, max_length=20)
 
     def __str__(self):
-        return self.contributor
+        return str(self.book)
 
 
 class Review(models.Model):

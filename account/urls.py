@@ -16,7 +16,7 @@ urlpatterns = [
         template_name='registration/password_reset_confirm.html', form_class=ResetPasswordConfirmForm), name='reset_password_confirm'),
     path('profile/',user_profile, name='user_profile'),
     path('change_password/', auth_view.PasswordChangeView.as_view(
-        template_name='registration/change_password.html', form_class=ChangePasswordForm), name='Change_password'),
+        template_name='registration/change_password.html', form_class=ChangePasswordForm), name='change_password'),
 
 
 

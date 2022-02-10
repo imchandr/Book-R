@@ -17,16 +17,18 @@
 <body>
 
     <div>
-        <nav class="bg-gray-100 shadow-sm py-4 ">
-            <div class="max-w-7xl mx-auto px-8">
+        <nav class="bg-gradient-to-tr from-gray-50 to-gray-100 shadow-sm py-4 ">
+            <div class="w-full mx-auto px-8">
                 <div class="flex items-center justify-between h-16">
                     <div class=" flex items-center">
-                        <a class="flex-shrink-0" href="/">
+                        <a class="flex-shrink-0 border-r-4 px-8 py-2" href="/">
                             <img class="h-8 w-8" src="{% static 'reviews/books-title.png'%}" alt="Workflow" />
+                            <h1 class='font-extrabold text-transparent text-lg bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 -mx-2 my-1'>Book-R</h1>
                         </a>
                         <div class="hidden md:block">
                             <div class="ml-10 flex items-baseline space-x-4">
-                                <a class="text-base font-semibold text-gray-400 hover:text-gray-600 px-4"
+                                
+                                <a class="text-base font-semibold text-gray-400 hover:text-gray-600 px-4 "
                                     href="/">
                                     Home
                                 </a>
@@ -42,8 +44,10 @@
                                 
 
                                 {% if request.user.is_authenticated %}
-
+                                
+                                
                                 <span class="px-80" >
+                                    
                                 </span>
                                 <div x-data="{ open: false }" @click="open = !open" class=" 
                                   relative border-b-4 border-transparent py-3 z-50"
@@ -51,14 +55,13 @@
                                     x-transition:enter-end="transform opacity-100 scale-100"
                                     x-transition:leave="transition ease-in duration-75"
                                     x-transition:leave-start="transform opacity-100 scale-100">
-                                    <div class=""></div>
                                     <div
-                                        class=" border-2 border-gray-300 w-full rounded-md px-4 py-2 flex justify-center items-center space-x-3 cursor-pointer">
+                                        class=" w-full rounded-md px-4 py-2 flex justify-center items-center space-x-3 cursor-pointer">
                                         <div class="pr-1 font-medium text-gray-600 text-lg">
                                             <div class="cursor-pointer w-full">Hi, {{user.username}}</div>
                                         </div>
-                                        <div class="w-16 h-16 rounded-full overflow-hidden border-2">
-                                            <img src="https://image.freepik.com/free-vector/female-user-profile-avatar-offended-woman-character-screen-saver-with-emotions_505620-638.jpg?w=740"
+                                        <div class="w-16 h-16 rounded-full overflow-hidden">
+                                            <img src="https://cdn.dribbble.com/users/1041205/screenshots/3636353/media/b9d3272401a456bdfaef25bb2a7accd2.jpg?compress=1&resize=800x600&vertical=top"
                                                 alt="" class="w-full h-full object-cover">
                                         </div>
                                     </div>
@@ -133,6 +136,11 @@
                                         </ul>
                                     </div>
                                 </div>
+                                <div class="my-auto">
+                                    <a class='cursor' href='book/1/order/'>
+                                    <img src="https://img.icons8.com/external-icongeek26-outline-icongeek26/64/000000/external-cart-ecommerce-icongeek26-outline-icongeek26.png"/>
+                                    </a>
+                                </div>
                             </div>
                             
                             
@@ -157,6 +165,10 @@
                                 
                                 <a class="px-4 py-2 text-base font-semibold text-gray-400 bg-gray-100 rounded-lg shadow-md hover:bg-gray-300 hover:text-gray-600" href="{% url 'user_account:login'%}">
                                     Log-in
+                                </a>
+
+                                <a class="px-4 py-2 text-base font-semibold text-gray-400 bg-gray-100 rounded-lg shadow-md hover:bg-gray-300 hover:text-gray-600" href="{% url 'user_account:login'%}">
+                                    Cart
                                 </a>
 
                                 
@@ -231,7 +243,7 @@
 
         <div class="text-center text-gray-700 p-4">
             © 2022 Copyright:
-            <a class="text-gray-800" href="{% url 'home_page'%}">Book-R The Book Universe!</a>
+            <a class="text-gray-800" href="/">Book-R The Book Universe!</a>
         </div>
     </footer>
 

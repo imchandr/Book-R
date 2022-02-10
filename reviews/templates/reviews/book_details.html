@@ -6,127 +6,118 @@
 <div class="flex items-center justify-center min-h-screen ">
   <div class="w-3/4 h-auto">
     <div class="bg-white shadow-xl rounded-lg overflow-hidden md:flex border-2">
-      <div class="">
-          <img
-            src="https://simg.pothi.com/hpJdS5VcpwsmwGgxEnrH8STpM0wx8gVhxqoFz9wTvuk/rs:fit/w:371/h:477/el:1/g:sm/cb:rev-3/bG9jYWw6Ly8vaW1h/Z2VzL3Byb2R1Y3Rz/LzIwMjIvMDEvU0tV/MTc2NzQvSW1hZ2Vf/MC5qcGc.jpg"
-            class="max-w-full h-90 px-8 py-4" alt="..." />
-          <svg class="mb-4 ml-24 w-4 h-4 mx-px fill-current text-green-600" xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 14 14">
-                    <path
-                      d="M6.43 12l-2.36 1.64a1 1 0 0 1-1.53-1.11l.83-2.75a1 1 0 0 0-.35-1.09L.73 6.96a1 1 0 0 1 .59-1.8l2.87-.06a1 1 0 0 0 .92-.67l.95-2.71a1 1 0 0 1 1.88 0l.95 2.71c.13.4.5.66.92.67l2.87.06a1 1 0 0 1 .59 1.8l-2.3 1.73a1 1 0 0 0-.34 1.09l.83 2.75a1 1 0 0 1-1.53 1.1L7.57 12a1 1 0 0 0-1.14 0z" />
-                  </svg>
-                  
-        </div>
-      <div>
-        <div class="p-4 md:p-5">
-          <h1 class="text-4xl font-bold  md:text-2xl">{{ book.title }}</h1>
-          <h3 class="font-semi-bold text-blue-600 text-md md:text-md">By: {{author.first_names}}</h3>
+      <div class="my-auto">
+        <img src="{{book.image.url}}" class=" px-8 py-6 mx-20 " alt="..." />
+        {% comment %} <svg class="mb-4 ml-24 w-4 h-4 mx-px fill-current text-green-600"
+          xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
+          <path
+            d="M6.43 12l-2.36 1.64a1 1 0 0 1-1.53-1.11l.83-2.75a1 1 0 0 0-.35-1.09L.73 6.96a1 1 0 0 1 .59-1.8l2.87-.06a1 1 0 0 0 .92-.67l.95-2.71a1 1 0 0 1 1.88 0l.95 2.71c.13.4.5.66.92.67l2.87.06a1 1 0 0 1 .59 1.8l-2.3 1.73a1 1 0 0 0-.34 1.09l.83 2.75a1 1 0 0 1-1.53 1.1L7.57 12a1 1 0 0 0-1.14 0z" />
+        </svg> {% endcomment %}
 
-          <table class="w-full flex flex-row flex-no-wrap  overflow-hidden  my-5">
-			
-            <tbody class="flex-1 sm:flex-none">
-                      <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
-                        <td class="border-grey-200 hover:bg-gray-100 p-3">Genre</td>
-                        <td class="border-grey-200 hover:bg-gray-100 p-3">Martin Madrazo lorem lorem</td>
-                      </tr>
-                      <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
-                        <td class="border-grey-200 hover:bg-gray-100 p-3">Language</td>
-                        <td class="border-grey-200 hover:bg-gray-100 p-3">Martin Madrazo lorem lorem</td>
-                      </tr>
-                      <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
-                        <td class="border-grey-200 hover:bg-gray-100 p-3">Price</td>
-                        <td class="border-grey-200 hover:bg-gray-100 p-3">Martin Madrazo lorem lorem</td>
-                      </tr>
-                      <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
-                        <td class="border-grey-200 hover:bg-gray-100 p-3">Other</td>
-                        <td class="border-grey-200 hover:bg-gray-100 p-3">Martin Madrazo lorem lorem</td>
-                      </tr>
-            </tbody>
-          </table>
-          {% comment %} <p class="font-medium text-gray-600 text-xl md:text-md pt-16">Type : <span class="pl-4">Print
-              book</span></p>
-          <p class="font-medium text-gray-600 text-xl md:text-md ">Genre : <span class="pl-4">Education &
-              Language, Computers & Internet</span></p>
-          <p class="font-medium text-gray-600 text-xl md:text-md ">Language : <span class="pl-4">English</span></p>
-          <p class="font-medium text-gray-600 text-xl md:text-md pb-12">Price : <span class="pl-4">₹264 +
-              shipping</span></p> {% endcomment %}
-
-
-        </div>
-        <div class="p-4 md:p-5 bg-gray-100">
-          <div class="sm:flex sm:justify-between sm:items-center">
-            <div>
-
-              <div class="flex items-center">
-                <div class="flex inline-flex -mx-px ">
-                  {% comment %} <svg class="w-4 h-4 mx-px fill-current text-green-600" xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 14 14">
-                    <path
-                      d="M6.43 12l-2.36 1.64a1 1 0 0 1-1.53-1.11l.83-2.75a1 1 0 0 0-.35-1.09L.73 6.96a1 1 0 0 1 .59-1.8l2.87-.06a1 1 0 0 0 .92-.67l.95-2.71a1 1 0 0 1 1.88 0l.95 2.71c.13.4.5.66.92.67l2.87.06a1 1 0 0 1 .59 1.8l-2.3 1.73a1 1 0 0 0-.34 1.09l.83 2.75a1 1 0 0 1-1.53 1.1L7.57 12a1 1 0 0 0-1.14 0z" />
-                  </svg>
-                  <svg class="w-4 h-4 mx-px fill-current text-green-600" xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 14 14">
-                    <path
-                      d="M6.43 12l-2.36 1.64a1 1 0 0 1-1.53-1.11l.83-2.75a1 1 0 0 0-.35-1.09L.73 6.96a1 1 0 0 1 .59-1.8l2.87-.06a1 1 0 0 0 .92-.67l.95-2.71a1 1 0 0 1 1.88 0l.95 2.71c.13.4.5.66.92.67l2.87.06a1 1 0 0 1 .59 1.8l-2.3 1.73a1 1 0 0 0-.34 1.09l.83 2.75a1 1 0 0 1-1.53 1.1L7.57 12a1 1 0 0 0-1.14 0z" />
-                  </svg>
-                  <svg class="w-4 h-4 mx-px fill-current text-green-600" xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 14 14">
-                    <path
-                      d="M6.43 12l-2.36 1.64a1 1 0 0 1-1.53-1.11l.83-2.75a1 1 0 0 0-.35-1.09L.73 6.96a1 1 0 0 1 .59-1.8l2.87-.06a1 1 0 0 0 .92-.67l.95-2.71a1 1 0 0 1 1.88 0l.95 2.71c.13.4.5.66.92.67l2.87.06a1 1 0 0 1 .59 1.8l-2.3 1.73a1 1 0 0 0-.34 1.09l.83 2.75a1 1 0 0 1-1.53 1.1L7.57 12a1 1 0 0 0-1.14 0z" />
-                  </svg>
-                  <svg class="w-4 h-4 mx-px fill-current text-green-600" xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 14 14">
-                    <path
-                      d="M6.43 12l-2.36 1.64a1 1 0 0 1-1.53-1.11l.83-2.75a1 1 0 0 0-.35-1.09L.73 6.96a1 1 0 0 1 .59-1.8l2.87-.06a1 1 0 0 0 .92-.67l.95-2.71a1 1 0 0 1 1.88 0l.95 2.71c.13.4.5.66.92.67l2.87.06a1 1 0 0 1 .59 1.8l-2.3 1.73a1 1 0 0 0-.34 1.09l.83 2.75a1 1 0 0 1-1.53 1.1L7.57 12a1 1 0 0 0-1.14 0z" />
-                  </svg>
-                  <svg class="w-4 h-4 mx-px fill-current text-green-600" xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 14 14">
-                    <path
-                      d="M6.43 12l-2.36 1.64a1 1 0 0 1-1.53-1.11l.83-2.75a1 1 0 0 0-.35-1.09L.73 6.96a1 1 0 0 1 .59-1.8l2.87-.06a1 1 0 0 0 .92-.67l.95-2.71a1 1 0 0 1 1.88 0l.95 2.71c.13.4.5.66.92.67l2.87.06a1 1 0 0 1 .59 1.8l-2.3 1.73a1 1 0 0 0-.34 1.09l.83 2.75a1 1 0 0 1-1.53 1.1L7.57 12a1 1 0 0 0-1.14 0z" />
-                  </svg> {% endcomment %}
-                </div>
-              </div>
-            </div>
-            <button
-              class="mt-3 sm:mt-0 py-2 px-5 md:py-3 md:px-6 bg-indigo-700 hover:bg-indigo-600 font-bold text-white md:text-lg rounded-lg shadow-md mx-4">Book
-              now</button>
-              <button
-              class="mt-3 sm:mt-0 py-2 px-5 md:py-3 md:px-6 bg-indigo-700 hover:bg-indigo-600 font-bold text-white md:text-lg rounded-lg shadow-md">Addto-Cart
-              now</button>
-          </div>
-
-        </div>
       </div>
+
+      <div class="w-4/5 md:p-5  mx-auto my-2">
+        <h1 class="text-4xl font-bold underline pl-28">{{ book.title }}</h1>
+        <h3 class="font-semi-bold text-blue-600 text-md md:text-md mt-4 hover:underline pl-28">Author <span
+            class='pl-2'></span>
+          {{author.first_name}}<span class="pl-2">{{author.last_name}}</span> </h3>
+        <h3 class="font-semi-bold text-blue-600 text-md md:text-md hover:underline pl-28">Publisher <span
+            class='pl-2'></span>
+          {{book.publisher}}</h3>
+
+        <table class="w-full flex flex-row flex-no-wrap  overflow-hidden  mt-5 mb-12 pl-28">
+
+          <tbody class="flex-1 sm:flex-none text-medium text-lg text-gray-600">
+            <tr class="flex flex-col flex-no wrap sm:table-row  sm:mb-0 border-b-2">
+              <td class="border-grey-200 hover:bg-gray-100 ">Genre</td>
+              <td class="border-grey-200 hover:bg-gray-100 ">{{book.genre}}</td>
+            </tr>
+            <tr class="flex flex-col flex-no wrap sm:table-row  sm:mb-0 border-b-2">
+              <td class="border-grey-200 hover:bg-gray-100 pt-2">Language</td>
+              <td class="border-grey-200 hover:bg-gray-100 pt-2"> <span class='mr-3'></span> {{book.language}}</td>
+            </tr>
+            <tr class="flex flex-col flex-no wrap sm:table-row  sm:mb-0 border-b-2">
+              <td class="border-grey-200 hover:bg-gray-100 pt-2">Formate</td>
+              <td class="border-grey-200 hover:bg-gray-100 pt-2"> <span class='mr-3'></span> {{book.type}}</td>
+            </tr>
+            <tr class="flex flex-col flex-no wrap sm:table-row  sm:mb-0 border-b-2">
+              <td class="border-grey-200 hover:bg-gray-100 pt-2">Price</td>
+              <td class="border-grey-200 hover:bg-gray-100 pt-2">₹ <span class='pr-2'></span> {{book.price}}</td>
+            </tr>
+            <tr class="flex flex-col flex-no wrap sm:table-row  sm:mb-0 border-b-2">
+              <td class="border-grey-200 hover:bg-gray-100 pt-2">ISBN</td>
+              <td class="border-grey-200 hover:bg-gray-100 pt-2">{{book.isbn}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <form action="order/">
+        <button {% if book.stock %}
+          class="mt-6 sm:mt-0 py-2 px-5 md:py-2 md:px-3 bg-indigo-700 hover:bg-indigo-600 font-bold text-white md:text-sm rounded-lg shadow-md ml-28">BUY
+          NOW
+        </button>
+        <span class='pl-4 '></span>
+        <button
+          class="mt-3 sm:mt-0 py-2 px-5 py-2 md:px-3 bg-indigo-700 hover:bg-indigo-600 font-bold text-white md:text-sm rounded-lg shadow-md">ADD
+          TO CART
+        </button>
+      </form>
+        {% else %}
+        <span class='pl-28 '></span>
+        <button
+          class="mt-3 sm:mt-0 py-2 px-5 py-2 md:px-3 bg-red-400 hover:bg-red-500 font-bold text-white md:text-sm rounded-lg shadow-md">CURRENTLY
+          OUT OF STOCK
+        </button>
+        {% endif %}
+      </div>
+
     </div>
+
   </div>
 </div>
 
+
 <div class="flex justify-center">
-  <div class="block p-6 rounded-lg shadow-lg bg-white max-w-4xl border-2 mb-4">
+  <div
+    class="block p-6 rounded-lg shadow-lg bg-white max-w-4xl border-2 mb-4 text-gray-600 text-base text-lg tracking-wide leading-8 text-justify px-12 py-16">
 
-    <h5 class="text-gray-900 text-2xl leading-tight font-medium mb-2 text-center">Book Description</h5>
-    <p class="text-gray-700 text-base mb-4 text-justify">
-      Some quick example text to build on the card title and make up the bulk of the card's
-      content.
-
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis adipisci consectetur odit a modi
-      nisi odio totam ipsam, aspernatur perspiciatis laborum in voluptates!
+    <h5 class="text-gray-900 text-3xl leading-tight font-medium mb-2 text-center -mt-4 mb-8 underline">Book Description
+    </h5>
+    <p class="text-green">
+      {{book.description|safe}}
     </p>
   </div>
 </div>
 
-<div class="flex justify-center">
-  <div class="block p-6 rounded-lg shadow-lg bg-white max-w-4xl border-2 mb-4">
 
-    <h5 class="text-gray-900 text-2xl leading-tight font-medium mb-2 text-center">Book Details</h5>
-    <p class="text-gray-700 text-base mb-4 text-justify">
-      Some quick example text to build on the card title and make up the bulk of the card's
-      content.
+<div class="flex justify-center my-8">
+  <div class="block py-6 rounded-lg shadow-lg bg-white w-3/5 border-2">
+    <!--book comment section -->
+    <div class="block p-6 rounded-lg  bg-white max-w-4xl">
+      <h5 class="text-gray-900 text-3xl leading-tight font-medium mb-2 text-center mb-8 underline py-8">Book Details</h5>
+    <table
+      class="w-4/5 mx-auto  overflow-hidden  mt-5 mb-12 pl-20 text-gray-600 text-base text-xl tracking-wide leading-8 text-justify px-6  my-4">
 
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis adipisci consectetur odit a modi
-      nisi odio totam ipsam, aspernatur perspiciatis laborum in voluptates!
-    </p>
+      <tbody class=" flex-1 sm:flex-none text-medium text-lg text-gray-600 shadow-lg">
+        <tr class="flex flex-col flex-no wrap sm:table-row  sm:mb-0 border-b-2">
+          <td class="border-grey-200 hover:bg-gray-100 ">Number of pages</td>
+          <td class="border-grey-200 hover:bg-gray-100">450</td>
+        </tr>
+        <tr class="flex flex-col flex-no wrap sm:table-row  sm:mb-0 border-b-2">
+          <td class="border-grey-200 hover:bg-gray-100 pt-2">Dimension</td>
+          <td class="border-grey-200 hover:bg-gray-100 pt-2"> 5"x8" </td>
+        </tr>
+        <tr class="flex flex-col flex-no wrap sm:table-row  sm:mb-0 border-b-2">
+          <td class="border-grey-200 hover:bg-gray-100 pt-2">Binding</td>
+          <td class="border-grey-200 hover:bg-gray-100 pt-2"> Paperback (Perfect Binding)</td>
+        </tr>
+        <tr class="flex flex-col flex-no wrap sm:table-row  sm:mb-0 border-b-2">
+          <td class="border-grey-200 hover:bg-gray-100 pt-2">Interior Pages</td>
+          <td class="border-grey-200 hover:bg-gray-100 pt-2">Black & White</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+</div>
 </div>
 
 <div class="flex justify-center">
@@ -135,7 +126,7 @@
     <div class="block p-6 rounded-lg  bg-white max-w-4xl">
       <!--comment count -->
       {% with comments.count as total_comments %}
-      <h5 class="text-gray-900 text-2xl leading-tight font-medium mb-2 text-center">Book Reviews</h5>
+      <h5 class="text-gray-900 text-3xl leading-tight font-medium mb-2 text-center mb-8 underline">Book Reviews</h5>
       <h2 class="my-8 text-xl flex items-center space-x-2 leading-tight font-medium mb-2 text-center">
         {{ total_comments }} Review{{ total_comments|pluralize }}
 
@@ -158,7 +149,8 @@
               </div>
             </div>
             <p class="px-4 py-2 text-sm font-medium text-gray-600 text-justify">{{comment.content}}</p>
-            <p class="px-4 py-2 text-sm font-medium text-gray-600"><span class='pr-4'>rating</span> {{comment.rating}}</p>
+            <p class="px-4 py-2 text-sm font-medium text-gray-600"><span class='pr-4'>rating</span> {{comment.rating}}
+            </p>
           </a>
         </div>
         <div class="mb-4 flex justify-start items-center text-sm w-full">
@@ -168,13 +160,13 @@
             </a>
             <small class="self-center">.</small>
             <a href="#" class="hover:underline">
-              <small>Reply</small>
+              <small>Upvote</small>
             </a>
 
             {% if request.user == comment.author %}
             <small class="self-center">.</small>
             <a href="#" class="hover:underline text-red-500">
-              <small>Delete-comment</small>
+              <small>Delete-review</small>
             </a>
             {% endif %}
           </div>

@@ -38,8 +38,8 @@ book-list-page
     <a href="/book/{{ book.id }}">
     <div class="max-h-120 overflow-hidden px-4">
       <img class=" w-72 h-72 rounded-lg"
-        src="https://images.squarespace-cdn.com/content/v1/58dd442dbebafb88160c6929/1524859470168-GEDZWSZVFS2VN76NFZY0/ke17ZwdGBToddI8pDm48kPvdHwxe8vxmYnjZvCzAU61Zw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpwxsJYjeBOStWfhZBaQGTlDOVYbSZjX976lCUHHLPdHUlrmON35exl807wLzw9VMGw/visit06.jpg?format=800w"
-        alt="" />
+        src="{{book.image.url}}"
+        alt="book-img" />
     </div>
     {% comment %} <div class="p-7 my-auto pb-12 ">
       <h1 class="text-2xl font-semibold text-gray-700">{{ item.book.title }}</h1>
@@ -51,13 +51,13 @@ book-list-page
 
     <div class=" mx-2  p-4 md:p-4">
       
-        <h1 class=" m-1 text-2xl font-bold text-gray-800 dark:text-white">{{ book.title }}</h1>
+        <h1 class=" m-1 text-2xl font-bold text-gray-800 dark:text-white hover:underline">{{ book.title }}</h1>
       
       
-      <h2 class=" m-1">Publisher:<span class="pl-4">{{ book.publisher }}</h2>
+      <h2 class=" m-1 hover:underline">Publisher:<span class="pl-4">{{ book.publisher }}</h2>
 
-      <div class="flex items-center">
-        <div class="flex inline-flex -mx-px">
+      <div class="flex items-center ">
+        <div class="flex inline-flex mr-16 ">
           <svg class="w-4 h-4 mx-px fill-current text-green-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
             <path
               d="M6.43 12l-2.36 1.64a1 1 0 0 1-1.53-1.11l.83-2.75a1 1 0 0 0-.35-1.09L.73 6.96a1 1 0 0 1 .59-1.8l2.87-.06a1 1 0 0 0 .92-.67l.95-2.71a1 1 0 0 1 1.88 0l.95 2.71c.13.4.5.66.92.67l2.87.06a1 1 0 0 1 .59 1.8l-2.3 1.73a1 1 0 0 0-.34 1.09l.83 2.75a1 1 0 0 1-1.53 1.1L7.57 12a1 1 0 0 0-1.14 0z" />
@@ -79,7 +79,7 @@ book-list-page
               d="M6.43 12l-2.36 1.64a1 1 0 0 1-1.53-1.11l.83-2.75a1 1 0 0 0-.35-1.09L.73 6.96a1 1 0 0 1 .59-1.8l2.87-.06a1 1 0 0 0 .92-.67l.95-2.71a1 1 0 0 1 1.88 0l.95 2.71c.13.4.5.66.92.67l2.87.06a1 1 0 0 1 .59 1.8l-2.3 1.73a1 1 0 0 0-.34 1.09l.83 2.75a1 1 0 0 1-1.53 1.1L7.57 12a1 1 0 0 0-1.14 0z" />
           </svg>
         </div>
-        <h1 class=" m-1 py-1 text-2xl font-bold text-gray-800 dark:text-white"><span class="pl-32">₹264</h1>
+        <h1 class=" m-1 py-1 text-2xl font-bold text-gray-800 dark:text-white"><span class="pl-30">₹ <span class-pr-2> {{book.price}} </span></h1>
         {% comment %} <button type='submit'
           class="ml-24 px-8 py-1 text-xs font-bold text-white uppercase transition-colors duration-200 transform bg-purple-600 rounded dark:bg-gray-700 hover:bg-purple-700 dark:hover:bg-purple-600 focus:outline-none focus:bg-purple-700 dark:focus:bg-purple-600 "
           onclick="location.href='/book/{{ item.book.id }}'">Read More</button> {% endcomment %}

@@ -45,7 +45,7 @@
   <div class="relative rounded-lg flex flex-col md:flex-row items-center md:shadow-lg md:h-80 mx-2 border-2 hover:shadow-xl">
       
       <div class="z-0 order-1 md:order-2 relative w-full md:w-2/5 h-80 md:h-full overflow-hidden rounded-lg md:rounded-none md:rounded-r-lg">
-          <div class="absolute inset-0 w-full h-full object-fill object-center bg-blue-400 bg-opacity-30 bg-cover bg-bottom" style="background-image: url( {{post.image.url}} ); background-blend-mode: multiply;"></div>
+          <div class="absolute inset-0 w-full h-full object-cover object-center bg-blue-400 bg-opacity-30 bg-contain bg-center bg-no-repeat" style="background-image: url( {{post.image.url}} ); background-blend-mode: multiply;"></div>
           <div class="md:hidden absolute inset-0 h-full p-6 pb-6 flex flex-col-reverse justify-start items-start bg-gradient-to-b from-transparent via-transparent to-gray-900">
 
               <h3 class="w-full font-bold text-2xl text-white leading-tight mb-2">{{post.title|truncatewords:10}}</h3>
