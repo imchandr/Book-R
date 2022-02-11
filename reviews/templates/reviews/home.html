@@ -15,15 +15,17 @@
 </head>
 
 <body>
-
+<!-- nav-bar-->
     <div>
         <nav class="bg-gradient-to-tr from-gray-50 to-gray-100 shadow-sm py-4 ">
             <div class="w-full mx-auto px-8">
                 <div class="flex items-center justify-between h-16">
                     <div class=" flex items-center">
-                        <a class="flex-shrink-0 border-r-4 px-8 py-2" href="/">
+                        <a class="flex-shrink-0 px-16 py-2" href="/">
                             <img class="h-8 w-8" src="{% static 'reviews/books-title.png'%}" alt="Workflow" />
-                            <h1 class='font-extrabold text-transparent text-lg bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 -mx-2 my-1'>Book-R</h1>
+                            <h1 class='font-extrabold text-transparent text-lg bg-clip-text bg-gradient-to-r from-yellow-400 to-green-400 -mx-2 my-1'>Book-R</h1>
+                            <h1 class='font-semibold text-transparent text-xs bg-clip-text bg-gradient-to-l from-yellow-500 to-green-500 -mx-8 -mt-1'>Read Review Repet!</h1>
+                        <!-- nav-bar items-->
                         </a>
                         <div class="hidden md:block">
                             <div class="ml-10 flex items-baseline space-x-4">
@@ -45,7 +47,7 @@
 
                                 {% if request.user.is_authenticated %}
                                 
-                                
+                                <!-- nav-bar user-drop-down-menu-->
                                 <span class="px-80" >
                                     
                                 </span>
@@ -60,7 +62,7 @@
                                         <div class="pr-1 font-medium text-gray-600 text-lg">
                                             <div class="cursor-pointer w-full">Hi, {{user.username}}</div>
                                         </div>
-                                        <div class="w-16 h-16 rounded-full overflow-hidden">
+                                        <div class="w-12 h-12 rounded-full overflow-hidden">
                                             <img src="https://cdn.dribbble.com/users/1041205/screenshots/3636353/media/b9d3272401a456bdfaef25bb2a7accd2.jpg?compress=1&resize=800x600&vertical=top"
                                                 alt="" class="w-full h-full object-cover">
                                         </div>
@@ -136,24 +138,14 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="my-auto">
-                                    <a class='cursor' href='book/1/order/'>
-                                    <img src="https://img.icons8.com/external-icongeek26-outline-icongeek26/64/000000/external-cart-ecommerce-icongeek26-outline-icongeek26.png"/>
+                                <!-- nav-bar-cart-icon -->
+                                <div class=" px-2 py-2 my-auto w-12 h-12 shadow-lg rounded-full hover:bg-gray-200 ">
+                                    <a class='cursor' href='{%url 'review:bookorder'%}'>
+                                    <img src="https://cdn-icons.flaticon.com/png/512/2832/premium/2832495.png?token=exp=1644555174~hmac=7e70be5039baa2bc2ab1cca092440a16"/>
                                     </a>
                                 </div>
                             </div>
                             
-                            
-                            
-                            {% comment %} <h1
-                                class="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium">
-                                <a href="{% url 'user_account:user_profile'%}">
-                                    <span class="pr-2">Hi,</span>{{request.user.username}}</h1>
-                            </a>
-                            <a class="text-gray-300  hover:text-gray-800 dark:hover:text-white px-2 py-2 rounded-md text-md font-medium"
-                                href="{% url 'logout' %}">
-                                Logout
-                            </a> {% endcomment %}
                             {% else %}
 
                             <span class="px-64" >
@@ -167,24 +159,11 @@
                                     Log-in
                                 </a>
 
-                                <a class="px-4 py-2 text-base font-semibold text-gray-400 bg-gray-100 rounded-lg shadow-md hover:bg-gray-300 hover:text-gray-600" href="{% url 'user_account:login'%}">
-                                    Cart
-                                </a>
-
-                                
-
-                           
-
-
-                            {% comment %} <a
-                                class="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium"
-                                href="{% url 'user_account:login' %}">
-                                Login
-                            </a>
-                            <a class="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium"
-                                href="{% url 'user_account:register' %}">
-                                Register
-                            </a> {% endcomment %}
+                                <div class=" px-2 py-2 my-auto w-10 h-10 shadow-lg rounded-md hover:bg-gray-200 ">
+                                    <a class='cursor' href='{%url 'review:bookorder'%}'>
+                                    <img class='' src="https://cdn-icons.flaticon.com/png/512/2832/premium/2832495.png?token=exp=1644555174~hmac=7e70be5039baa2bc2ab1cca092440a16"/>
+                                    </a>
+                                </div>
 
                             {% endif %}
 
@@ -199,10 +178,11 @@
 
 
 
-
+    <!-- content block-->
     {% block content %}
     {% endblock content %}
 
+    <!--footer-->
     <footer class="mt-12 bg-gray-300 text-center">
         <div class="px-6 pt-6">
             <form action="">
@@ -242,8 +222,9 @@
         </div>
 
         <div class="text-center text-gray-700 p-4">
-            © 2022 Copyright:
-            <a class="text-gray-800" href="/">Book-R The Book Universe!</a>
+            © 2022 Copyright: Book-R
+            <br>
+            <a class="text-center text-gray-700 p-4" href="/"> Read Review Repet!</a>
         </div>
     </footer>
 

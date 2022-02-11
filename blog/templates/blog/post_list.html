@@ -6,27 +6,9 @@
 {% block content %}
 
 <!-- search component -->
-<script defer src="https://unpkg.com/alpinejs@3.2.3/dist/cdn.min.js"></script>
 
-<div class="my-8 px-4 py-2 border-2 border-gray-300 flex items-center max-w-md mx-auto bg-white rounded-full "x-data="{ search: '' }">
-    <div class="w-full">
-        <input type="search" class="w-full px-4 py-1 text-gray-900 rounded-full focus:outline-none"
-            placeholder="search" x-model="search">
-    </div>
-    <div>
-        <button type="submit" class="flex items-center justify-center w-8 h-8 text-gray-100 rounded-full"
-            :class="(search.length > 0) ? 'bg-green-500' : 'bg-gray-500 cursor-not-allowed'"
-            :disabled="search.length == 0">
-            <svg class="w-5 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-            </svg>
-        </button>
-    </div>
-</div>
 <!-- end search component -->
-<div class="mx-40">
+<div class="mx-40 my-12">
   
     <a href="{% url 'blog:create_post'%}" class="bg-white text-gray-800 font-bold rounded hover:border-gray-300 hover:bg-gray-200 hover:text-gray-900 shadow-md py-2 px-6 inline-flex items-center">
       <span class="mr-2">Create New Post</span>

@@ -99,6 +99,22 @@
 
       <tbody class=" flex-1 sm:flex-none text-medium text-lg text-gray-600 shadow-lg">
         <tr class="flex flex-col flex-no wrap sm:table-row  sm:mb-0 border-b-2">
+          <td class="border-grey-200 hover:bg-gray-100 ">ISBN</td>
+          <td class="border-grey-200 hover:bg-gray-100">{{book.isbn}}</td>
+        </tr>
+        <tr class="flex flex-col flex-no wrap sm:table-row  sm:mb-0 border-b-2">
+          <td class="border-grey-200 hover:bg-gray-100 ">Publication Date</td>
+          <td class="border-grey-200 hover:bg-gray-100">{{book.publication_date}}</td>
+        </tr>
+        <tr class="flex flex-col flex-no wrap sm:table-row  sm:mb-0 border-b-2">
+          <td class="border-grey-200 hover:bg-gray-100 ">Publisher</td>
+          <td class="border-grey-200 hover:bg-gray-100">{{book.publisher}}</td>
+        </tr>
+        <tr class="flex flex-col flex-no wrap sm:table-row  sm:mb-0 border-b-2">
+          <td class="border-grey-200 hover:bg-gray-100 ">Available Formate</td>
+          <td class="border-grey-200 hover:bg-gray-100">{{book.type}}</td>
+        </tr>
+        <tr class="flex flex-col flex-no wrap sm:table-row  sm:mb-0 border-b-2">
           <td class="border-grey-200 hover:bg-gray-100 ">Number of pages</td>
           <td class="border-grey-200 hover:bg-gray-100">450</td>
         </tr>
@@ -113,6 +129,18 @@
         <tr class="flex flex-col flex-no wrap sm:table-row  sm:mb-0 border-b-2">
           <td class="border-grey-200 hover:bg-gray-100 pt-2">Interior Pages</td>
           <td class="border-grey-200 hover:bg-gray-100 pt-2">Black & White</td>
+        </tr>
+        <tr class="flex flex-col flex-no wrap sm:table-row  sm:mb-0 border-b-2">
+          <td class="border-grey-200 hover:bg-gray-100 pt-2">Price</td>
+          <td class="border-grey-200 hover:bg-gray-100 pt-2">₹ <span class='pr-2'></span> {{book.price}}</td>
+        </tr>
+        <tr class="flex flex-col flex-no wrap sm:table-row  sm:mb-0 border-b-2">
+          <td class="border-grey-200 hover:bg-gray-100 ">Availability</td>
+          {% if book.stock  %}
+          <td class="border-grey-200 hover:bg-gray-100 text-semibold text-green-500">In Stock</td>
+          {% else %}
+          <td class="border-grey-200 hover:bg-gray-100 text-semibold text-red-500">Out of Stock</td>
+          {% endif %}
         </tr>
       </tbody>
     </table>
@@ -197,7 +225,8 @@
     </div>
 
     {% else%}
-    <h2 class="my-4 flex items-center space-x-2 text-red-600">Please sign-in to add comment</h2>
+    
+    <h2 class="my-4 px-auto space-x-2 text-xl text-semibold text-red-600">Please <a href="{% url 'user_account:login' %}" class='hover:text-blue-600 hover:underline'>sign-in</a> to add review</h2>
     {% endif %}
 
   </div>

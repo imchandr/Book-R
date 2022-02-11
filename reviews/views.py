@@ -8,9 +8,11 @@ from .utils import average_rating
 
 
 def home_page_view(request):
-    return render(request, 'reviews/test.html')
+    return render(request, 'reviews/bookr_landing_page.html')
 
-def bookorder_view(request, id):
+def bookorder(request,):
+    return render(request, 'reviews/comingsoon.html')
+def bookorder_view(request,id):
     return render(request, 'reviews/comingsoon.html')
 
 
