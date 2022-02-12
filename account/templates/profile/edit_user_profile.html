@@ -1,0 +1,144 @@
+{% extends 'reviews/home.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}User-profile{% endblock title %}
+{% block content %}
+
+<!--edit user profile form-->
+{% if messages %}
+{% for message in messages %}
+<div class="container" id="alertbox">
+    <div class="container w-1/4 mt-20 mx-auto px-auto bg-green-500 rounder-md flex items-center text-white text-sm font-bold px-4 py-3 relative"
+        role="alert">
+        <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+            <path
+                d="M12.432 0c1.34 0 2.01.912 2.01 1.957 0 1.305-1.164 2.512-2.679 2.512-1.269 0-2.009-.75-1.974-1.99C9.789 1.436 10.67 0 12.432 0zM8.309 20c-1.058 0-1.833-.652-1.093-3.524l1.214-5.092c.211-.814.246-1.141 0-1.141-.317 0-1.689.562-2.502 1.117l-.528-.88c2.572-2.186 5.531-3.467 6.801-3.467 1.057 0 1.233 1.273.705 3.23l-1.391 5.352c-.246.945-.141 1.271.106 1.271.317 0 1.357-.392 2.379-1.207l.6.814C12.098 19.02 9.365 20 8.309 20z" />
+        </svg>
+        <p>{{message}}</p>
+
+        <span class="absolute top-0 bottom-0 right-0 px-4 py-3 closealertbutton">
+            <svg class="fill-current h-6 w-6 text-white" role="button" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20">
+                <title>Close</title>
+                <path
+                    d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
+            </svg>
+        </span>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"
+	integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous">
+	</script>
+
+<script>
+$(".closealertbutton").click(function (e) {
+    // $('.alertbox')[0].hide()
+    // e.preventDefault();
+    pid = $(this).parent().parent().hide(500)
+    console.log(pid)
+    // $(".alertbox", this).hide()
+})
+</script>
+{% endfor %}
+{% endif %}
+<section class="w-full bg-white">
+
+    <div class="mx-auto my-20 max-w-7xl">
+        <div class="flex flex-col lg:flex-row">
+            <div class=" relative w-full bg-cover lg:w-6/12 xl:w-6/12 ">
+                <div
+                    class="relative flex flex-col items-center justify-center w-full h-full px-10 my-20 lg:px-16 lg:my-0">
+                    <img src="{% static 'profile/edit_profile.webp' %}" alt='edit-profile-icon' class="">
+
+                </div>
+            </div>
+
+            <!-- proile update form-->
+
+            <div class="max-w-md w-full space-y-8 p-10 border-2 rounded-xl shadow-lg z-10">
+                <div class="grid  gap-8 grid-cols-1">
+                    <div class="flex flex-col ">
+                        <div class="flex flex-col sm:flex-row items-center">
+                            <h2 class="font-semibold text-2xl mx-auto">Update Profile</h2>
+                            <div class="w-full sm:w-auto sm:ml-auto mt-3 sm:mt-0"></div>
+                        </div>
+
+                        <form action="" method='post' , enctype='multipart/form-data'>
+                            {% csrf_token %}
+
+                            {% if form.errors %}
+                            {% if form.non_field_errors %}
+                            <div class="bg-red-100 rounded-lg py-5 px-6 mb-3 text-base text-red-700 inline-flex items-center w-3/5"
+                                role="alert">
+
+                                {{form.non_field_errors|striptags}}
+                            </div>
+                            {% endif %}
+                            {% for field in form %}
+                            {% if field.errors %}
+                            <div class="bg-red-100 rounded-lg py-5 px-6 mb-3 text-base text-red-700 inline-flex items-center w-3/5"
+                                role="alert">
+
+                                {{field.errors|striptags}}
+                            </div>
+                            {% endif %}{% endfor %}{% endif %}
+                            <div class="mt-5">
+                                <div class="form">
+                                    <div class="md:space-y-2 mb-3 text-md">
+
+                                        <div class="flex items-justify py-6">
+                                            <div class="w-12 h-12  flex-none rounded-xl border overflow-hidden">
+                                                <img class="w-16 h-16  object-cover border-2"
+                                                    src="{{user.profile.avatar.url}}">
+                                            </div>
+                                        </div>
+                                        <label class="cursor-pointer">
+                                            <div class='flex-none text-xs text-gray-400 ml-1 my-2'>
+                                                {{profile_form.avatar}}</div>
+                                            <span
+                                                class="focus:outline-none text-white text-sm py-2 px-4  rounded-full bg-green-400 hover:bg-green-500 hover:shadow-lg ">Browse</span>
+                                        </label>
+
+                                    </div>
+                                    <div class="mt-12 md:flex flex-row md:space-x-4 w-full text-xs">
+                                        <div class="mb-3 space-y-2 w-full text-xs">
+                                            <label class="font-medium text-gray-400 py-2">First Name <abbr
+                                                    title="required">*</abbr></label>
+                                            {{user_form.first_name}}
+                                            <p class="text-red text-xs hidden">Please fill out this field.</p>
+                                        </div>
+                                        <div class="mb-3 space-y-2 w-full text-xs">
+                                            <label class="font-medium text-gray-400 py-2">Last Name <abbr
+                                                    title="required">*</abbr></label>
+                                            {{user_form.last_name}}
+                                            <p class="text-red text-xs hidden">Please fill out this field.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex-auto w-full mb-1 text-justify text-xs space-y-2">
+                                        <label class="font-medium text-gray-400 py-2">Address</label>
+                                        {{profile_form.address}}
+
+                                    </div>
+                                    <p class="text-xs text-red-500 text-right my-3">Required fields are marked with an
+                                        asterisk <abbr title="Required field">*</abbr></p>
+                                    <div class="mt-5 text-right md:space-x-3 md:block flex flex-col-reverse">
+                                        <button
+                                            class="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100">
+                                            Cancel </button>
+                                        <button
+                                            class="mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+</section>
+
+
+{% endblock content %}

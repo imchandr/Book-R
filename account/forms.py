@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import AuthenticationForm, PasswordResetForm, PasswordChangeForm, SetPasswordForm
 
+from account.models import Profile
 
 class RegistrationForm(forms.ModelForm):
 
@@ -119,11 +120,51 @@ class ChangePasswordForm(PasswordChangeForm):
         'class': 'block w-4/5 px-4 py-2 mt-2 text-md placeholder-gray-400 focus:outline-none border border-yellow-500 focus:ring-1 focus:ring-yellow-600 focus:ring-opacity-50 rounded-md'
     }))
 
-    new_password = forms.CharField(max_length=255, required=True, widget=forms.PasswordInput(attrs={
+    new_password1 = forms.CharField(max_length=255, required=True, widget=forms.PasswordInput(attrs={
         'placeholder': 'New Password',
         'class': 'block w-4/5 px-4 py-2 mt-2 text-md placeholder-gray-400 focus:outline-none border border-yellow-500 focus:ring-1 focus:ring-yellow-600 focus:ring-opacity-50 rounded-md'
     }))
-    confirm_password = forms.CharField(max_length=255, required=True, widget=forms.PasswordInput(attrs={
+    new_password2 = forms.CharField(max_length=255, required=True, widget=forms.PasswordInput(attrs={
         'placeholder': 'Confirm Password',
         'class': 'block w-4/5 px-4 py-2 mt-2 text-md placeholder-gray-400 focus:outline-none border border-yellow-500 focus:ring-1 focus:ring-yellow-600 focus:ring-opacity-50 rounded-md'
     }))
+
+class UpdateUserForm(forms.ModelForm):
+
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name']
+    
+    def __init__(self, *args, **kwargs):
+        '''another way to style form elements'''
+
+        super().__init__(*args, **kwargs)
+        self.fields['first_name'].widget.attrs.update({
+            'placeHolder': 'First Name',
+            'class': 'appearance-none block w-full bg-grey-lighter text-grey-darker  border border-grey-lighter rounded-lg h-10 px-4'
+        })
+        self.fields['last_name'].widget.attrs.update({
+            'placeHolder': 'Last Name',
+            'class': 'appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4'
+        })
+    
+class UpdateProfileForm(forms.ModelForm):
+    
+    class Meta:
+        model = Profile
+        fields = ['avatar', 'address']
+        
+    
+        
+    def __init__(self, *args, **kwargs):
+        '''another way to style form elements'''
+        super().__init__(*args, **kwargs)
+        self.fields['avatar'].widget.attrs.update({
+            'class': 'text-xs text hidden'
+        })
+        self.fields['address'].widget.attrs.update({
+            
+            'class': 'w-full min-h-[100px] max-h-[300px] h-28 appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg  py-4 px-4'
+        })   
+ 
+       

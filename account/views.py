@@ -2,9 +2,10 @@ from base64 import urlsafe_b64decode
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.views import generic
+from django.contrib import messages
 
 from django.urls import reverse_lazy
-from account.forms import RegistrationForm
+from account.forms import RegistrationForm, UpdateProfileForm, UpdateUserForm
 from account.token import account_activation_token
 from django.contrib.auth import login
 from django.contrib.auth.models import User
@@ -65,10 +66,27 @@ def account_activate(request, uidb64, token):
         return render(request, 'registration/activation_invalid.html')
 
 def user_profile(request):
+    return render(request, 'profile/user_profile.html')
+
+def edit_user_profile(request):
+    if request.method == 'POST':
+        user_form = UpdateUserForm(request.POST, instance=request.user)
+        profile_form = UpdateProfileForm(request.POST, request.FILES, instance=request.user.profile)
+
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request, 'Your profile is updated successfully')
+            return redirect(to='user_account:edit_user_profile')
+    else:
+        user_form = UpdateUserForm(instance=request.user)
+        profile_form = UpdateProfileForm(instance=request.user.profile)
     context = {
-        
+        'user_form':user_form,
+        'profile_form':profile_form
     }
-    return render(request, 'profile/user_profile.html', context)
+        
+    return render(request, 'profile/edit_user_profile.html', context)
 
 
     

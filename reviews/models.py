@@ -1,4 +1,5 @@
 from ckeditor.fields import RichTextField
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -84,7 +85,7 @@ class Review(models.Model):
     author = models.ForeignKey(
         User, related_name='review_author', blank=True, null=True, on_delete=models.CASCADE)
     content = models.TextField()
-    rating = models.IntegerField(default=5)
+    rating = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(100)],default=5)
     date_created = models.DateTimeField(
         auto_now_add=True, blank=True, null=True)
     date_updated = models.DateTimeField(auto_now=True, blank=True, null=True)
@@ -95,3 +96,5 @@ class Review(models.Model):
 
     def __str__(self):
         return self.content
+    
+

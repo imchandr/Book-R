@@ -34,18 +34,23 @@
         
         <div class="bg-gray-50 p-4 rounded-lg dark:bg-gray-800 hidden" id="profile" role="tabpanel" aria-labelledby="profile-tab">
             <div class="flex flex-col justify-center items-center relative h-full  bg-opacity-50 text-gray-600">
-                <img src="https://image.freepik.com/free-vector/female-user-profile-avatar-offended-woman-character-screen-saver-with-emotions_505620-638.jpg?w=740" class="h-32 w-32 object-cover rounded-full">
+                <img src="{{user.profile.avatar.url}}" class="h-32 w-32 object-fill rounded-full">
                 <h1 class="py-2 text-2xl font-semibold">{{user.first_name}}<span class='pl-2'>{{user.last_name}}</span></h1>
+                <h4 class="text-sm font-semibold py-4">email {{user.email}}</h4>
                 <h4 class="text-sm font-semibold py-4">User Since {{user.date_joined}}</h4>
             </div>
-            <p class="text-gray-500 dark:text-gray-400 text-sm">This is some placeholder content the <strong class="font-medium text-gray-800 dark:text-white">Profile tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
+            
             <div class="mt-12 mb-36 mx-16 flex flex-wrap">
+                <a href="{% url 'user_account:edit_user_profile' %}">
                 <button class="mx-8 bg-gray-200 bg-transparent hover:bg-grey-300 text-gray-500 font-semibold hover:text-gray-600 py-2 px-4 border border-grey hover:border-transparent rounded">
-                    Edit profile
+                   Edit profile 
                   </button>
+                </a>
+                <a href="{% url 'user_account:change_password' %}">
                 <button class="mx-8 bg-gray-200 bg-transparent hover:bg-grey-300 text-gray-500 font-semibold hover:text-gray-600 py-2 px-4 border border-grey hover:border-transparent rounded">
-                    Change password
+                   Change password
                   </button>
+                </a> 
             </div>
         </div>
         <div class="bg-gray-50 p-4 rounded-lg dark:bg-gray-800" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
@@ -107,7 +112,7 @@
                     </tr>
                 </tbody>
             </table>
-            <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm">This is some placeholder content the <strong class="font-medium text-gray-800 dark:text-white">Orders tab's associated Profile</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
+            
         </div>
         <div class="bg-gray-50 p-4 rounded-lg dark:bg-gray-800 hidden" id="settings" role="tabpanel" aria-labelledby="settings-tab">
             <h1 class='text-gray-600 text-bold text-xl my-4'>Contact Detail's</h1>
@@ -132,7 +137,7 @@
 
         
         <div class="bg-gray-50 p-4 rounded-lg dark:bg-gray-800 hidden" id="contacts" role="tabpanel" aria-labelledby="contacts-tab">
-            <p class="text-gray-500 dark:text-gray-400 text-sm">This is some placeholder content the <strong class="font-medium text-gray-800 dark:text-white">Settings tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
+            
 
             
                 <button class=" mt-4 bg-red-500 bg-transparent hover:bg-grey text-red-200 font-semibold hover:text-white py-2 px-4 border border-grey hover:border-transparent rounded mr-2">

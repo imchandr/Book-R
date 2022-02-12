@@ -113,14 +113,14 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# email services
+# default email services
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # login logout redirecr urls
@@ -134,3 +134,13 @@ LOGOUT_URL = 'logout'
 # media files storage
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# mail-gun transectional email setup
+
+# DEFAULT_FROM_EMAIL = 'Book-R Online Store <support@bookr.com>'
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp-relay.sendinblue.com'
+# EMAIL_HOST_USER = 'sarah_prkr@outlook.com'
+# EMAIL_HOST_PASSWORD = 'xsmtpsib-bc60b3a4bd70707dc808bf673606b331e07e2ad280e00146bbaf99c972e37248-rNORJtzMBUGf3L2a'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True

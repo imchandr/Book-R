@@ -1,6 +1,7 @@
 
 {% extends 'reviews/home.html' %}
 {% load crispy_forms_tags %}
+{% load static %}
 
 {% block content %}
 
@@ -13,8 +14,8 @@
                 class=" relative w-full bg-cover lg:w-6/12 xl:w-6/12 ">
                 <div
                     class="relative flex flex-col items-center justify-center w-full h-full px-10 my-20 lg:px-16 lg:my-0">
-                    <img src="https://media.istockphoto.com/vectors/little-girl-and-a-bear-reading-books-vector-id843790482?k=20&m=843790482&s=612x612&w=0&h=Mc2Dz7fKc34fb9pKJLhdJigFt16xpDqum6T43bHgmPQ="
-                        alt="book-reader-register-page" class="">
+                    <img src="{% static 'account/login_icon.jpg' %}"
+                        alt="login-icon" class="">
                     
                 </div>
             </div>
@@ -32,7 +33,7 @@
                             {% csrf_token %}
 
                             {% if form.errors %}
-                                <div class="bg-red-600 text-red-200 px-4 py-2 rounded-lg">
+                                <div class="w-4/5 bg-red-600 text-red-200 px-4 py-2 rounded-lg">
                                     Error: Username or Password not correct!
                                 </div>
                             {% endif %}

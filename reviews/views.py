@@ -1,7 +1,8 @@
 from ast import And, Or
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
-
+from django.urls import reverse_lazy
+from django.contrib import messages
 from reviews.forms import ReviewForm
 from .models import Book, Contributor, Review, BookContributor
 from .utils import average_rating
@@ -12,6 +13,7 @@ def home_page_view(request):
 
 def bookorder(request,):
     return render(request, 'reviews/comingsoon.html')
+
 def bookorder_view(request,id):
     return render(request, 'reviews/comingsoon.html')
 
@@ -50,6 +52,7 @@ def bookdetails_view(request, id):
             new_review.author = request.user
             new_review.book_id = book.id
             new_review.save()
+            messages.success(request, 'Review Created')
             
             
     else:
@@ -69,20 +72,16 @@ def bookdetails_view(request, id):
 
     return render(request, "reviews/book_details.html", context)
 
-# def add_review_view(request, id):
-#     form = AddReviewForm()
-#     context ={
-#         "form": form,
-#     }
-#     if request.method == "POST":
-#         form = AddReviewForm(request.POST)
-#         if form.is_valid():
-            
-#             content = form.cleaned_data["review_content"]
-#             rating = form.cleaned_data["rating"]
-
-#             print("\n",content,rating)
+def delete_review(request, id):
+    review = Review.objects.get(id=id)
+    
+    if review.author == request.user:
+        review.delete()
+        messages.warning(request, 'Review Deleted')
+        return HttpResponse("review deleted")
+        
     
 
-#     return render(request, "reviews/add_review.html", context)
+    
+    
 
