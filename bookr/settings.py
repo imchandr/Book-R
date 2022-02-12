@@ -2,6 +2,9 @@
 import os
 from pathlib import Path
 
+from dotenv import load_dotenv
+load_dotenv()  # loads the configs from .env
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -10,12 +13,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-z#&#c=8tz=mi1ko6llt2+tlxfn(k-^cez&9fhd1k8=__mck#pz'
+SECRET_KEY = str(os.getenv('SECRET_KEY'))
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [(os.getenv('ALLOWED_HOSTS'))]
 
 
 # Application definition
@@ -39,6 +43,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -112,8 +117,10 @@ USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -137,10 +144,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # mail-gun transectional email setup
 
-# DEFAULT_FROM_EMAIL = 'Book-R Online Store <support@bookr.com>'
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'smtp-relay.sendinblue.com'
-# EMAIL_HOST_USER = 'sarah_prkr@outlook.com'
-# EMAIL_HOST_PASSWORD = 'xsmtpsib-bc60b3a4bd70707dc808bf673606b331e07e2ad280e00146bbaf99c972e37248-rNORJtzMBUGf3L2a'
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = str(os.getenv('DEFAULT_FROM_EMAIL'))
+EMAIL_BACKEND = str(os.getenv('EMAIL_BACKEND'))
+EMAIL_HOST = str(os.getenv('EMAIL_HOST'))
+EMAIL_HOST_USER = str(os.getenv('EMAIL_HOST_USER'))
+EMAIL_HOST_PASSWORD = str(os.getenv('EMAIL_HOST_PASSWORD'))
+EMAIL_PORT = str(os.getenv('EMAIL_PORT'))
+EMAIL_USE_TLS = str(os.getenv('EMAIL_USE_TLS'))
