@@ -64,8 +64,8 @@ class Command(BaseCommand):
                 print('Created Publisher "{}"'.format(b.title))
 
         for data_dict in models.get('Contributor', []):
-            c, created = Contributor.objects.get_or_create(first_names=data_dict['contributor_first_names'],
-                                                           last_names=data_dict['contributor_last_names'],
+            c, created = Contributor.objects.get_or_create(first_name=data_dict['contributor_first_names'],
+                                                           last_name=data_dict['contributor_last_names'],
                                                            email=data_dict['contributor_email'])
 
             if created:
