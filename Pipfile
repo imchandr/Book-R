@@ -10,6 +10,7 @@ django-ckeditor = "*"
 Pillow = "*"
 whitenoise = "*"
 gunicorn = "*"
+django-on-heroku = "*"
 
 [dev-packages]
 

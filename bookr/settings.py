@@ -153,3 +153,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # EMAIL_PORT = str(os.getenv('EMAIL_PORT'))
 # EMAIL_USE_TLS = str(os.getenv('EMAIL_USE_TLS'))
 
+# heroku related settings
+import django_on_heroku
+django_on_heroku.settings(locals())
