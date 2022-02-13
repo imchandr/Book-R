@@ -1,7 +1,7 @@
 
 import os
 from pathlib import Path
-import django_on_heroku
+
 
 # from dotenv import load_dotenv
 # load_dotenv()  # loads the configs from .env
@@ -18,7 +18,7 @@ SECRET_KEY = 'django-insecure-z#&#c=8tz=mi1ko6llt2+tlxfn(k-^cez&9fhd1k8=__mck#pz
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -153,5 +153,3 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # EMAIL_PORT = str(os.getenv('EMAIL_PORT'))
 # EMAIL_USE_TLS = str(os.getenv('EMAIL_USE_TLS'))
 
-# heroku deployment setup
-django_on_heroku.settings(locals())
