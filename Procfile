@@ -1,1 +1,1 @@
-web:gunicorn BOOK-R.bookr.wsgi
+web: gunicorn bookr.wsgi
