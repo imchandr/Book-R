@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.conf.urls import handler404, handler500
 from django.urls import path
 from .views import booklist_view, bookdetails_view, bookorder_view, bookorder, delete_review
 
@@ -11,3 +12,6 @@ urlpatterns = [
     path('delete-review/<int:id>/', delete_review, name='delete_review'),
   
 ]
+
+handler500 = 'blog.views.handler500'
+handler404 = 'blog.views.handler404'

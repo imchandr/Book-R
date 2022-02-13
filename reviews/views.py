@@ -1,5 +1,5 @@
 from ast import And, Or
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import redirect, render, get_object_or_404
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.contrib import messages
@@ -74,13 +74,18 @@ def bookdetails_view(request, id):
 
 def delete_review(request, id):
     review = Review.objects.get(id=id)
-    
+    book_id = review.book_id
     if review.author == request.user:
         review.delete()
         messages.warning(request, 'Review Deleted')
-        return HttpResponse("review deleted")
+        return redirect('/book/')
+
         
-    
+def handler404(request, exception):
+    return render(request, '404.html', status=404)
+
+def handler500(request, *args, **argv):
+    return render(request, '500.html', status=500)   
 
     
     

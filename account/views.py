@@ -88,5 +88,9 @@ def edit_user_profile(request):
         
     return render(request, 'profile/edit_user_profile.html', context)
 
+def handler404(request, exception):
+    return render(request, '404.html', status=404)
 
+def handler500(request, *args, **argv):
+    return render(request, '500.html', status=500)
     

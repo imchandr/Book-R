@@ -1,4 +1,5 @@
 from django.urls import path
+from django.conf.urls import handler404, handler500
 from account.forms import LoginForm, ResetPasswordForm, ResetPasswordConfirmForm, ChangePasswordForm
 from account.views import account_register, account_activate, user_profile,edit_user_profile
 from django.contrib.auth import views as auth_view
@@ -22,3 +23,6 @@ urlpatterns = [
 
 
 ]
+
+handler500 = 'blog.views.handler500'
+handler404 = 'blog.views.handler404'

@@ -1,0 +1,17 @@
+<div class="contaoner:md mx-48 my-4 p-4 ">
+    {% if page.has_previous %}
+        <a href="?page={{ page.previous_page_number }}"
+            class=" m-4 px-4 py-2 text-gray-500 bg-gray-300 rounded-md hover:bg-blue-400 hover:text-white">
+            Previous
+        </a>
+    {% endif %}
+    
+    <span class="px-4 py-2 text-gray-700 bg-gray-200 rounded-md ">Page{{page.number}} of
+        {{page.paginator.num_pages}}</span>
+    {% if page.has_next %}
+        <a href="?page={{page.next_page_number}}"
+            class="px-4 py-2 font-bold text-gray-500 bg-gray-300 rounded-md hover:bg-blue-400 hover:text-white">
+            Next
+        </a>
+    {% endif %}
+</div>

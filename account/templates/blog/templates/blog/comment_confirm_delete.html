@@ -1,10 +1,10 @@
 {% extends 'blog/blog_base.html' %}
-
+{% load crispy_forms_tags %}
 
 {% block content %}
 <div class="w-1/2 mx-auto mt-36">
     <div class="px-12 py-6 container mx-auto bg-gray-100 rounded shadow-lg text-center">
-      <h1 class="font-normal text-xl text-grey-700  my-3 w-full">Are you sure? <br> Delete {{post.title}}
+      <h1 class="font-normal text-xl text-grey-700  my-3 w-full">Are you sure? <br> Delete comment {{comment.body}}
       </h1>
       <div class="w-full text-center">
         <form method='POST'>
@@ -12,7 +12,7 @@
           <div class="max-w-sm mx-auto p-1 pr-0 flex items-center">
             <button type="submit"
               class="appearance-none bg-red-300 text-red-500 text-base font-semibold tracking-wide uppercase p-3 rounded shadow hover:bg-red-500 hover:text-red-200">Yes Delete</button>
-            <a href='{% url 'blog:post_detail' object.slug %}'
+            <a href='{% url 'blog:post_list' %}'
               class="ml-16 appearance-none bg-green-300 text-green-500 text-base font-semibold tracking-wide uppercase p-3 rounded shadow hover:bg-green-500 hover:text-green-200">Cancel</a>
           </div>
         </form>

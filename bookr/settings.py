@@ -2,8 +2,8 @@
 import os
 from pathlib import Path
 
-from dotenv import load_dotenv
-load_dotenv()  # loads the configs from .env
+# from dotenv import load_dotenv
+# load_dotenv()  # loads the configs from .env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -13,13 +13,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = str(os.getenv('SECRET_KEY'))
+SECRET_KEY = 'django-insecure-z#&#c=8tz=mi1ko6llt2+tlxfn(k-^cez&9fhd1k8=__mck#pz'
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -33,7 +33,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
-    'crispy_forms',
+    
     'reviews',
     'blog',
     'ckeditor',
@@ -120,7 +120,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -142,12 +142,12 @@ LOGOUT_URL = 'logout'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# mail-gun transectional email setup
+# transectional email setup
 
-DEFAULT_FROM_EMAIL = str(os.getenv('DEFAULT_FROM_EMAIL'))
-EMAIL_BACKEND = str(os.getenv('EMAIL_BACKEND'))
-EMAIL_HOST = str(os.getenv('EMAIL_HOST'))
-EMAIL_HOST_USER = str(os.getenv('EMAIL_HOST_USER'))
-EMAIL_HOST_PASSWORD = str(os.getenv('EMAIL_HOST_PASSWORD'))
-EMAIL_PORT = str(os.getenv('EMAIL_PORT'))
-EMAIL_USE_TLS = str(os.getenv('EMAIL_USE_TLS'))
+# DEFAULT_FROM_EMAIL = str(os.getenv('DEFAULT_FROM_EMAIL'))
+# EMAIL_BACKEND = str(os.getenv('EMAIL_BACKEND'))
+# EMAIL_HOST = str(os.getenv('EMAIL_HOST'))
+# EMAIL_HOST_USER = str(os.getenv('EMAIL_HOST_USER'))
+# EMAIL_HOST_PASSWORD = str(os.getenv('EMAIL_HOST_PASSWORD'))
+# EMAIL_PORT = str(os.getenv('EMAIL_PORT'))
+# EMAIL_USE_TLS = str(os.getenv('EMAIL_USE_TLS'))
