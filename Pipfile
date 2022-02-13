@@ -9,6 +9,7 @@ readtime = "*"
 django-ckeditor = "*"
 Pillow = "*"
 whitenoise = "*"
+django-on-heroku = "*"
 
 [dev-packages]
 

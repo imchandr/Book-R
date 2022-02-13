@@ -1,6 +1,7 @@
 
 import os
 from pathlib import Path
+import django_on_heroku
 
 # from dotenv import load_dotenv
 # load_dotenv()  # loads the configs from .env
@@ -151,3 +152,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # EMAIL_HOST_PASSWORD = str(os.getenv('EMAIL_HOST_PASSWORD'))
 # EMAIL_PORT = str(os.getenv('EMAIL_PORT'))
 # EMAIL_USE_TLS = str(os.getenv('EMAIL_USE_TLS'))
+
+# heroku deployment setup
+django_on_heroku.settings(locals())
