@@ -43,11 +43,11 @@ $(".closealertbutton").click(function (e) {
 {% endfor %}
 </div>
 
-
-<div class="flex items-center justify-center min-h-screen ">
+<!--book-hero-section-->
+<div class="-mt-20 flex items-center justify-center min-h-screen ">
   <div class="w-3/4 h-auto">
-    <div class="bg-white shadow-xl rounded-lg overflow-hidden md:flex border-2">
-      <div class="my-auto">
+    <div class="py-20 bg-white shadow-xl rounded-lg overflow-hidden md:flex border-2">
+      <div class="">
         <img src="{{book.image.url}}" class=" px-8 py-6 mx-20 " alt="..." />
         {% comment %} <svg class="mb-4 ml-24 w-4 h-4 mx-px fill-current text-green-600"
           xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
@@ -116,11 +116,11 @@ $(".closealertbutton").click(function (e) {
   </div>
 </div>
 
-
-<div class="flex justify-center">
-  <div
-    class="block p-6 rounded-lg shadow-lg bg-white max-w-4xl border-2 mb-4 text-gray-600 text-base text-lg tracking-wide leading-8 text-justify px-12 py-16">
-
+<!--book-Description-section-->
+<div class="-mt-28 flex items-center justify-center min-h-screen ">
+  <div class="w-3/4  h-auto">
+    <div class="bg-white shadow-xl rounded-lg overflow-hidden md:flex border-2">
+      <div class="px-28 py-20 text-justify ">
     <h5 class="text-gray-900 text-3xl leading-tight font-medium mb-2 text-center -mt-4 mb-8 underline">Book Description
     </h5>
     <p class="text-green">
@@ -128,18 +128,21 @@ $(".closealertbutton").click(function (e) {
     </p>
   </div>
 </div>
+</div>
+</div>
 
-
-<div class="flex justify-center my-8">
-  <div class="block py-6 rounded-lg shadow-lg bg-white w-3/5 border-2">
-    <!--book comment section -->
-    <div class="block p-6 rounded-lg  bg-white max-w-4xl">
-      <h5 class="text-gray-900 text-3xl leading-tight font-medium mb-2 text-center mb-8 underline py-8">Book Details</h5>
+<!--book-details-section-->
+<div class="-mt-28 flex items-center justify-center min-h-screen ">
+  <div class="  h-auto">
+    <div class="bg-white shadow-xl rounded-lg overflow-hidden md:flex border-2">
+      <div class="px-28 py-20 text-justify ">
+    <h5 class="text-gray-900 text-3xl leading-tight font-medium mb-2 text-center -mt-4 mb-8 underline">Book Details
+    </h5>
     <table
-      class="w-4/5 mx-auto  overflow-hidden  mt-5 mb-12 pl-20 text-gray-600 text-base text-xl tracking-wide leading-8 text-justify px-6  my-4">
+      class=" mx-96 px-20 overflow-hidden  text-gray-600 text-base text-xl tracking-wide leading-8 text-justify">
 
-      <tbody class=" flex-1 sm:flex-none text-medium text-lg text-gray-600 shadow-lg">
-        <tr class="flex flex-col flex-no wrap sm:table-row  sm:mb-0 border-b-2">
+      <tbody class="flex-1 sm:flex-none text-medium text-lg text-gray-600 shadow-lg">
+        <tr class=" flex flex-col flex-no wrap sm:table-row  sm:mb-0 border-b-2">
           <td class="border-grey-200 hover:bg-gray-100 ">ISBN</td>
           <td class="border-grey-200 hover:bg-gray-100">{{book.isbn}}</td>
         </tr>
@@ -188,12 +191,13 @@ $(".closealertbutton").click(function (e) {
   </div>
 </div>
 </div>
+</div>
 
 
-<div class="flex justify-center">
-  <div class="block p-6 rounded-lg shadow-lg bg-white max-w-4xl border-2">
-    <!--book comment section -->
-    <div class="block p-6 rounded-lg  bg-white max-w-4xl">
+<div class="-mt-40 px-60 flex items-center justify-center min-h-screen ">
+  <div class="w-full h-auto">
+    <div class=" px-28 bg-white shadow-xl rounded-lg overflow-hidden md:flex border-2">
+      <div class="w-full  px-48 py-20 text-justify ">
       <!--comment count -->
       {% with comments.count as total_comments %}
       <h5 class="text-gray-900 text-3xl leading-tight font-medium mb-2 text-center mb-8 underline">Book Reviews</h5>
@@ -272,5 +276,7 @@ $(".closealertbutton").click(function (e) {
     {% endif %}
 
   </div>
-  {% endblock content %}
 </div>
+</div>
+</div>
+{% endblock content %}

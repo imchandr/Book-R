@@ -11,6 +11,7 @@ Pillow = "*"
 whitenoise = "*"
 gunicorn = "*"
 django-on-heroku = "*"
+python-dotenv = "*"
 
 [dev-packages]
 

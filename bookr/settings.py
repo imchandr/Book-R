@@ -2,6 +2,14 @@
 import os
 from pathlib import Path
 
+# for env variables
+from dotenv import load_dotenv
+load_dotenv()  # loads the configs from .env
+
+# heroku related settings
+import django_on_heroku
+django_on_heroku.settings(locals())
+
 
 # from dotenv import load_dotenv
 # load_dotenv()  # loads the configs from .env
@@ -79,8 +87,16 @@ WSGI_APPLICATION = 'bookr.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'bookr_store', 
+        'USER': 'postgres', 
+        'PASSWORD': 'postgres', 
+        'HOST': 'localhost',
+        'PORT': '5432' 
+        
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -145,14 +161,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # transectional email setup
 
-# DEFAULT_FROM_EMAIL = str(os.getenv('DEFAULT_FROM_EMAIL'))
-# EMAIL_BACKEND = str(os.getenv('EMAIL_BACKEND'))
-# EMAIL_HOST = str(os.getenv('EMAIL_HOST'))
-# EMAIL_HOST_USER = str(os.getenv('EMAIL_HOST_USER'))
-# EMAIL_HOST_PASSWORD = str(os.getenv('EMAIL_HOST_PASSWORD'))
-# EMAIL_PORT = str(os.getenv('EMAIL_PORT'))
-# EMAIL_USE_TLS = str(os.getenv('EMAIL_USE_TLS'))
+DEFAULT_FROM_EMAIL = str(os.getenv('DEFAULT_FROM_EMAIL'))
+EMAIL_BACKEND = str(os.getenv('EMAIL_BACKEND'))
+EMAIL_HOST = str(os.getenv('EMAIL_HOST'))
+EMAIL_HOST_USER = str(os.getenv('EMAIL_HOST_USER'))
+EMAIL_HOST_PASSWORD = str(os.getenv('EMAIL_HOST_PASSWORD'))
+EMAIL_PORT = os.getenv('EMAIL_PORT')
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')
 
 # heroku related settings
-import django_on_heroku
-django_on_heroku.settings(locals())

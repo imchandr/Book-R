@@ -5,9 +5,9 @@
 
 {% block content %}
 
-<!-- search component -->
 
-<!-- end search component -->
+
+<!-- create postcomponent -->
 <div class="mx-40 my-12">
   
     <a href="{% url 'blog:create_post'%}" class="bg-white text-gray-800 font-bold rounded hover:border-gray-300 hover:bg-gray-200 hover:text-gray-900 shadow-md py-2 px-6 inline-flex items-center">
@@ -47,7 +47,7 @@
             <span class="text-blue-600 text-md">Added:<span class="px-2">{{post.publish|date}}</span></span>
             <span class="text-blue-600 text-md my-4">|<span class="pr-2"></span>{{post.get_readtime}} Read</span> 
               <h2 class="my-4 text-gray-600 text-justify ">{{post.body|safe|truncatewords:25}}</h2>
-              <a class="flex items-baseline mt-3 text-blue-600 hover:text-blue-900 focus:text-blue-900" href="http://127.0.0.1:8000/blog/{{post.slug}}/">
+              <a class="flex items-baseline mt-3 text-blue-600 hover:text-blue-900 focus:text-blue-900" href="https://bookr-store.herokuapp.com/blog/{{post.slug}}/">
                   <span>Read more</span>
                   <span class="text-xs ml-1">&#x279c;</span>
               </a>
