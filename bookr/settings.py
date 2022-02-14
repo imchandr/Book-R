@@ -8,7 +8,7 @@ load_dotenv()  # loads the configs from .env
 
 # heroku related settings
 import django_on_heroku
-django_on_heroku.settings(locals())
+
 
 
 # from dotenv import load_dotenv
@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-z#&#c=8tz=mi1ko6llt2+tlxfn(k-^cez&9fhd1k8=__mck#pz
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -136,7 +136,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
-# STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 # Default primary key field type
@@ -170,3 +170,4 @@ EMAIL_PORT = os.getenv('EMAIL_PORT')
 EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')
 
 # heroku related settings
+django_on_heroku.settings(locals())
