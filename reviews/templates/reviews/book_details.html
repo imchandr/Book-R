@@ -66,34 +66,34 @@ $(".closealertbutton").click(function (e) {
             class='pl-2'></span>
           {{book.publisher}}</h3>
 
-        <table class="w-full flex flex-row flex-no-wrap  overflow-hidden  mt-5 mb-12 pl-28">
+        <table class="w-full flex flex-row flex-no-wrap  overflow-hidden  mt-8 mb-12 pl-28">
 
-          <tbody class="flex-1 sm:flex-none text-medium text-lg text-gray-600">
+          <tbody class="flex-1 sm:flex-none text-medium text-lg text-gray-600 ">
             <tr class="flex flex-col flex-no wrap sm:table-row  sm:mb-0 border-b-2">
               <td class="border-grey-200 hover:bg-gray-100 ">Genre</td>
-              <td class="border-grey-200 hover:bg-gray-100 ">{{book.genre}}</td>
+              <td class="border-grey-200 hover:bg-gray-100 pl-24">{{book.genre}}</td>
             </tr>
             <tr class="flex flex-col flex-no wrap sm:table-row  sm:mb-0 border-b-2">
-              <td class="border-grey-200 hover:bg-gray-100 pt-2">Language</td>
-              <td class="border-grey-200 hover:bg-gray-100 pt-2"> <span class='mr-3'></span> {{book.language}}</td>
+              <td class="border-grey-200 hover:bg-gray-100 pt-3">Language</td>
+              <td class="border-grey-200 hover:bg-gray-100 pt-3 pl-24">{{book.language}}</td>
             </tr>
             <tr class="flex flex-col flex-no wrap sm:table-row  sm:mb-0 border-b-2">
-              <td class="border-grey-200 hover:bg-gray-100 pt-2">Formate</td>
-              <td class="border-grey-200 hover:bg-gray-100 pt-2"> <span class='mr-3'></span> {{book.type}}</td>
+              <td class="border-grey-200 hover:bg-gray-100 pt-3">Formate</td>
+              <td class="border-grey-200 hover:bg-gray-100 pt-3 pl-24">{{book.type}}</td>
             </tr>
             <tr class="flex flex-col flex-no wrap sm:table-row  sm:mb-0 border-b-2">
-              <td class="border-grey-200 hover:bg-gray-100 pt-2">Price</td>
-              <td class="border-grey-200 hover:bg-gray-100 pt-2">₹ <span class='pr-2'></span> {{book.price}}</td>
+              <td class="border-grey-200 hover:bg-gray-100 pt-3">Price</td>
+              <td class="border-grey-200 hover:bg-gray-100 pt-3 pl-24">₹ <span class='pr-2'></span> {{book.price}}</td>
             </tr>
             <tr class="flex flex-col flex-no wrap sm:table-row  sm:mb-0 border-b-2">
-              <td class="border-grey-200 hover:bg-gray-100 pt-2">ISBN</td>
-              <td class="border-grey-200 hover:bg-gray-100 pt-2">{{book.isbn}}</td>
+              <td class="border-grey-200 hover:bg-gray-100 pt-3">ISBN</td>
+              <td class="border-grey-200 hover:bg-gray-100 pt-3 pl-24">{{book.isbn}}</td>
             </tr>
           </tbody>
         </table>
         <form action="order/">
         <button {% if book.stock %}
-          class="mt-6 sm:mt-0 py-2 px-5 md:py-2 md:px-3 bg-indigo-700 hover:bg-indigo-600 font-bold text-white md:text-sm rounded-lg shadow-md ml-28">BUY
+          class="mt-6 sm:mt-0 py-2  px-5 md:py-2 md:px-6 bg-indigo-700 hover:bg-indigo-600 font-bold text-white md:text-sm rounded-lg shadow-md ml-28">BUY
           NOW
         </button>
         <span class='pl-4 '></span>
@@ -143,47 +143,47 @@ $(".closealertbutton").click(function (e) {
 
       <tbody class="flex-1 sm:flex-none text-medium text-lg text-gray-600 shadow-lg">
         <tr class=" flex flex-col flex-no wrap sm:table-row  sm:mb-0 border-b-2">
-          <td class="border-grey-200 hover:bg-gray-100 ">ISBN</td>
-          <td class="border-grey-200 hover:bg-gray-100">{{book.isbn}}</td>
+          <td class="border-grey-200 hover:bg-gray-100  ">ISBN</td>
+          <td class="border-grey-200 hover:bg-gray-100 pl-12 py-4">{{book.isbn}}</td>
         </tr>
         <tr class="flex flex-col flex-no wrap sm:table-row  sm:mb-0 border-b-2">
           <td class="border-grey-200 hover:bg-gray-100 ">Publication Date</td>
-          <td class="border-grey-200 hover:bg-gray-100">{{book.publication_date}}</td>
+          <td class="border-grey-200 hover:bg-gray-100 pl-12 py-4">{{book.publication_date}}</td>
         </tr>
         <tr class="flex flex-col flex-no wrap sm:table-row  sm:mb-0 border-b-2">
           <td class="border-grey-200 hover:bg-gray-100 ">Publisher</td>
-          <td class="border-grey-200 hover:bg-gray-100">{{book.publisher}}</td>
+          <td class="border-grey-200 hover:bg-gray-100 pl-12 py-4">{{book.publisher}}</td>
         </tr>
         <tr class="flex flex-col flex-no wrap sm:table-row  sm:mb-0 border-b-2">
           <td class="border-grey-200 hover:bg-gray-100 ">Available Formate</td>
-          <td class="border-grey-200 hover:bg-gray-100">{{book.type}}</td>
+          <td class="border-grey-200 hover:bg-gray-100 pl-12 py-4">{{book.type}}</td>
         </tr>
         <tr class="flex flex-col flex-no wrap sm:table-row  sm:mb-0 border-b-2">
           <td class="border-grey-200 hover:bg-gray-100 ">Number of pages</td>
-          <td class="border-grey-200 hover:bg-gray-100">450</td>
+          <td class="border-grey-200 hover:bg-gray-100 pl-12 py-4">450</td>
         </tr>
         <tr class="flex flex-col flex-no wrap sm:table-row  sm:mb-0 border-b-2">
-          <td class="border-grey-200 hover:bg-gray-100 pt-2">Dimension</td>
-          <td class="border-grey-200 hover:bg-gray-100 pt-2"> 5"x8" </td>
+          <td class="border-grey-200 hover:bg-gray-100 ">Dimension</td>
+          <td class="border-grey-200 hover:bg-gray-100 pl-12 py-4"> 5"x8" </td>
         </tr>
         <tr class="flex flex-col flex-no wrap sm:table-row  sm:mb-0 border-b-2">
           <td class="border-grey-200 hover:bg-gray-100 pt-2">Binding</td>
-          <td class="border-grey-200 hover:bg-gray-100 pt-2"> Paperback (Perfect Binding)</td>
+          <td class="border-grey-200 hover:bg-gray-100 pt-2 pl-12 py-4"> Paperback (Perfect Binding)</td>
         </tr>
         <tr class="flex flex-col flex-no wrap sm:table-row  sm:mb-0 border-b-2">
-          <td class="border-grey-200 hover:bg-gray-100 pt-2">Interior Pages</td>
-          <td class="border-grey-200 hover:bg-gray-100 pt-2">Black & White</td>
+          <td class="border-grey-200 hover:bg-gray-100 ">Interior Pages</td>
+          <td class="border-grey-200 hover:bg-gray-100 pl-12 py-4">Black & White</td>
         </tr>
         <tr class="flex flex-col flex-no wrap sm:table-row  sm:mb-0 border-b-2">
           <td class="border-grey-200 hover:bg-gray-100 pt-2">Price</td>
-          <td class="border-grey-200 hover:bg-gray-100 pt-2">₹ <span class='pr-2'></span> {{book.price}}</td>
+          <td class="border-grey-200 hover:bg-gray-100 pt-2 pl-12 py-4">₹ <span class='pr-2'></span> {{book.price}}</td>
         </tr>
         <tr class="flex flex-col flex-no wrap sm:table-row  sm:mb-0 border-b-2">
           <td class="border-grey-200 hover:bg-gray-100 ">Availability</td>
           {% if book.stock  %}
-          <td class="border-grey-200 hover:bg-gray-100 text-semibold text-green-500">In Stock</td>
+          <td class="border-grey-200 hover:bg-gray-100 text-semibold text-green-500 pl-12 py-4">In Stock</td>
           {% else %}
-          <td class="border-grey-200 hover:bg-gray-100 text-semibold text-red-500">Out of Stock</td>
+          <td class="border-grey-200 hover:bg-gray-100 text-semibold text-red-500 pl-12 py-4">Out of Stock</td>
           {% endif %}
         </tr>
       </tbody>
