@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'reviews',
     'blog',
     'ckeditor',
+    'cart',
+    'order'
     
     
 ]
@@ -70,6 +72,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.context_processors.cart',
             ],
         },
     },
@@ -164,6 +167,10 @@ EMAIL_HOST_USER = str(os.getenv('EMAIL_HOST_USER'))
 EMAIL_HOST_PASSWORD = str(os.getenv('EMAIL_HOST_PASSWORD'))
 EMAIL_PORT = os.getenv('EMAIL_PORT')
 EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')
+
+# cart session
+CART_SESSION_ID = 'cart'
+
 
 # heroku related settings
 django_on_heroku.settings(locals())

@@ -8,6 +8,10 @@ from reviews.views import home_page_view
 urlpatterns = [
     path('', home_page_view, name='home_page'),
     path('admin/', admin.site.urls),
+    
+    path('cart/', include('cart.urls', namespace='cart')),
+    path('orders/', include('order.urls', namespace='orders')),
+    
     path('user/', include('django.contrib.auth.urls')),
     path('account/', include('account.urls', namespace='user_account')),
     path('book/', include('reviews.urls', namespace='review')),

@@ -7,6 +7,8 @@ from reviews.forms import ReviewForm
 from .models import Book, Contributor, Review, BookContributor
 from .utils import average_rating
 
+from cart.forms import CartAddProductForm
+
 
 def home_page_view(request):
     return render(request, 'reviews/bookr_landing_page.html')
@@ -35,6 +37,8 @@ def bookdetails_view(request, id):
     book = get_object_or_404(Book, id=id)
     contributor = get_object_or_404(BookContributor, role='AUTHOR',book_id=id)  
     author = Contributor.objects.get(id=contributor.id)
+    
+    cart_product_form = CartAddProductForm()
     
     
         
@@ -65,7 +69,9 @@ def bookdetails_view(request, id):
         'comment_form':review_form,
         "book":book,
         "reviews":review,
-        "author":author
+        "author":author,
+        'product': book,
+        'cart_product_form': cart_product_form,
         # "rating":rating,
         # "numberOfReviews" : num_of_reviews
         }

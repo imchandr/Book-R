@@ -81,6 +81,7 @@ $(".closealertbutton").click(function (e) {
               <td class="border-grey-200 hover:bg-gray-100 pt-3">Formate</td>
               <td class="border-grey-200 hover:bg-gray-100 pt-3 pl-24">{{book.type}}</td>
             </tr>
+            
             <tr class="flex flex-col flex-no wrap sm:table-row  sm:mb-0 border-b-2">
               <td class="border-grey-200 hover:bg-gray-100 pt-3">Price</td>
               <td class="border-grey-200 hover:bg-gray-100 pt-3 pl-24">₹ <span class='pr-2'></span> {{book.price}}</td>
@@ -91,24 +92,27 @@ $(".closealertbutton").click(function (e) {
             </tr>
           </tbody>
         </table>
-        <form action="order/">
-        <button {% if book.stock %}
-          class="mt-6 sm:mt-0 py-2  px-5 md:py-2 md:px-6 bg-indigo-700 hover:bg-indigo-600 font-bold text-white md:text-sm rounded-lg shadow-md ml-28">BUY
-          NOW
+        <form action="{% url "cart:cart_add" product.id %}" method="post">
+          {{ cart_product_form }}
+          {% csrf_token %}
+          {% if book.stock %}
+          <input type="submit" value="ADD TO CART">
+       {% comment %} <button 
+         input class="mt-6 sm:mt-0 py-2  px-5 md:py-2 md:px-6 bg-indigo-700 hover:bg-indigo-600 font-bold text-white md:text-sm rounded-lg shadow-md ml-28">ADD TO CART
         </button>
         <span class='pl-4 '></span>
-        <button
+         <button
           class="mt-3 sm:mt-0 py-2 px-5 py-2 md:px-3 bg-indigo-700 hover:bg-indigo-600 font-bold text-white md:text-sm rounded-lg shadow-md">ADD
           TO CART
-        </button>
-      </form>
+        </button> {% endcomment %}
         {% else %}
         <span class='pl-28 '></span>
         <button
-          class="mt-3 sm:mt-0 py-2 px-5 py-2 md:px-3 bg-red-400 hover:bg-red-500 font-bold text-white md:text-sm rounded-lg shadow-md">CURRENTLY
-          OUT OF STOCK
-        </button>
-        {% endif %}
+        class="mt-3 sm:mt-0 py-2 px-5 py-2 md:px-3 bg-red-400 hover:bg-red-500 font-bold text-white md:text-sm rounded-lg shadow-md">CURRENTLY
+        OUT OF STOCK
+      </button>
+      {% endif %}
+    </form>
       </div>
 
     </div>
