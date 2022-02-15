@@ -15,7 +15,7 @@
         </li>
       {% endfor %}
     </ul>
-    <p>Total: ${{ cart.get_total_price }}</p>
+    <p>Total: ₹{{ cart.get_total_price }}</p>
   </div>
   <form method="post" class="order-form">
     {{ form.as_p }}

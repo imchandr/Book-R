@@ -43,19 +43,6 @@
                                     Blog's
                                 </a>
 
-                                <div class="cart">
-                                    {% with total_items=cart|length %}
-                                      {% if total_items > 0 %}
-                                        Your cart:
-                                        <a href="{% url "cart:cart_detail" %}">
-                                          {{ total_items }} item{{ total_items|pluralize }},
-                                          ${{ cart.get_total_price }}
-                                        </a>
-                                      {% else %}
-                                        Your cart is empty.
-                                      {% endif %}
-                                    {% endwith %}
-                                  </div>
 
                                 {% if request.user.is_authenticated %}
                                 
@@ -88,7 +75,7 @@
                                         class="absolute w-60 px-5 py-3  bg-white rounded-lg shadow border border-transparent -ml-4 mt-5">
                                         <ul class="space-y-3 text-gray-700">
                                             <li class="font-medium">
-                                                <a href="#"
+                                                <a href="{% url 'cart:cart_detail'%}"
                                                     class="flex items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-blue-700">
                                                     <div class="mr-3">
                                                         <svg "w-6 h-6" fill="none" stroke="currentColor"
@@ -151,10 +138,15 @@
                                     </div>
                                 </div>
                                 <!-- nav-bar-cart-icon -->
-                                <div class=" px-2 py-2 my-auto w-12 h-12 shadow-lg rounded-full hover:bg-gray-200 ">
-                                    <a class='cursor' href='{%url 'review:bookorder'%}'>
-                                    <img src="{% static 'reviews/cart-icon.png'%}" alt='cart-icon' />
-                                    </a>
+                                <div class=" px-2 py-2  my-auto w-12 h-12 shadow-lg rounded-md hover:bg-gray-200 ">
+                                    <span class="relative inline-block">
+                                        <a class='cursor' href='{% url 'cart:cart_detail'%}'>
+                                        <img class='' src="{% static 'reviews/cart-icon.png'%}" alt='cart-icon'  />
+                                        <span
+                                            class="absolute -top-3  -right-5 px-2 py-1 text-xs font-bold leading-none text-red-100 transform bg-red-600 rounded-full">{{ cart|length }}</span>
+                                        </a>
+                                    </span>
+    
                                 </div>
                             </div>
                             
@@ -171,11 +163,14 @@
                                     Log-in
                                 </a>
 
-                                <div class=" px-2 py-2 my-auto w-10 h-10 shadow-lg rounded-md hover:bg-gray-200 ">
-                                    <a class='cursor' href='{%url 'review:bookorder'%}'>
-                                    <img class='' src="{% static 'reviews/cart-icon.png'%}" alt='cart-icon'  />
-                                    </a>
-                                </div>
+                                <div class=" px-2 py-2  my-auto w-12 h-12 shadow-lg rounded-md hover:bg-gray-200 ">
+                                    <span class="relative inline-block">
+                                        <a class='cursor' href='{% url 'cart:cart_detail'%}'>
+                                        <img class='' src="{% static 'reviews/cart-icon.png'%}" alt='cart-icon'  />
+                                        <span
+                                            class="absolute -top-3  -right-5 px-2 py-1 text-xs font-bold leading-none text-red-100 transform bg-red-600 rounded-full">{{ cart|length }}</span>
+                                        </a>
+                                    </span>
 
                             {% endif %}
 

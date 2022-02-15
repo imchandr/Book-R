@@ -4,7 +4,69 @@
 
 {% block content %}
 
-<h1>Your shopping cart</h1>
+
+
+<div class="mx-auto my-24 min-h-screen">
+  <div class="container mx-auto p-10 max-w-screen-lg">
+    <div class=" border-2 shadow-lg rounded-lg shadow p-8">
+      <!--  ToastBar  -->
+      <div class="w-full bg-orange-200 text-yellow-900 px-4 py-2 flex items-center">
+        <img src="https://svgsilh.com/svg/151889.svg" class="w-10 block pr-2">
+        <div class="text-sm">Congrats you're eligible for a <b>Coupon Code</b> in this order </div>
+      </div>
+      <!-- Order Summary  -->
+      <div>
+        <h3 class="text-xl mt-4 font-bold">Order Summary</h3>
+        <!--     BOX     -->
+        {% for item in cart %}
+        {% with product=item.product %}
+        <div class="border w-full rounded mt-5 flex p-4 justify-between items-center flex-wrap">
+          <img src="{% if product.image %}{{ product.image.url }}
+          {% else %}{% static "img/no_image.png" %}{% endif %}" class="w-24">
+          <div class="w-2/3">
+            <h3 class="text-lg font-medium">{{ product.title }}</h3>
+            <p class="text-gray-600 text-xs">Sold by <b>WS Retail</b></p>
+            <h4 class="text-red-700 text-xs font-bold mt-1">Only {{product.stock}} left in stock</h4>
+            
+          </div>
+          <div>
+            <h5 class="text-md font-bold text-purple-800">{{ item.quantity }}x{{ item.price }}
+            </h5>
+            <h4 class="mt-2 text-3xl font-medium"><sup class="text-lg text-purple-800">₹</sup>{{ item.total_price }}</h4>
+          </div>
+          <div class="w-full flex justify-between mt-4">
+            <form action="{% url "cart:cart_remove" product.id %}" method="post">
+              <input type="submit" class="bg-white text-red-600 hover:bg-red-100 hover:text-red-700 px-2 py-1" value="DELETE">
+              {% csrf_token %}
+            </form>
+            <label class="block uppercase tracking-wide text-gray-700" for="grid-first-name">
+              QTY
+              <select class="ml-3 text-sm bg-purple-700 border border-purple-200 text-white p-2 rounded leading-tight" id="grid-state">
+                <option>1</option>
+                <option>2</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        {% endwith %}
+  {% endfor %}
+      </div>
+      <div class="border w-full rounded mt-5 flex p-4 justify-between items-center flex-wrap">
+        <h4 class="mt-2 text-3xl text-gray-600 font-medium">CART TOTAL</h4>
+        <h4 class="mt-2 text-3xl text-gray-800 font-medium"> ₹{{ cart.get_total_price }}</h4>
+      </div>
+      <div class="mt-10 mb-4 mx-20">
+      <a href='{% url "review:booklist_view" %}' class="px-14 py-4 bg-purple-700 text-white w-full mt-3 rounded shadow font-bold hover:bg-purple-900 mr-8">SHOPE MORE</a>
+      <a href='{% url "orders:order_create" %}' class="px-4 py-4 bg-purple-700 text-white w-full mt-3 rounded shadow font-bold hover:bg-purple-900 ml-2">PROCEED TO CHECKOUT</a>
+    </div>
+    </div>
+    
+    </div>
+  </div>
+</div>
+
+
+{% comment %} <h1>Your shopping cart</h1>
   <table class="cart">
     <thead>
       <tr>
@@ -50,7 +112,7 @@
     <a href="{% url "review:booklist_view" %}" class="button
     light">Continue shopping</a>
     <a href="{% url "orders:order_create" %}" class="button">Checkout</a>
-  </p>
+  </p> {% endcomment %}
 
 
 {% endblock content %}
