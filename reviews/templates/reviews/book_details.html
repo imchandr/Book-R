@@ -46,9 +46,9 @@ $(".closealertbutton").click(function (e) {
 <!--book-hero-section-->
 <div class="-mt-20 flex items-center justify-center min-h-screen ">
   <div class="w-3/4 h-auto">
-    <div class="py-20 bg-white shadow-xl rounded-lg overflow-hidden md:flex border-2">
+    <div class="py-12 bg-white shadow-xl rounded-lg overflow-hidden md:flex border-2">
       <div class="">
-        <img src="{{book.image.url}}" class=" px-8 py-6 mx-20 " alt="..." />
+        <img src="{{book.image.url}}" class=" px-8 py-6 mx-16 " alt="..." />
         {% comment %} <svg class="mb-4 ml-24 w-4 h-4 mx-px fill-current text-green-600"
           xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
           <path
@@ -59,14 +59,14 @@ $(".closealertbutton").click(function (e) {
 
       <div class="w-4/5 md:p-5  mx-auto my-2">
         <h1 class="text-4xl font-bold underline pl-28">{{ book.title }}</h1>
-        <h3 class="font-semi-bold text-blue-600 text-md md:text-md mt-4 hover:underline pl-28">Author <span
+        <h3 class="font-semi-bold text-indigo-600 text-md md:text-md mt-4 hover:underline hover:text-indigo-700 pl-28">Author <span
             class='pl-2'></span>
           {{author.first_name}}<span class="pl-2">{{author.last_name}}</span> </h3>
-        <h3 class="font-semi-bold text-blue-600 text-md md:text-md hover:underline pl-28">Publisher <span
+        <h3 class="font-semi-bold text-indigo-600 text-md md:text-md hover:underline hover:text-indigo-700 pl-28">Publisher <span
             class='pl-2'></span>
           {{book.publisher}}</h3>
 
-        <table class="w-full flex flex-row flex-no-wrap  overflow-hidden  mt-8 mb-12 pl-28">
+        <table class="w-full flex flex-row flex-no-wrap  overflow-hidden  mt-6 mb-12 pl-28">
 
           <tbody class="flex-1 sm:flex-none text-medium text-lg text-gray-600 ">
             <tr class="flex flex-col flex-no wrap sm:table-row  sm:mb-0 border-b-2">
@@ -86,25 +86,19 @@ $(".closealertbutton").click(function (e) {
               <td class="border-grey-200 hover:bg-gray-100 pt-3">Price</td>
               <td class="border-grey-200 hover:bg-gray-100 pt-3 pl-24">₹ <span class='pr-2'></span> {{book.price}}</td>
             </tr>
-            <tr class="flex flex-col flex-no wrap sm:table-row  sm:mb-0 border-b-2">
+            {% comment %} <tr class="flex flex-col flex-no wrap sm:table-row  sm:mb-0 border-b-2">
               <td class="border-grey-200 hover:bg-gray-100 pt-3">ISBN</td>
               <td class="border-grey-200 hover:bg-gray-100 pt-3 pl-24">{{book.isbn}}</td>
-            </tr>
+            </tr> {% endcomment %}
           </tbody>
         </table>
-        <form action="{% url "cart:cart_add" product.id %}" method="post">
-          {{ cart_product_form }}
+        <div class="-mt-8 px-28 py-2 mt-20">
+        <form class='' action="{% url "cart:cart_add" product.id %}" method="post">
+          {{ cart_product_form.quantity }}
           {% csrf_token %}
           {% if book.stock %}
-          <input type="submit" value="ADD TO CART">
-       {% comment %} <button 
-         input class="mt-6 sm:mt-0 py-2  px-5 md:py-2 md:px-6 bg-indigo-700 hover:bg-indigo-600 font-bold text-white md:text-sm rounded-lg shadow-md ml-28">ADD TO CART
-        </button>
-        <span class='pl-4 '></span>
-         <button
-          class="mt-3 sm:mt-0 py-2 px-5 py-2 md:px-3 bg-indigo-700 hover:bg-indigo-600 font-bold text-white md:text-sm rounded-lg shadow-md">ADD
-          TO CART
-        </button> {% endcomment %}
+          <input type="submit" value="ADD TO CART" class="ml-8  mt-3 sm:mt-0 px-8 py-3 md:px-3 bg-indigo-700 hover:bg-indigo-600 font-bold text-white md:text-sm rounded-lg shadow-md">
+       
         {% else %}
         <span class='pl-28 '></span>
         <button
@@ -113,6 +107,7 @@ $(".closealertbutton").click(function (e) {
       </button>
       {% endif %}
     </form>
+  </div>
       </div>
 
     </div>
