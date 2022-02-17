@@ -171,7 +171,9 @@ EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')
 
 # cart session
 CART_SESSION_ID = 'cart'
-
+# Razor pay api
+RAZOR_KEY_ID='rzp_test_hQv02SdSTgKiau'
+RAZOR_KEY_SECRET='2mQ4IoUTid885egq4CIpreHp'
 
 # heroku related settings
 django_on_heroku.settings(locals())

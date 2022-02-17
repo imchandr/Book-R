@@ -4,23 +4,50 @@
 
 {% block content %}
 
-<h1>Checkout</h1>
-  <div class="order-info">
-    <h3>Your order</h3>
-    <ul>
-      {% for item in cart %}
-        <li>
-          {{ item.quantity }}x {{ item.product.name }}
-          <span>${{ item.total_price }}</span>
-        </li>
-      {% endfor %}
-    </ul>
-    <p>Total: ₹{{ cart.get_total_price }}</p>
-  </div>
-  <form method="post" class="order-form">
-    {{ form.as_p }}
-    <p><input type="submit" value="Place order"></p>
+<!-- checkout-component -->
+<div class=" flex leading-loose mx-48 px-44 my-28">
+
+  <form method='post' action='{% url 'orders:order_create'%}'
+    class=" max-w-xl m-4 p-10 bg-white border-2 rounded-lg shadow-xl">
     {% csrf_token %}
+    <div class="">
+      <h1 class='text-gray-800 font-medium text-2xl text-center my-8'>CONTINUE TO CHECKOUT </h1>
+    </div>
+
+    <div class="">
+      <label class="block text-sm text-gray-00" for="cus_name">Name</label>
+      {{form.name}}
+    </div>
+    <div class="mt-2">
+      <label class="block text-sm text-gray-600" for="cus_email">Email</label>
+      {{form.email}}
+    </div>
+    <div class="mt-2">
+      <label class=" block text-sm text-gray-600" for="cus_email">Address</label>
+      {{form.street}}
+    </div>
+    <div class="mt-2">
+      <label class="hidden text-sm block text-gray-600" for="cus_email">City</label>
+      {{form.city}}
+    </div>
+    <div class="inline-block mt-2 w-1/2 pr-1">
+      <label class="hidden block text-sm text-gray-600" for="cus_email">State</label>
+      {{form.state}}
+    </div>
+    <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
+      <label class="hidden block text-sm text-gray-600" for="cus_email">Zip</label>
+      {{form.zip}}
+
+    </div>
+
+    <div class="mt-4">
+      <button class=" w-full px-4 py-1 text-white font-medium tracking-wider bg-blue-500 hover:bg-blue-600 rounded"
+        type="submit">CONTINUE TO PAY <span class='px-3'>₹{{ cart.get_total_price }}</span></button>
+    </div>
   </form>
+  <div class="flex-row mt-12">
+    <img class='block' src="{% static 'image/checkout.png'%}" alt="checkout-img">
+  </div>
+</div>
 
 {% endblock content %}

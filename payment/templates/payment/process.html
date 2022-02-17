@@ -1,0 +1,62 @@
+{% extends 'reviews/home.html' %}
+{% load static %}
+{% block title %}Bookr-Confirm payment{% endblock title %}
+
+{% block content %}
+
+<!-- component -->
+<!-- This is an example component -->
+<div class="mx-80">
+<div class="border-2 w-96 mx-96 my-48 h-96 rounded-lg shadow-2xl p-8 bg-gray-100 ">
+  <p class="text-3xl font-bold uppercase text-center text-underline py-4">BOOKR-STORE</p>
+  <p class="text-xl font-semibold uppercase text-center">Confirm Payment</p>
+  
+    <!-- Payment Button -->
+    <button class="btn mt-12 ml-28 border-4 rounded-md hover:bg-gray-200 border-gray-300  px-6 py-3  text-lg" id="pay-btn">PAY NOW</button>
+  
+  
+</div>
+</div>
+
+
+
+
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+  var options = {
+     
+    // Enter the Key ID generated from the Dashboard
+    key: "{{ razor_api_key }}",
+     
+    // Amount is in currency subunits.
+    // Default currency is INR. Hence,
+    // 50000 refers to 50000 paise
+    amount: "{{ amount }}",
+    currency: "{{ currency }}",
+     
+    // Your/store name.
+    name: "BOOKR-Store",
+     
+    // Pass the `id` obtained in the response of Step 1
+    order_id: "{{ razor_order_id }}",
+    callback_url: "{{ callback_url }}",
+  };
+   
+  // initialise razorpay with the options.
+  var rzp1 = new Razorpay(options);
+   
+  // add event listener to the payment button.
+  document.getElementById("pay-btn").onclick = function (e) {
+    rzp1.open();
+    e.preventDefault();
+  };
+</script>
+
+{% endblock content %}
+
+
+  
+
+
+
