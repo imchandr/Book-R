@@ -52,3 +52,5 @@ def admin_order_pdf(request, order_id):
         stylesheets=[weasyprint.CSS(
             settings.STATIC_ROOT + '/css/pdf.css')])
     return response
+
+

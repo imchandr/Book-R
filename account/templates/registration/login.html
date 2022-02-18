@@ -31,7 +31,7 @@
                     <div class="relative w-3/4 mt-2 space-y-8">
                         <form class="space-y-5 mt-3" action="" method="post">
                             {% csrf_token %}
-
+                            
                             {% if form.errors %}
                                 <div class="w-4/5 bg-red-600 text-red-200 px-4 py-2 rounded-lg">
                                     Error: Username or Password not correct!

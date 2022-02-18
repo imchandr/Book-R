@@ -7,21 +7,38 @@
 
 
 
-<!-- create postcomponent -->
-<div class="mx-40 my-12">
-  
-    <a href="{% url 'blog:create_post'%}" class="bg-white text-gray-800 font-bold rounded hover:border-gray-300 hover:bg-gray-200 hover:text-gray-900 shadow-md py-2 px-6 inline-flex items-center">
-      <span class="mr-2">Create New Post</span>
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-        <path fill="currentcolor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
-      </svg>
-    </a>
+
+
+
+<!--post-search-newpost-component -->
+<div class="flex flex-start my-12 ml-8">
+  <div class="ml-80 ">
     
- 
+
+    <div class="font-sans text-black bg-white flex items-center justify-center">
+      <a href="{% url 'blog:create_post'%}" class="bg-white text-gray-800 font-bold rounded hover:border-gray-300 hover:bg-gray-200 hover:text-gray-900 shadow-md py-2 px-6 inline-flex items-center">
+        <span class="mr-2">Create New Post</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+          <path fill="currentcolor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
+        </svg>
+      </a>
+      <form action="{%url 'blog:post_search'%}" method="GET" class='mx-12'>
+      <div class="border rounded overflow-hidden flex">
+        {{form.query}}
+         
+        <button type='submit' class="flex items-center justify-center px-4 border-l">
+          <svg class="h-4 w-4 text-grey-dark" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z"/></svg>
+        </button>
+      </div>
+    </form>
+    </div>
+  </div>  
 </div>
 
+ 
+
 {% for post in posts %}
-<!-- post-component -->
+<!-- post-list-component -->
 <div class="container mx-auto my-12 ">
 
   <div class="relative rounded-lg flex flex-col md:flex-row items-center md:shadow-lg md:h-80 mx-2 border-2 hover:shadow-xl">

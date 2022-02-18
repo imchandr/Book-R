@@ -12,9 +12,9 @@ whitenoise = "*"
 gunicorn = "*"
 django-on-heroku = "*"
 python-dotenv = "*"
-celery = "*"
 weasyprint = "*"
 razorpay = "*"
+celery = "*"
 
 [dev-packages]
 

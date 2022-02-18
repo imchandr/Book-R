@@ -6,6 +6,13 @@ from order.models import Order
 from cart.cart import Cart
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse, HttpResponseBadRequest
+
+import weasyprint
+from io import BytesIO
+from django.template.loader import render_to_string
+from django.core.mail import EmailMessage
+
+from payment.task import email_invoice
 import razorpay
 
 # authorize razorpay client with API Keys.
@@ -40,7 +47,7 @@ def paymenthandler(request):
     order_id = request.session.get('order_id')
     order = get_object_or_404(Order, id=order_id)
     total_cost = order.get_total_cost()
-    
+    send_mail = False
     
     
     if request.method == 'POST':
@@ -66,11 +73,15 @@ def paymenthandler(request):
                 # store the unique transaction id
                 order.transection_id = payment_id
                 order.save()
-
-               
-                # # render success page on successful caputre of payment
-                return render(request, 'payment/done.html')
                 
+                # asynk task that emails order invoice 
+                email_invoice.delay(order.id)
+               
+          
+                # # render success page on successful caputre of payment
+                return render(request, 'payment/done.html',{'transection':payment_id})
+            
+             
                 
             else:
 
@@ -82,7 +93,10 @@ def paymenthandler(request):
             return HttpResponse('Invalid Parameter from POST')
     else:
        # if other than POST request is made.
-        return HttpResponse("Didn't erceive POST request from RazorPay")
+        return HttpResponse("Didn't rerceive POST request from RazorPay")
+    
+    
+
 
 
 def payment_done(request):

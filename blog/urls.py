@@ -1,6 +1,6 @@
 from django.urls import path
 from django.conf.urls import handler404, handler500
-from blog.views import PostCreate,PostUpdate,PostDelete,CommentDelete,post_list, post_detail, post_share, tailwind
+from blog.views import PostCreate,PostUpdate,PostDelete,CommentDelete,post_list, post_detail, post_share,post_search, tailwind
 
 
 app_name = 'blog'
@@ -8,6 +8,7 @@ urlpatterns = [
     path('create/',PostCreate.as_view(),name='create_post'),
     path('<int:pk>/update/',PostUpdate.as_view(),name='update_post'),
     path('<int:pk>/delete/',PostDelete.as_view(),name='delete_post'),
+    path('search/',post_search, name='post_search'),
     path('<slug:post>/delete-comment/<int:pk>/',CommentDelete.as_view(),name='delete_comment'),
     path('',post_list, name='post_list'),
     path('<slug:post>/',post_detail,name='post_detail'),

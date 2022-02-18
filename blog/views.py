@@ -3,12 +3,15 @@ from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from blog.models import Post, Comment
-from blog.forms import SharePostForm, CommentForm, NewPostForm
+from reviews.models import Book
+from blog.forms import SharePostForm, CommentForm, NewPostForm, PostSearchForm
 from django.core.mail import send_mail
 from django.urls import reverse_lazy
 from django.views.generic import CreateView,UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.core.files.storage import FileSystemStorage
+from django.contrib.postgres.search import SearchVector
+
 
 class PostCreate(LoginRequiredMixin,CreateView):
     model = Post
@@ -77,10 +80,13 @@ def post_list(request):
         '''when page num is out of range show the last page'''
         posts = paginator.page(paginator.num_pages)
 
+    form = PostSearchForm()
     context = {
         'page': page,
         'posts': posts,
-        'paginator': paginator
+        'paginator': paginator,
+        'form' : form
+        
     }
 
     return render(request, 'blog/post_list.html', context)
@@ -114,6 +120,23 @@ def post_detail(request, post):
 
     return render(request, 'blog/post_detail.html', context)
 
+def post_search(request):
+    form = PostSearchForm()
+    query = None
+    results = []
+    if 'query' in request.GET:
+        form = PostSearchForm(request.GET)
+        if form.is_valid():
+            query = form.cleaned_data['query']
+            results = Post.published.annotate(
+                search=SearchVector('title', 'body'),
+            ).filter(search=query)  
+            # Book.objects.filter().annotate(search=SearchVector('title','description','genre','contributors'))
+    return render(request,
+                  'blog/search_result.html',
+                  {'form': form,
+                   'query': query,
+                   'results': results})
 
 def tailwind(request):
     return render(request, 'blog/tailwind.html')

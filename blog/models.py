@@ -9,6 +9,10 @@ from django.utils.text import slugify
 import readtime
 from ckeditor.fields import RichTextField
 
+class PublishedManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(status='published')
+
 class Category(models.Model):
     name = models.CharField(max_length=150)
 
@@ -32,6 +36,9 @@ class Post(models.Model):
     updated = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default = 'draft')
 
+    objects = models.Manager() # The default manager.
+    published = PublishedManager() # Our custom manager.
+    
     class Meta:
         ordering = ('-publish',)
         

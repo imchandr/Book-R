@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'django.contrib.postgres',
     
     'reviews',
     'blog',
@@ -172,8 +173,8 @@ EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')
 # cart session
 CART_SESSION_ID = 'cart'
 # Razor pay api
-RAZOR_KEY_ID='rzp_test_hQv02SdSTgKiau'
-RAZOR_KEY_SECRET='2mQ4IoUTid885egq4CIpreHp'
+RAZOR_KEY_ID= str(os.getenv('RAZOR_KEY_ID'))
+RAZOR_KEY_SECRET= str(os.getenv('RAZOR_KEY_SECRET'))
 
 # heroku related settings
 django_on_heroku.settings(locals())

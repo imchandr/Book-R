@@ -3,8 +3,9 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.contrib import messages
-from reviews.forms import ReviewForm
+from reviews.forms import ReviewForm, BookSearchForm
 from .models import Book, Contributor, Review, BookContributor
+from django.contrib.postgres.search import SearchVector
 from .utils import average_rating
 
 from cart.forms import CartAddProductForm
@@ -23,10 +24,11 @@ def bookorder_view(request,id):
 def booklist_view(request):
     books = Book.objects.all()
     contributors = BookContributor.objects.filter(role='AUTHOR')
-    
+    form = BookSearchForm()
     context = {
         "book_list": books,
-        "contributors":contributors
+        "contributors":contributors,
+        'form':form,
                
     }
        
@@ -85,6 +87,26 @@ def delete_review(request, id):
         review.delete()
         messages.warning(request, 'Review Deleted')
         return redirect('/book/')
+    
+def book_search(request):
+    form = BookSearchForm()
+    query = None
+    results = []
+    if 'query' in request.GET:
+        form = BookSearchForm(request.GET)
+        if form.is_valid():
+            query = form.cleaned_data['query']
+            results = Book.objects.all().annotate(
+                search=SearchVector('title', 'description','isbn',),
+            ).filter(search=query)  
+            # Book.objects.filter().annotate(search=SearchVector('title','description','genre','contributors'))
+            context = {'form': form,
+                   'query': query,
+                   'results': results}
+            
+    return render(request,
+                  'reviews/search_result.html',
+                  context)
 
         
 def handler404(request, exception):

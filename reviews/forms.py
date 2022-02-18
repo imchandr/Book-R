@@ -1,6 +1,18 @@
 from django import forms
 from reviews.models import Book, Review
 
+class BookSearchForm(forms.Form):
+    query = forms.CharField()
+    
+    def __init__(self, *args, **kwargs):
+        '''another way to style form elements'''
+
+        super().__init__(*args, **kwargs)
+        self.fields['query'].widget.attrs.update({
+            'placeHolder': 'Searching for book?',
+            'class': '  w-full px-4 py-1 text-gray-800  focus:outline-none'
+        })
+        
 class ReviewForm(forms.ModelForm):
     '''form for addig revies on book'''
     

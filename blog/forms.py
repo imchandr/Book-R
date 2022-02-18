@@ -3,6 +3,18 @@ from urllib import request
 from django import forms
 from blog.models import Comment, Post
 
+class PostSearchForm(forms.Form):
+    query = forms.CharField()
+    
+    def __init__(self, *args, **kwargs):
+        '''another way to style form elements'''
+
+        super().__init__(*args, **kwargs)
+        self.fields['query'].widget.attrs.update({
+            'placeHolder': 'Searching for post?',
+            'class': '  w-full px-4 py-1 text-gray-800  focus:outline-none'
+        })
+    
 class NewPostForm(forms.ModelForm):
     
     
