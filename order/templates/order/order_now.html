@@ -7,7 +7,7 @@
 <!-- checkout-component -->
 <div class=" flex leading-loose mx-48 px-44 my-28">
 
-  <form method='post' action='{% url 'orders:order_create'%}'
+  <form method='POST' action='{% url 'orders:order_now' book.id %}'
     class=" max-w-xl m-4 p-10 bg-white border-2 rounded-lg shadow-xl">
     {% csrf_token %}
     <div class="">
@@ -41,9 +41,9 @@
     </div>
 
     <div class="mt-4">
-      {% if cart.get_total_price > 0 %}
+      {% if book.price > 0 %}
       <button class=" w-full px-4 py-1 text-white font-medium tracking-wider bg-blue-500 hover:bg-blue-600 rounded"
-        type="submit">CONTINUE TO PAY <span class='px-3'>₹{{ cart.get_total_price }}</span></button>
+        type="submit">CONTINUE TO PAY <span class='px-3'>₹{{ book.price }}</span></button>
         {% else %}
         <button class="cursor-not-allowed w-full px-4 py-1 text-white font-medium tracking-wider bg-red-500 hover:bg-red-600 rounded"
         type="submit">NO PRODUCT'S IN YOUR CART TO PAY FOR!</span></button>

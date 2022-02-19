@@ -12,6 +12,9 @@ from django.http import HttpResponse
 from django.template.loader import render_to_string
 import weasyprint
 
+from reviews.models import Book
+
+
 @login_required
 def order_create(request):
     cart = Cart(request)
@@ -19,27 +22,54 @@ def order_create(request):
         form = OrderCreateForm(request.POST)
         if form.is_valid():
             order = form.save()
-            
+
             for item in cart:
-                OrderItem.objects.create(order=order,product=item['product'],price=item['price'],quantity=item['quantity'])
-           
-            #clear the cart
+                OrderItem.objects.create(
+                    order=order, product=item['product'], price=item['price'], quantity=item['quantity'])
+
+            # clear the cart
             cart.clear()
             request.session['order_id'] = order.id
-            
+
             return redirect(reverse('payment:process'))
     else:
         form = OrderCreateForm()
     return render(request,
                   'order/order_create.html',
                   {'cart': cart, 'form': form})
-   
+
+
+@login_required
+def order_now(request, id):
+    book = Book.objects.get(pk=id)
+
+    if request.method == 'POST':
+        form = OrderCreateForm(request.POST)
+        if form.is_valid():
+            order = form.save()
+
+            OrderItem.objects.create(
+                order=order, product=book, price=book.price)
+
+            request.session['order_id'] = order.id
+
+            return redirect(reverse('payment:process'))
+        else:
+            return HttpResponse('invalid form')
+    else:
+        form = OrderCreateForm()
+    return render(request,
+                  'order/order_now.html',
+                  {'book': book, 'form': form})
+
+
 @staff_member_required
 def admin_order_detail(request, order_id):
     order = get_object_or_404(Order, id=order_id)
     return render(request,
                   'admin/detail.html',
                   {'order': order})
+
 
 @staff_member_required
 def admin_order_pdf(request, order_id):
@@ -49,8 +79,6 @@ def admin_order_pdf(request, order_id):
     response = HttpResponse(content_type='application/pdf')
     response['Content-Disposition'] = f'filename=order_{order.id}.pdf'
     weasyprint.HTML(string=html).write_pdf(response,
-        stylesheets=[weasyprint.CSS(
-            settings.STATIC_ROOT + '/css/pdf.css')])
+                                           stylesheets=[weasyprint.CSS(
+                                               settings.STATIC_ROOT + '/css/pdf.css')])
     return response
-
-

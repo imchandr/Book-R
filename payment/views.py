@@ -99,8 +99,8 @@ def paymenthandler(request):
 
 
 
-def payment_done(request):
-    return render(request, 'payment/done.html')
+def test(request):
+    return render(request, 'payment/payment_error.html')
 
 
 def payment_canceled(request):

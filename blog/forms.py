@@ -12,7 +12,7 @@ class PostSearchForm(forms.Form):
         super().__init__(*args, **kwargs)
         self.fields['query'].widget.attrs.update({
             'placeHolder': 'Searching for post?',
-            'class': '  w-full px-4 py-1 text-gray-800  focus:outline-none'
+            'class': '  w-full px-4 py-1 text-gray-800 border-2 border-indigo-600 focus:outline-none'
         })
     
 class NewPostForm(forms.ModelForm):

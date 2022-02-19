@@ -11,6 +11,7 @@ def email_invoice(order_id):
     Task to send an e-mail notification when an order is
     successfully created and payment is completed.
     """
+
     order = Order.objects.get(id=order_id)
     
     # create invoice e-mail
@@ -23,7 +24,7 @@ def email_invoice(order_id):
     # generate PDF
     html = render_to_string('order/pdf.html', {'order': order})
     out = BytesIO()
-    stylesheets=[weasyprint.CSS('/mnt/HDD/Books/Django-project/Book-R/staticfiles/pdf.css')]
+    stylesheets=[weasyprint.CSS(settings.STATIC_ROOT + '/css/pdf.css')]
     weasyprint.HTML(string=html).write_pdf(out,
                                           stylesheets=stylesheets)
     # attach PDF file

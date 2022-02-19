@@ -92,21 +92,27 @@ $(".closealertbutton").click(function (e) {
             </tr> {% endcomment %}
           </tbody>
         </table>
-        <div class="-mt-8 px-28 py-2 mt-20">
+        <div class="-mt-8 flex flex-row px-28 py-2 mt-20">
         <form class='' action="{% url "cart:cart_add" product.id %}" method="post">
-          {{ cart_product_form.quantity }}
+          <span class=''>  {{ cart_product_form.quantity }}</span>
           {% csrf_token %}
           {% if book.stock %}
-          <input type="submit" value="ADD TO CART" class="ml-8  mt-3 sm:mt-0 px-8 py-3 md:px-3 bg-indigo-700 hover:bg-indigo-600 font-bold text-white md:text-sm rounded-lg shadow-md">
+          <input type="submit" value="ADD TO CART" class=" cursor-pointer   mt-3 sm:mt-0 px-8 py-3 md:px-3 bg-indigo-700 hover:bg-indigo-600 font-bold text-white md:text-sm rounded-lg shadow-md">
        
         {% else %}
         <span class='pl-28 '></span>
         <button
-        class="mt-3 sm:mt-0 py-2 px-5 py-2 md:px-3 bg-red-400 hover:bg-red-500 font-bold text-white md:text-sm rounded-lg shadow-md">CURRENTLY
+        class="cursor-not-allowed mt-3 sm:mt-0 py-2 px-5 py-2 md:px-3 bg-red-400 hover:bg-red-500 font-bold text-white md:text-sm rounded-lg shadow-md">CURRENTLY
         OUT OF STOCK
       </button>
       {% endif %}
     </form>
+    <form class='' action="{% url 'orders:order_now' book.id %}" method="get">
+      
+      {% if book.stock %}
+      <input type="submit" value="BUY NOW" class="cursor-pointer ml-8  mt-3  sm:mt-0 px-8 py-3 md:px-8 bg-indigo-700 hover:bg-indigo-600 font-bold text-white md:text-sm rounded-lg shadow-md">
+  {% endif %}
+</form>
   </div>
       </div>
 
