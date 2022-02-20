@@ -1,6 +1,7 @@
 
 import os
 from pathlib import Path
+from trace import Trace
 
 # for env variables
 from dotenv import load_dotenv

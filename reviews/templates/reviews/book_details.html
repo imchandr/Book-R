@@ -207,6 +207,7 @@ $(".closealertbutton").click(function (e) {
       {% with comments.count as total_comments %}
       <h5 class="text-gray-900 text-3xl leading-tight font-medium mb-2 text-center mb-8 underline">Book Reviews</h5>
       <h2 class="my-8 text-xl flex items-center space-x-2 leading-tight font-medium mb-2 text-center">
+        
         {{ total_comments }} Review{{ total_comments|pluralize }}
 
       </h2>
@@ -221,13 +222,15 @@ $(".closealertbutton").click(function (e) {
             <div class="px-4 py-2 flex  justify-between">
               <span class="text-sm font-semibold text-gray-900">{{comment.author}}</span>
               <div class="flex">
+                
                 <span class="px-4 text-sm font-semibold text-gray-600"> {{comment.date_created|naturalday}}</span>
-                <img class="h-6 w-6 rounded-full object-cover"
-                  src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=144&q=80"
-                  alt="">
+                <img class="h-8 w-8 rounded-full object-cover"
+                  src="{{comment.author.profile.avatar.url}}"
+                  alt="author-img">
               </div>
             </div>
             <p class="px-4 py-2 text-sm font-medium text-gray-600 text-justify">{{comment.content}}</p>
+            
             <p class="px-4 py-2 text-sm font-medium text-gray-600"><span class='pr-4'>rating</span> {{comment.rating}}
             </p>
           </a>
