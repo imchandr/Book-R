@@ -79,7 +79,7 @@ def edit_user_profile(request):
             user_form.save()
             profile_form.save()
             messages.success(request, 'Your profile is updated successfully')
-            return redirect(to='user_account:edit_user_profile')
+            return redirect(reverse_lazy('user_account:user_profile'))
     else:
         user_form = UpdateUserForm(instance=request.user)
         profile_form = UpdateProfileForm(instance=request.user.profile)
