@@ -1,0 +1,177 @@
+{% extends 'reviews/home.html' %}
+
+{% block title %}{{ block.super }}
+Order: {{ order.id }}
+{% endblock title %}
+{% block content %}
+
+
+<!-- profile-tab component -->
+
+<!-- component -->
+<link rel="stylesheet" href="https://unpkg.com/@themesberg/flowbite@1.2.0/dist/flowbite.min.css" />
+
+
+<!-- profile-tab component -->
+<div class="w-4/5 my-40 mx-auto">
+<div class="my-12">
+<a href="#" onclick="window.print();" class='bg-indigo-500 text-lg text-white font-bold py-3 px-6 rounded-lg shadow-xl hover:bg-indigo-600'>Print order</a>
+</div>
+    
+    <div id="myTabContent">
+
+ <!-- order-details-component -->
+        <div class="bg-gray-50 p-4 rounded-lg dark:bg-gray-700" id="dashboard" role="tabpanel"
+            aria-labelledby="dashboard-tab">
+           
+            <h1 class='text-2xl font-bold text-gray-700 my-2 py-2 '>ORDER ID #{{order.id}}</h1>
+            <hr>
+            <table class="border-collapse table-auto w-full">
+                <thead class="text-md  uppercase text-gray-800 bg-gray-50 my-3">
+                    <tr>
+                        
+                        <th class="p-2 whitespace-nowrap">
+                            <div class="font-semibold text-left">customer</div>
+                        </th>
+                        <th class="p-2 whitespace-nowrap">
+                            <div class="font-semibold text-left">email</div>
+                        </th>
+                        <th class="p-2 whitespace-nowrap">
+                            <div class="font-semibold text-left">address</div>
+                        </th>
+                        <th class="p-2 whitespace-nowrap">
+                            <div class="font-semibold text-left">Order-Date</div>
+                        </th>
+                        <th class="p-2 whitespace-nowrap">
+                            <div class="font-semibold text-left">amount</div>
+                        </th>
+                        <th class="p-2 whitespace-nowrap">
+                            <div class="font-semibold text-left">transection-id</div>
+                        </th>
+                        <th class="p-2 whitespace-nowrap">
+                            <div class="font-semibold text-left">Payment</div>
+                        </th>
+                        <th class="p-2 whitespace-nowrap">
+                            <div class="font-semibold text-center">Invoice</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="text-md text-gray-600 divide-y divide-gray-100">
+                    
+                    <tr>
+                        <td class="p-2 whitespace-nowrap">
+                            <div class="flex items-center py-8">
+                                <div class="text-justify text-lg text-center">{{order.name}}</div>
+                            </div>
+                        </td>
+                        <td class="p-2 whitespace-nowrap">
+                            <div class="text-justify text-lg ">{{order.email}}</div>
+                        </td>
+                        <td class="p-2 whitespace-nowrap">
+                            <div class="text-justify text-lg ">{{order.street}},{{order.city}} 
+                                <br>{{order.state}}
+                               ,{{order.zip}} </div>
+                        </td>
+                        <td class="p-2 whitespace-nowrap">
+                            <div class="text-justify text-lg ">{{order.created|date}}</div>
+                        </td>
+                        <td class="p-2 whitespace-nowrap">
+                            <div class="text-justify text-lg ">{{order.get_total_cost}}</div>
+                        </td>
+                        <td class="p-2 whitespace-nowrap">
+                            <div class="text-justify text-lg ">{{order.transection_id}}</div>
+                        </td>
+                        <td class="p-2 whitespace-nowrap">
+                            <div class="text-lg ">{% if order.paid %}Completed{% else %}Failed{% endif %}</div>
+                        </td>
+                        <td class="p-2 whitespace-nowrap">
+                            <div class="text-lg "><a href="{% url 'user_account:order_invoice' order.id %}" target="_blank"
+                                    class=' text-justify text-lg border-b-2 border-indigo-600'>INVOICE</a></div>
+                        </td>
+                    </tr>
+                    
+                    
+                </tbody>
+            </table>
+
+        </div>
+<!-- order-item-component -->
+        <div class="bg-gray-50 p-4 rounded-lg dark:bg-gray-700" id="dashboard" role="tabpanel"
+            aria-labelledby="dashboard-tab">
+            
+            <h1 class='text-2xl font-bold text-gray-700 my-2 py-2 '>ITEM PURCHASED </h1>
+            <hr>
+            <table class="border-collapse table-auto w-full">
+                <thead class="text-md  uppercase text-gray-800 bg-gray-50 my-3">
+                    <tr>
+                        
+                        <th class="p-2 whitespace-nowrap">
+                            <div class="font-semibold text-left">book</div>
+                        </th>
+                        <th class="p-2 whitespace-nowrap">
+                            <div class="font-semibold text-left">title</div>
+                        </th>
+                        <th class="p-2 whitespace-nowrap">
+                            <div class="font-semibold text-left">price</div>
+                        </th>
+                        <th class="p-2 whitespace-nowrap">
+                            <div class="font-semibold text-left">quantity</div>
+                        </th>
+                        <th class="p-2 whitespace-nowrap">
+                            <div class="font-semibold text-left">total</div>
+                        
+                    </tr>
+                   
+                </thead>
+                
+                <tbody class="text-md text-gray-600 divide-y divide-gray-100">
+                    {% for item in order.items.all %}
+                    
+                    <tr>
+                        <td class="p-2 whitespace-nowrap">
+                            <div class="flex items-center py-8">
+                                <div class="text-justify text-lg text-center"><img src="{{item.product.image.url}}" alt="product-img" class='w-20 h-20 m-0 p-0 rounded-md shadow-lg'></div>
+                            </div>
+                        </td>
+                        <td class="p-2 whitespace-nowrap">
+                            <div class="flex items-center py-8">
+                                <div class="text-justify text-lg text-center">{{item.product.title}}</div>
+                            </div>
+                        </td>
+                        <td class="p-2 whitespace-nowrap">
+                            <div class="text-justify text-lg ">{{item.price}}</div>
+                        </td>
+                        <td class="p-2 whitespace-nowrap">
+                            <div class="text-justify text-lg ">{{item.quantity}} </div>
+                        </td>
+                        <td class="p-2 whitespace-nowrap">
+                            <div class="text-justify text-lg ">{{item.get_cost}}</div>
+                        </td>
+                       
+                    </tr>
+                    
+                    {% endfor %}
+                    
+                </tbody>
+                <thead>
+                    <th>
+                        <td class='p-2 whitespace-nowrap'></td>
+                        <td class='p-2 whitespace-nowrap'></td>
+                        <td class='p-2 whitespace-nowrap text-xl text-gray-800 font-bold'>TOTAL PRICE</td>
+                        <td class='p-2 whitespace-nowrap text-xl text-gray-800 font-bold'>₹{{order.get_total_cost}}</td>
+                    </th>
+                </thead>
+            </table>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+
+<script src="https://unpkg.com/@themesberg/flowbite@1.2.0/dist/flowbite.bundle.js"></script>
+<!-- end profile-tab component -->
+
+{% endblock content %}

@@ -92,27 +92,28 @@ def edit_user_profile(request):
 
 def user_order(request):
     
-    # order = get_object_or_404(Order, )
-    # context = {
-        
-    # }
-    return render(request, 'profile/user_order.html')
+    orders = Order.objects.filter(order_account = request.user)
+    context = {
+        'orders':orders
+    }
+    return render(request, 'profile/user_order.html', context)
 
 
-
-
+def user_order_detail(request, order_id):
+    order = get_object_or_404(Order, id = order_id)
+    return render(request, 'profile/user_order_detail.html', {'order':order})
 
 def user_order_pdf(request, order_id):
-    return HttpResponse('working on it')
-    # order = get_object_or_404(Order, id=order_id)
-    # html = render_to_string('order/pdf.html',
-    #                         {'order': order})
-    # response = HttpResponse(content_type='application/pdf')
-    # response['Content-Disposition'] = f'filename=order_{order.id}.pdf'
-    # weasyprint.HTML(string=html).write_pdf(response,
-    #                                        stylesheets=[weasyprint.CSS(
-    #                                            settings.STATIC_ROOT + '/css/pdf.css')])
-    # return response
+    order = get_object_or_404(Order, id=order_id)
+    html = render_to_string('order/pdf.html',
+                            {'order': order})
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = f'filename=order_{order.id}.pdf'
+    weasyprint.HTML(string=html).write_pdf(response,
+                                           stylesheets=[weasyprint.CSS(
+                                               settings.STATIC_ROOT + '/css/pdf.css')])
+    return response
+
 def handler404(request, exception):
     return render(request, '404.html', status=404)
 

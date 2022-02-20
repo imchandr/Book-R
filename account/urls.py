@@ -1,7 +1,7 @@
 from django.urls import path
 from django.conf.urls import handler404, handler500
 from account.forms import LoginForm, ResetPasswordForm, ResetPasswordConfirmForm, ChangePasswordForm
-from account.views import account_register, account_activate, user_profile,edit_user_profile, user_order
+from account.views import account_register, account_activate, user_profile,edit_user_profile, user_order,user_order_detail, user_order_pdf
 from django.contrib.auth import views as auth_view
 
 
@@ -20,7 +20,9 @@ urlpatterns = [
     path('profile/edit/',edit_user_profile, name='edit_user_profile'),
     path('change-password/', auth_view.PasswordChangeView.as_view(
         template_name='registration/change_password.html', form_class=ChangePasswordForm), name='change_password'),
-    path('orders/', user_order, name='order'),
+    path('order/', user_order, name='order'),
+    path('order/<int:order_id>/details/', user_order_detail, name='order_detail'),
+    path('order/<int:order_id>/invoice/', user_order_pdf, name='order_invoice'),
     
    
 

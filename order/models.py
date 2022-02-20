@@ -1,7 +1,9 @@
 from django.db import models
 from reviews.models import Book
+from django.contrib.auth.models import User
 
 class Order(models.Model):
+    order_account = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     name = models.CharField(max_length=50, blank=True, null=True)
     email = models.EmailField(max_length=50,  blank=True, null=True)
     street = models.CharField(max_length=250,  blank=True, null=True)
