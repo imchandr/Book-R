@@ -1,0 +1,105 @@
+{% extends 'reviews/home.html' %}
+
+
+{% block title %}User-profile{% endblock title %}
+{% block content %}
+
+
+<!-- profile-tab component -->
+
+<!-- component -->
+<link rel="stylesheet" href="https://unpkg.com/@themesberg/flowbite@1.2.0/dist/flowbite.min.css" />
+
+
+<!-- profile-tab component -->
+<div class="w-4/5 my-40 mx-auto">
+
+    
+    <div id="myTabContent">
+
+
+        <div class="bg-gray-50 p-4 rounded-lg dark:bg-gray-700" id="dashboard" role="tabpanel"
+            aria-labelledby="dashboard-tab">
+            <!-- component -->
+            <h1 class='text-2xl font-bold text-gray-700 my-2 py-2 '>Order History</h1>
+            <hr>
+            <table class="border-collapse table-auto w-full">
+                <thead class="text-md  uppercase text-gray-800 bg-gray-50 my-3">
+                    <tr>
+                        <th class="p-2 whitespace-nowrap">
+                            <div class="font-semibold text-left">Order-id</div>
+                        </th>
+                        <th class="p-2 whitespace-nowrap">
+                            <div class="font-semibold text-left">Name</div>
+                        </th>
+                        <th class="p-2 whitespace-nowrap">
+                            <div class="font-semibold text-left">email</div>
+                        </th>
+                        <th class="p-2 whitespace-nowrap">
+                            <div class="font-semibold text-left">address</div>
+                        </th>
+                        <th class="p-2 whitespace-nowrap">
+                            <div class="font-semibold text-left">Order-Date</div>
+                        </th>
+                        <th class="p-2 whitespace-nowrap">
+                            <div class="font-semibold text-left">transection-id</div>
+                        </th>
+                        <th class="p-2 whitespace-nowrap">
+                            <div class="font-semibold text-left">Order-details</div>
+                        </th>
+                        <th class="p-2 whitespace-nowrap">
+                            <div class="font-semibold text-center">Invoice</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="text-md divide-y divide-gray-100">
+                    <tr>
+                        <td class="p-2 whitespace-nowrap">
+                            <div class="flex items-center py-8">
+                                <div class="font-medium text-gray-800">order-ids </div>
+                            </div>
+                        </td>
+                        <td class="p-2 whitespace-nowrap">
+                            <div class="text-left">name</div>
+                        </td>
+                        <td class="p-2 whitespace-nowrap">
+                            <div class="text-left font-medium text-green-500">email </div>
+                        </td>
+                        <td class="p-2 whitespace-nowrap">
+                            <div class="text-lg text-center"><a href=""
+                                    class=' text-sm text-gray-800'>address</a></div>
+                        </td>
+                        <td class="p-2 whitespace-nowrap">
+                            <div class="text-lg text-center"><a href=""
+                                    class=' text-sm text-gray-800'>order-date</a></div>
+                        </td>
+                        <td class="p-2 whitespace-nowrap">
+                            <div class="text-lg text-center"><a href=""
+                                    class=' text-sm text-gray-800'>transection-id</a></div>
+                        </td>
+                        <td class="p-2 whitespace-nowrap">
+                            <div class="text-lg text-center"><a href=""
+                                    class=' text-sm text-gray-800'>order-details</a></div>
+                        </td>
+                        <td class="p-2 whitespace-nowrap">
+                            <div class="text-lg text-center"><a href=""
+                                    class=' text-sm text-gray-800'>invoice</a></div>
+                        </td>
+                    </tr>
+
+                    
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+
+<script src="https://unpkg.com/@themesberg/flowbite@1.2.0/dist/flowbite.bundle.js"></script>
+<!-- end profile-tab component -->
+
+{% endblock content %}

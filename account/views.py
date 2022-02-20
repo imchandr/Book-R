@@ -1,6 +1,6 @@
 from base64 import urlsafe_b64decode
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from django.views import generic
 from django.contrib import messages
 
@@ -15,7 +15,9 @@ from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.utils.encoding import force_bytes, force_str
 
-
+from order.models import Order
+from django.conf import settings
+import weasyprint
 
 
 def account_register(request):
@@ -88,6 +90,29 @@ def edit_user_profile(request):
         
     return render(request, 'profile/edit_user_profile.html', context)
 
+def user_order(request):
+    
+    # order = get_object_or_404(Order, )
+    # context = {
+        
+    # }
+    return render(request, 'profile/user_order.html')
+
+
+
+
+
+def user_order_pdf(request, order_id):
+    return HttpResponse('working on it')
+    # order = get_object_or_404(Order, id=order_id)
+    # html = render_to_string('order/pdf.html',
+    #                         {'order': order})
+    # response = HttpResponse(content_type='application/pdf')
+    # response['Content-Disposition'] = f'filename=order_{order.id}.pdf'
+    # weasyprint.HTML(string=html).write_pdf(response,
+    #                                        stylesheets=[weasyprint.CSS(
+    #                                            settings.STATIC_ROOT + '/css/pdf.css')])
+    # return response
 def handler404(request, exception):
     return render(request, '404.html', status=404)
 
