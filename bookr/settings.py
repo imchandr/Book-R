@@ -20,11 +20,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-z#&#c=8tz=mi1ko6llt2+tlxfn(k-^cez&9fhd1k8=__mck#pz'
+SECRET_KEY = str((os.getenv('SECRET_KEY')))
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = ['*']
 
 
@@ -91,10 +91,10 @@ DATABASES = {
     'default': {
         
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'bookr_store', 
-        'USER': 'postgres', 
-        'PASSWORD': 'postgres', 
-        'HOST': 'localhost',
+        'NAME': str(os.getenv('DB_NAME')), 
+        'USER': str(os.getenv('DB_USER')), 
+        'PASSWORD': str(os.getenv('DB_PASSWORD')), 
+        'HOST': str(os.getenv('DB_HOST')),
         'PORT': '5432' 
         
         # 'ENGINE': 'django.db.backends.sqlite3',

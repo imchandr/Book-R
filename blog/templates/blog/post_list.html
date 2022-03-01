@@ -54,7 +54,7 @@
           <div class="p-8 md:pr-18 md:pl-14 md:py-12 mx-2 md:mx-0 h-full bg-white rounded-lg md:rounded-none md:rounded-l-lg shadow-xl md:shadow-none ">
             
             <h3 class="hidden md:block font-bold text-2xl text-gray-700">{{post.title|truncatewords:15}}</h3>
-            <h4 class="text-blue-600 hidden md:block text-md text-blue-600 my-1">Author: <span class="px-2">{{post.author}}</span></h4>
+            <h4 class="text-blue-600 hidden md:block text-md text-blue-600 my-1">Author: <span class="px-2">{{post.author.first_name}}</span><span class="px-0.5">{{post.author.last_name}}</span></h4>
             
             <span class="text-blue-600 text-md">Added:<span class="px-2">{{post.publish|date}}</span></span>
             <span class="text-blue-600 text-md my-4">|<span class="pr-2"></span>{{post.get_readtime}} Read</span> 

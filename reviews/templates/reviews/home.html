@@ -59,7 +59,7 @@
                                     <div
                                         class=" w-full rounded-md px-4 py-2 flex justify-center items-center space-x-3 cursor-pointer">
                                         <div class="pr-1 font-medium text-gray-600 text-lg">
-                                            <div class="cursor-pointer w-full">Hi, {{user.username}}</div>
+                                            <div class="cursor-pointer w-full">Hi, <span class='px-0.5'></span> {{user.first_name}}<span class='px-0.5'></span> {{user.last_name}}</div>
                                         </div>
                                         <div class="w-12 h-12 rounded-full overflow-hidden">
                                             <img src="{{user.profile.avatar.url}}"
