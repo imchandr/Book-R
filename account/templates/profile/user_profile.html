@@ -6,7 +6,7 @@
 
 
         
-  <div class="w-3/5 mx-auto my-20 bg-gray-50 border-4">
+  <div class="w-3/5 mx-auto my-20 bg-gray-50 shadow-xl py-12">
         <div class="my-20 flex flex-row justify-center items-center relative h-full  bg-opacity-50 text-gray-600">
             <div class="">
             <img src="{{user.profile.avatar.url}}" class="h-32 w-32 object-fill rounded-full">
@@ -16,7 +16,7 @@
             <p>Address:{{user.profile.address}}</p>
         </div>
     </div>
-    <div class="my-8 mx-80">
+    <div class=" flex justify-center w-full h-auto my-8">
     <a href="{% url 'user_account:edit_user_profile' %}" class=" px-8 mx-8 bg-indigo-500 bg-transparent hover:bg-indigo-600 text-white font-semibold  py-2 px-4 border border-grey hover:border-transparent rounded">
        Edit profile 
      

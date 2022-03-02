@@ -124,7 +124,7 @@ $(".closealertbutton").click(function (e) {
 </div>
 
 <!--book-Description-section-->
-<div class="-mt-28 flex items-center justify-center min-h-screen ">
+<div class=" flex items-center justify-center min-h-screen ">
   <div class="w-3/4  h-auto">
     <div class="bg-white shadow-xl rounded-lg overflow-hidden md:flex border-2">
       <div class="px-28 py-20 text-justify ">
@@ -139,8 +139,8 @@ $(".closealertbutton").click(function (e) {
 </div>
 
 <!--book-details-section-->
-<div class="-mt-28 flex items-center justify-center min-h-screen ">
-  <div class="  h-auto">
+<div class="mt-12 flex items-center justify-center min-h-screen ">
+  <div class="w-3/4  h-auto">
     <div class="bg-white shadow-xl rounded-lg overflow-hidden md:flex border-2">
       <div class="px-28 py-20 text-justify ">
     <h5 class="text-gray-900 text-3xl leading-tight font-medium mb-2 text-center -mt-4 mb-8 underline">Book Details
@@ -201,8 +201,8 @@ $(".closealertbutton").click(function (e) {
 </div>
 
 
-<div class=" px-60 flex items-center justify-center min-h-screen ">
-  <div class="w-full h-auto">
+<div class="mt-12  px-60 flex items-center justify-center min-h-screen ">
+  <div class="w-full">
     <div class=" px-28 bg-white shadow-xl rounded-lg overflow-hidden md:flex border-2">
       <div class="w-full  px-48 py-20 text-justify ">
       <!--comment count -->
@@ -219,7 +219,7 @@ $(".closealertbutton").click(function (e) {
       {% for comment in comments %}
 
       <div id='review' class=''>
-        <div class="shadow-lg pt-4 ml-2 mr-2 rounded-lg mb-4 ">
+        <div class="= shadow-lg pt-4 ml-2 mr-2 rounded-lg mb-4 ">
           <a href="#" class="block bg-white py-3 rounded-lg shadow-lg border-2 pb-4 ">
             <div class="px-4 py-2 flex  justify-between">
               <span class="text-sm font-semibold text-gray-900">{{comment.author.first_name}} <span class='px-0.5'></span> {{comment.author.last_name}}</span>
